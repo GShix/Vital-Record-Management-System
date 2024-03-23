@@ -1,6 +1,8 @@
 import React from 'react'
 import './Header.css'
+import {useNavigate} from 'react-router-dom'
 const Header = () => {
+    const Navigate = useNavigate()
   return (
     <div>
         <header>
@@ -34,12 +36,12 @@ const Header = () => {
                 </div>
             <div className="nav-list flex">
                 <ul >
-                    <li><a href={'https://vrms-babaimuni.vercel.app/'}>Home</a></li>
-                    <li><a href={''}>Introduction</a></li>
-                    <li><a href={''}>E-Gov Services</a></li>
-                    <li><a href={''}>Download</a></li>
-                    <li><a href={''}>Notices</a></li>
-                    <li><a href={''}>Contact</a></li>
+                    <li onClick={()=>Navigate('/')}>Home</li>
+                    <li onClick={()=>Navigate('/')}>Introduction</li>
+                    <li onClick={()=>Navigate('/eservices')}>E-Gov Services</li>
+                    <li onClick={()=>Navigate('/')}>Download</li>
+                    <li onClick={()=>Navigate('/eservices')}>Notices</li>
+                    <li onClick={()=>Navigate('/eservices')}>Contact</li>
                 </ul>
                 <button type=''>Employee Login</button>
             </div>
