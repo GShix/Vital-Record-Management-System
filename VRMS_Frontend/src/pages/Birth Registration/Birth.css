@@ -1,0 +1,11 @@
+.birth{
+    height: 500px;
+    background-color: rgb(220, 222, 223);
+}
+.birth-text{
+    text-align: center;
+    padding-top: 20px;
+    font-size: 25px;
+    margin-top: 5px;
+    
+}

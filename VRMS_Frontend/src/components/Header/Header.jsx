@@ -40,8 +40,8 @@ const Header = () => {
                     <li onClick={()=>Navigate('/')}>Introduction</li>
                     <li onClick={()=>Navigate('/eservices')}>E-Gov Services</li>
                     <li onClick={()=>Navigate('/')}>Download</li>
-                    <li onClick={()=>Navigate('/eservices')}>Notices</li>
-                    <li onClick={()=>Navigate('/eservices')}>Contact</li>
+                    <li onClick={()=>Navigate('/')}>Notices</li>
+                    <li onClick={()=>Navigate('/')}>Contact</li>
                 </ul>
                 <button type=''>Employee Login</button>
             </div>

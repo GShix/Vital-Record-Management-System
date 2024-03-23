@@ -1,7 +1,9 @@
 import React from 'react'
 import Header from '../../components/Header/Header'
 import './Services.css'
+import { useNavigate } from 'react-router-dom'
 const Services = () => {
+    const Navigate = useNavigate();
   return (
     <div>
         <Header/>
@@ -11,7 +13,7 @@ const Services = () => {
             </div>
             <div className="services flex">
                 <div className="birth">
-                    <button>Online Birth Registration</button>
+                    <button onClick={()=>Navigate("/birthRegistration")}>Online Birth Registration</button>
                 </div>
                 <div className="death">
                 <button>Online Death Registration</button>
