@@ -34,12 +34,12 @@ const Header = () => {
                 </div>
             <div className="nav-list flex">
                 <ul >
-                    <li><a href={'http://localhost:5173/'}>Home</a></li>
-                    <li><a href={'http://localhost:5173/intro'}>Introduction</a></li>
-                    <li><a href={'http://localhost:5173/eservices'}>E-Gov Services</a></li>
-                    <li><a href={'http://localhost:5173/eservices'}>Download</a></li>
-                    <li><a href={'http://localhost:5173/eservices'}>Notices</a></li>
-                    <li><a href={'http://localhost:5173/eservices'}>Contact</a></li>
+                    <li><a href={'https://vrms-babaimuni.vercel.app/'}>Home</a></li>
+                    <li><a href={''}>Introduction</a></li>
+                    <li><a href={''}>E-Gov Services</a></li>
+                    <li><a href={''}>Download</a></li>
+                    <li><a href={''}>Notices</a></li>
+                    <li><a href={''}>Contact</a></li>
                 </ul>
                 <button type=''>Employee Login</button>
             </div>
