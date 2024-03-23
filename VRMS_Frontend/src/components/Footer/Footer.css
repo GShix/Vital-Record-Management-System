@@ -1,0 +1,16 @@
+.flex{
+    display: flex;
+    color: white;
+}
+.footer-first{
+    width: 100%;
+    background-color: #2d67b4;
+    padding: 30px 25px;
+}
+.footer-second{
+    background-color: #2a5690;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+}

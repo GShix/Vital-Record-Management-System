@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Tauri&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{font-family: "Tauri", sans-serif;;
+    margin: 4px 70px;
+    background-color: #355d90;
+    height: 1500px;
+}
