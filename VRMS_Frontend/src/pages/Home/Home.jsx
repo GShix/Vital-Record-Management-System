@@ -9,7 +9,7 @@ const Home = () => {
         
         <Header/>
         <div className="hero">
-            <img src='.././public/hero1.jpg'/>
+            <img src='.././hero1.jpg'/>
         </div>
         <div className="staff">
             <PhotoCard/>
