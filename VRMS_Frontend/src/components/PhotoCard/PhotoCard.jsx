@@ -5,7 +5,7 @@ const PhotoCard = () => {
     <div>
         <div className="card">
             <div className="photo">
-            <img src='.././public/mayar.jpg'/> 
+            <img src='.././mayar.jpg'/> 
             </div>
             <div className="photo-details">
                 <h3>Kul Bahadur Khatri</h3>
