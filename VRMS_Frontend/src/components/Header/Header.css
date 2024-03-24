@@ -89,6 +89,6 @@ header{
     cursor: pointer;
     color:white;
 }
-button:hover{
+.nav-list button:hover{
     background-color: #2a5690;
 }

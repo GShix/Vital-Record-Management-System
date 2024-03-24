@@ -1,6 +1,7 @@
 .birth-form{
-    height: 500px;
+    height: 900px;
     background-color: rgb(220, 222, 223);
+    
 }
 .birth-text{
     text-align: center;
@@ -8,15 +9,76 @@
     font-size: 25px;
     margin-top: 5px;
 }
-.birth-details{
+label{
+    font-weight: lighter;
 }
-.child-name-details, .birth-time-details, .birth-place-details{
-    margin-bottom: 15px;
+#one{
+    font-size: 15px;
+}
+#two{
+    font-size: 13px;
 
 }
-label{
-    color:black;
+.birth-details{
+    font-family: arial;
+    font-weight: normal;
+    background-color: whitesmoke;
+    padding: 20px 70px;
 }
-.name, .birth-time, .birth-place{
-    border: 2px solid red;
+.birth-application{
+    display: flex;
+    margin: 10px 70px;
+    padding: 55px 0;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    height: 500px;
+    border: none;
+    border-radius: 5px;
+    color: black;
+}
+.submit-btn{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.margin-top{
+    margin-top: 5px;
+}
+.margin-top2{
+    margin-top: 15px;
+}
+#birth-app-btn{
+    padding: 8px 6px;
+    /* border: none; */
+    border-radius: 6px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+#birth-app-btn:hover{
+    background-color: #2a5690;
+    color: white;
+}
+.margin-left{
+    margin-left: 10px;
+}
+.margin-left2{
+    margin-left: 5px;
+}
+span{
+    border-bottom: 1px solid #2a5690;
+    font-weight: bold;
+    font-size: 16.5px;
+}
+.note-for-certificate{
+    display: flex;
+    color: red;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.note{
+    border: none;
 }
