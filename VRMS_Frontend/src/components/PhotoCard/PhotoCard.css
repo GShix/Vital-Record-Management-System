@@ -4,7 +4,6 @@
     height: 360px;
     background-color: white;
     border-radius: 9px;
-    padding: 2px;
 }
 .photo{
     padding: 10px;
@@ -23,9 +22,10 @@
     margin-bottom: 10px;
 }
 #staffContacts{
-    /* margin-top: px; */
-    margin-bottom: 8px;
     color:#2d67b4;
     font-size: 11px;
     font-weight: lighter;
+}
+.staffPhone{
+    padding-top: 2px;
 }

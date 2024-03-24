@@ -11,7 +11,7 @@ const PhotoCard = (props) => {
                 <h3>{props.staffName}</h3>
                 <h4 id='staffPosition' style={{fontWeight:"lighter"}}>{props.staffPosition}</h4>
                 <h5 id='staffContacts' style={{fontWeight:"lighter"}}>{props.staffGmail}</h5>
-                <h6 id='staffContacts' style={{fontWeight:"lighter",marginTop:"3px"}}>{props.staffPhone}</h6>
+                <h6 id='staffContacts' className='staffPhone' style={{fontWeight:"lighter",marginTop:"3px"}}>{props.staffPhone}</h6>
             </div>
         </div>
     </div>
