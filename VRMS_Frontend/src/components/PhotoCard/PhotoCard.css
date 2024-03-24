@@ -19,7 +19,7 @@
 #staffPosition{
     color:#355d90;
     margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 #staffContacts{
     color:#2d67b4;
@@ -27,5 +27,5 @@
     font-weight: lighter;
 }
 .staffPhone{
-    padding-top: 2px;
+    padding-top: 1px;
 }
