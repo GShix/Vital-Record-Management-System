@@ -2,8 +2,10 @@
     display: flex;
     color: white;
 }
-.footer-first{
+.footer{
     width: 100%;
+}
+.footer-first{
     background-color: #2d67b4;
     padding: 30px 25px;
 }
@@ -13,4 +15,10 @@
     height: 30px;
     align-items: center;
     justify-content: center;
+}
+.location iframe{
+    width: 330px;
+}
+.footer-logo img{
+    width: 80px;
 }

@@ -12,11 +12,11 @@ const Services = () => {
                 <h1>Vital Record Management System</h1>
             </div>
             <div className="services flex">
-                <div className="birth">
+                <div className="birthreg">
                     <button onClick={()=>Navigate("/birthRegistration")}>Online Birth Registration</button>
                 </div>
-                <div className="death">
-                <button>Online Death Registration</button>
+                <div className="deathreg">
+                <button onClick={()=>Navigate("/birthRegistration")}>Online Death Registration</button>
                 </div>
             </div>
         </div>

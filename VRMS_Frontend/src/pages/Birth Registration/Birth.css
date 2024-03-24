@@ -1,4 +1,4 @@
-.birth{
+.birth-form{
     height: 500px;
     background-color: rgb(220, 222, 223);
 }
@@ -7,5 +7,16 @@
     padding-top: 20px;
     font-size: 25px;
     margin-top: 5px;
-    
+}
+.birth-details{
+}
+.child-name-details, .birth-time-details, .birth-place-details{
+    margin-bottom: 15px;
+
+}
+label{
+    color:black;
+}
+.name, .birth-time, .birth-place{
+    border: 2px solid red;
 }

@@ -1,16 +1,31 @@
 .card{
     border: 2px solid white;
-    width: 300px;
-    height: 400px;
+    width: 260px;
+    height: 360px;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 9px;
+    padding: 2px;
 }
 .photo{
     padding: 10px;
 }
 .photo img{
-    width: 280px;
+    width: 240px;
+    height: 240px;
 }
 .photo-details{
+    color: black;
     text-align: center;
+}
+#staffPosition{
+    color:#355d90;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+#staffContacts{
+    /* margin-top: px; */
+    margin-bottom: 8px;
+    color:#2d67b4;
+    font-size: 11px;
+    font-weight: lighter;
 }

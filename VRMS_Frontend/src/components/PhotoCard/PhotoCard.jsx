@@ -1,17 +1,17 @@
 import React from 'react'
 import './PhotoCard.css'
-const PhotoCard = () => {
+const PhotoCard = (props) => {
   return (
     <div>
         <div className="card">
             <div className="photo">
-            <img src='.././mayar.jpg'/> 
+            <img src={props.staffPhoto}/> 
             </div>
             <div className="photo-details">
-                <h3>Kul Bahadur Khatri</h3>
-                <h4 style={{fontWeight:"lighter"}}>Mayor</h4>
-                <h5 style={{fontWeight:"lighter"}}>ito.babaimun@gmail.com</h5>
-                <h6 style={{fontWeight:"lighter",marginTop:"3px"}}>9810890039</h6>
+                <h3>{props.staffName}</h3>
+                <h4 id='staffPosition' style={{fontWeight:"lighter"}}>{props.staffPosition}</h4>
+                <h5 id='staffContacts' style={{fontWeight:"lighter"}}>{props.staffGmail}</h5>
+                <h6 id='staffContacts' style={{fontWeight:"lighter",marginTop:"3px"}}>{props.staffPhone}</h6>
             </div>
         </div>
     </div>

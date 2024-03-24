@@ -14,8 +14,6 @@
 }
 .staff{
     background-color: rgb(240, 239, 239);
-    padding: 8px;
-}
-.footer{
-    width: 100%;
+    padding: 8px 8px 9px 8px;
+    justify-content: space-evenly;
 }

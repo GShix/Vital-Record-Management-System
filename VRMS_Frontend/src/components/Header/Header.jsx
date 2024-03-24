@@ -1,6 +1,7 @@
 import React from 'react'
 import './Header.css'
 import {useNavigate} from 'react-router-dom'
+import Services from '../../pages/E-Gov Services/Services'
 const Header = () => {
     const Navigate = useNavigate()
   return (
@@ -26,6 +27,7 @@ const Header = () => {
                             <h2 style={{fontSize:"30px"}}>Babai Rural Municipality</h2>
                             <h3 style={{fontSize:"18px",fontWeight:"lighter"}}>Office of Municipal Executive, Dang, Lumbini Province</h3>
                         </div>
+                        
                     </div>
                     <div className="main-nav-flag">
                         <img style={{width:"70px",height:"auto",marginRight:"10px"}} src='.././np_flag.gif'/>
