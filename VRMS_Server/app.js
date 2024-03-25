@@ -12,7 +12,7 @@ app.get("/",(req,res)=>{
         message:"This is Home "
     })
 })
-// const PORT = process.env.PORT;
-app.listen(8000,(req,res)=>{
-    console.log("Node is started at 8000 port")
+const PORT = process.env.PORT;
+app.listen(PORT,(req,res)=>{
+    console.log(`Node is started at Port ${PORT}`)
 })
