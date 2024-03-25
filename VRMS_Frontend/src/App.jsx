@@ -1,6 +1,7 @@
 
 import './App.css'
 import Birth from './pages/Birth Registration/Birth'
+import Death from './pages/Death Registration/Death'
 import Services from './pages/E-Gov Services/Services'
 import Home from './pages/Home/Home'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
@@ -13,7 +14,7 @@ function App() {
           <Route path='/' element ={<Home/>} />
           <Route path='/eservices' element ={<Services/>} />
           <Route path='/birthRegistration' element ={<Birth/>} />
-          <Route path='/deathRegistration' element ={<Services/>} />
+          <Route path='/deathRegistration' element ={<Death/>} />
         </Routes>
       </BrowserRouter>
     </>

@@ -21,10 +21,10 @@ const Header = () => {
                 <div className="main-nav flex">
                     <div className="nav-logo flex">
                         <div className="logo">
-                            <img src='.././logo.png'/>
+                            <img onClick={()=>Navigate('/')} src='.././logo.png'/>
                         </div>
                         <div className="main-nav-text">
-                            <h2 style={{fontSize:"30px"}}>Babai Rural Municipality</h2>
+                            <h2 onClick={()=>Navigate('/')} style={{fontSize:"30px"}}>Babai Rural Municipality</h2>
                             <h3 style={{fontSize:"18px",fontWeight:"lighter"}}>Office of Municipal Executive, Dang, Lumbini Province</h3>
                         </div>
                         
@@ -45,7 +45,7 @@ const Header = () => {
                     <li onClick={()=>Navigate('/')}>Notices</li>
                     <li onClick={()=>Navigate('/')}>Contact</li>
                 </ul>
-                <button type=''>Employee Login</button>
+                <button id='employee-login-btn' type=''>Employee Login</button>
             </div>
             </div>
         </header>

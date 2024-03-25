@@ -21,4 +21,9 @@
 }
 .footer-logo img{
     width: 80px;
+    cursor: pointer;
+}
+.foot-egovServices li,.important-links  li{
+    margin-top: 3px;
+    cursor: pointer;
 }

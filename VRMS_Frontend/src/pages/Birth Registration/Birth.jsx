@@ -2,12 +2,14 @@ import React from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./Birth.css";
+
 const Birth = () => {
   return (
     <div>
+      <div className="birth">
       <Header />
-      <div className="birth-form">
-        <div className="birth-text">
+      <div className="birth-registration">
+        <div className="birth-title">
           <h2>Online Birth Registration</h2>
         </div>
         <div className="birth-form">
@@ -98,43 +100,33 @@ const Birth = () => {
                 <span>Parent Details</span>
                 <div className="baby-parent-details margin-top">
                   <label id="one" htmlFor="baby-parent">
-                    <table>
-                      <tr>
-                        <th>Parent</th>
-                        <th>First Name</th>
-                        <th>Middle Name</th>
-                        <th>Last Name</th>
-                      </tr>
-                      <tr>
-                        <td>Father</td>
-                        <td>
-                          <input className="margin-left" type="text" id="baby-father-first-name"/>
-                        </td>
-                        <td>
-                          <input type="text" id="baby-father-middle-name"/>
-                        </td>
-                        <td>
-                          <input type="text" id="baby-father-last-name"/>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Mother</td>
-                        <td>
-                          <input className="margin-left" type="text" id="baby-mother-first-name"/>
-                        </td>
-                        <td>
-                          <input type="text" id="baby-mother-middle-name"/>
-                        </td>
-                        <td>
-                          <input type="text" id="baby-mother-last-name"/>
-                        </td>
-                      </tr>
-                    </table>
+                  <div className="babyFather">
+                    <label id="one" htmlFor="babyFather">Father's First Name:
+                      <input className='margin-left' type='text' id='babyFather'name='babyFather'/>
+                    </label>
+                    <label id="one" htmlFor="babyFather" className='margin-left'>Middle Name:
+                      <input className='margin-left2' type='text' id='babyFather'name='babyFather'/>
+                    </label>
+                    <label id="one" htmlFor="babyFather" className='margin-left'>Last Name:
+                      <input className='margin-left2' type='text' id='babyFather'name='babyFather'/>
+                    </label>
+                  </div>
+                  <div className="decedentMother margin-top">
+                    <label id="one" htmlFor="decedentMother">Mother's First Name:
+                      <input className='margin-left' type='text' id='decedentMother'name='decedentMother'/>
+                    </label>
+                    <label id="one" htmlFor="decedentMother" className='margin-left'>Middle Name:
+                      <input className='margin-left2' type='text' id='decedentMother'name='decedentMother'/>
+                    </label>
+                    <label id="one" htmlFor="decedentMother" className='margin-left'>Last Name:
+                      <input className='margin-left2 margin-top' type='text' id='decedentMother'name='decedentMother'/>
+                    </label>
+                  </div>
                   </label>
                 </div>
               </div>
               <div className="note-for-certificate">
-                <h6><span className="note">Note:</span>Birth Certificate will be provided to you once your visit our office with your documents.</h6>
+                <h6><span className="note">Note: </span>Birth Certificate will be provided to you once your visit our office with your documents.</h6>
               </div>
               </div>
             </div>
@@ -145,6 +137,7 @@ const Birth = () => {
         </div>
       </div>
       <Footer />
+      </div>
     </div>
   );
 };

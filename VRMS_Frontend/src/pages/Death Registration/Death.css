@@ -1,0 +1,35 @@
+.death-registration{
+    height: 1000px;
+    background-color: rgb(220, 222, 223);
+}
+.death-title{
+    text-align: center;
+    padding-top: 20px;
+    font-size: 25px;
+    margin-top: 5px;
+    text-align: center;
+}
+.death-form{
+    display: flex;
+    justify-content: center;
+}
+.death-application{
+    display: flex;
+    margin: 10px 0;
+    padding: 40px 40px 35px 40px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    width: 820px;
+    height: 730px;
+    border: none;
+    border-radius: 5px;
+    color: black;
+}
+.death-photo{
+    display: inline;
+    margin-left: 300px;
+}
+.decedent-photo{
+    display: inline;
+}

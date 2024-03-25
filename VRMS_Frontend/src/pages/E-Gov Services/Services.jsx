@@ -16,7 +16,7 @@ const Services = () => {
                     <button onClick={()=>Navigate("/birthRegistration")}>Online Birth Registration</button>
                 </div>
                 <div className="deathreg">
-                <button onClick={()=>Navigate("/birthRegistration")}>Online Death Registration</button>
+                <button onClick={()=>Navigate("/deathRegistration")}>Online Death Registration</button>
                 </div>
             </div>
         </div>
