@@ -1,17 +1,15 @@
 import React, { useState } from 'react'
+import axios from "axios";
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import './Death.css'
 const Death = () => {
-  const [data,setData] = useState({
-    title:""
-  })
-  const submitApplication = (e)=>{
+  const submitApplication = async(e)=>{
     e.preventDefault(); //prevent reloading
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData)
-    console.log(data)
-    console.log(Object.keys(data).length)
+    const response = await axios.post("http://localhost:8000/api/deathRegistration",data)
+    console.log(response)
   }
   return (
     <div>
@@ -29,10 +27,10 @@ const Death = () => {
                 <div className="decedent-birth-certi-no margin-btm margin-top">
                   <label id='one' htmlFor='birthCertNo'>Birth Certificate No.:</label>
                     <input type='number'className='margin-top margin-btm margin-left' id='birthCertNo' name='birthCertNo'/>
-                  <div className="decedent-photo margin-left3 ">
+                  {/* <div className="decedent-photo margin-left3 ">
                     <label htmlFor='decedent-photo' id='one'>Decedent Photo:</label>
                       <input className='margin-left2' type='file' id='decedent-photo' name='decendent-photo'/>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="decedent-name">
                   <label id="one" htmlFor="decedentFirstName">First Name:
@@ -53,12 +51,12 @@ const Death = () => {
                     placeholder="Enter Child's Last Name"/>
                   </label>
                 </div>
-                <div className="birth-death-time margin-top3">
+                <div className="birth-death-date margin-top3">
                   <label id="one" htmlFor="birthDate">Birth Date:
                     <input className="margin-left" type="date" id="birthDate" name="birthDate" />
                   </label>
-                  <label className="margin-left" id="one" htmlFor="birthTime">Death Date:
-                    <input className="margin-left2" type="date" id="birthTime" name="birthTime" />
+                  <label className="margin-left" id="one" htmlFor="deathDate">Death Date:
+                    <input className="margin-left2" type="date" id="deathDate" name="deathDate" />
                   </label>
                 </div>
                 <div className="death-gender margin-top">
@@ -134,25 +132,13 @@ const Death = () => {
                 <span>Parent Details</span>
                 <div className="decedent-parent-details margin-top">
                   <div className="decedentFather">
-                    <label id="one" htmlFor="decedentFather">Father's First Name:
+                    <label id="one" htmlFor="decedentFather">Father's Name:
                       <input className='margin-left' type='text' id='decedentFather'name='decedentFather'/>
-                    </label>
-                    <label id="one" htmlFor="decedentFather" className='margin-left'>Middle Name:
-                      <input className='margin-left2' type='text' id='decedentFather'name='decedentFather'/>
-                    </label>
-                    <label id="one" htmlFor="decedentFather" className='margin-left'>Last Name:
-                      <input className='margin-left2' type='text' id='decedentFather'name='decedentFather'/>
                     </label>
                   </div>
                   <div className="decedentMother margin-top">
-                    <label id="one" htmlFor="decedentMother">Mother's First Name:
+                    <label id="one" htmlFor="decedentMother">Mother's Name:
                       <input className='margin-left' type='text' id='decedentMother'name='decedentMother'/>
-                    </label>
-                    <label id="one" htmlFor="decedentMother" className='margin-left'>Middle Name:
-                      <input className='margin-left2' type='text' id='decedentMother'name='decedentMother'/>
-                    </label>
-                    <label id="one" htmlFor="decedentMother" className='margin-left'>Last Name:
-                      <input className='margin-left2 margin-top' type='text' id='decedentMother'name='decedentMother'/>
                     </label>
                   </div>
                 </div>
