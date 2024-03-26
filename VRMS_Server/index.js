@@ -6,8 +6,8 @@ const app = express()
 const cors = require('cors');
 const sendMail = require('./services/SendMail');
 app.use(cors({
-    origin : '*',
-    methods:"*"
+    origin : 'http://localhost:5173/deathRegistration',
+    methods:"GET,POST"
 }))
 //Invoking dotenv(Telling nodejs to use .env)
 require('dotenv').config();
