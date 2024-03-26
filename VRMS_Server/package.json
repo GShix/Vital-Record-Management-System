@@ -1,11 +1,9 @@
 {
   "name": "vrms_server",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "build": "node index.js"
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
