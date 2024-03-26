@@ -2,8 +2,22 @@ import React from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./Birth.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Birth = () => {
+  
+  const Navigate = useNavigate();
+  const sumbitApplication=async(e)=>{
+  e.preventDefault();
+  const formData= new FormData(e.currentTarget);
+  const data = Object.fromEntries(formData)
+  const response = await axios.post("http://localhost:8000/api/birthRegistration",data)
+  if(response.status==201){
+    Navigate('/birthRegistration')
+  }
+  // console.log(data)
+  }
   return (
     <div>
       <div className="birth">
@@ -13,7 +27,7 @@ const Birth = () => {
           <h2>Online Birth Registration</h2>
         </div>
         <div className="birth-form">
-          <form>
+          <form onSubmit={sumbitApplication}>
             <div className="birth-application">
                 <div className="birth-details">
                 <span>Newborn Baby's Details</span>
@@ -124,6 +138,10 @@ const Birth = () => {
                   </div>
                   </label>
                 </div>
+              </div>
+              <div className="userEmail margin-top2">
+                <label id='one' htmlFor='userEmail'><span style={{border:"none"}}>Your Gmail </span>(To recieve Confirmation Mail):</label>
+                  <input type='email' id='userEmail' name='userEmail' placeholder='' className='margin-left margin-top'/>
               </div>
               <div className="note-for-certificate">
                 <h6><span className="note">Note: </span>Birth Certificate will be provided to you once your visit our office with your documents.</h6>

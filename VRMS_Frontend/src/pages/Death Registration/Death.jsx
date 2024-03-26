@@ -3,12 +3,17 @@ import axios from "axios";
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import './Death.css'
+import { useNavigate } from 'react-router-dom';
 const Death = () => {
+  const Navigate = useNavigate()
   const submitApplication = async(e)=>{
     e.preventDefault(); //prevent reloading
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData)
-    const response = await axios.post("http://localhost:8000/api/deathRegistration",data)
+    const response = await axios.post("http://localhost:8000/api/deathRegistration",data);
+    if(response.status==201){
+      Navigate("/eservices")
+    }
     console.log(response)
   }
   return (
@@ -149,6 +154,10 @@ const Death = () => {
                   <label id="one" htmlFor="grandFather">Grand Father's Name:</label>
                   <input className="margin-left" type="text" name='grandFather' id="grandFather" />
                 </div>
+              </div>
+              <div className="userEmail margin-top2">
+                <label id='one' htmlFor='userEmail'><span style={{border:"none"}}>Your Gmail </span>(To recieve Confirmation Mail):</label>
+                  <input type='email' id='userEmail' name='userEmail' placeholder='' className='margin-left margin-top'/>
               </div>
               <div className="note-for-certificate">
                 <h6><span className="note">Note: </span>Death Certificate will be provided to you once your visit our office with your Dead Person's documents.</h6>
