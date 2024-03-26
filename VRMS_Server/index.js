@@ -6,7 +6,8 @@ const app = express()
 const cors = require('cors');
 const sendMail = require('./services/SendMail');
 app.use(cors({
-    origin : '*'
+    origin : '*',
+    methods:"*"
 }))
 //Invoking dotenv(Telling nodejs to use .env)
 require('dotenv').config();
