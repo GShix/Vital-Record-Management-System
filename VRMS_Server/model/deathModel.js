@@ -23,7 +23,8 @@ const birthSchema = new Schema({
     deathEducation: { type: String },
     decedentFather: { type: String },
     decedentMother: { type: String },
-    grandFather: { type: String }
+    grandFather: { type: String },
+    userEmail:{type:String}
 })
 const Death = mongoose.model("Death", birthSchema)
 module.exports = Death

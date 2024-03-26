@@ -3,7 +3,8 @@ const { connectDatabase } = require('./database/database');
 const Death = require('./model/deathModel');
 const app = express()
 
-const cors = require('cors')
+const cors = require('cors');
+const sendMail = require('./services/SendMail');
 app.use(cors({
     origin : '*'
 }))
@@ -27,21 +28,27 @@ app.get('/', (req, res) => {
 //API for Death Registration
 app.post('/api/deathRegistration', async(req, res) => {
     const { birthCertNo,decedentFirstName,decedentMiddleName,decedentLastName,birthDate,deathDate,gender,causeOfDeath,birthDistrict,birthMunicipality,birthVillage,birthWardno,deathDistrict,deathMunicipality,deathVillage,deathWardno,decedentCitishipIssuedDate,decedentCitishipIssuedDist,decedentCitizenshipNo,deathEducation,decedentFather,decedentMother,grandFather} = req.body
+    const {userEmail} = req.body
 
     await Death.create({
-        birthCertNo,decedentFirstName,decedentMiddleName,decedentLastName,birthDate,deathDate,gender,causeOfDeath,birthDistrict,birthMunicipality,birthVillage,birthWardno,deathDistrict,deathMunicipality,deathVillage,deathWardno,decedentCitishipIssuedDate,decedentCitishipIssuedDist,decedentCitizenshipNo,deathEducation,decedentFather,decedentMother,grandFather
+        birthCertNo,decedentFirstName,decedentMiddleName,decedentLastName,birthDate,deathDate,gender,causeOfDeath,birthDistrict,birthMunicipality,birthVillage,birthWardno,deathDistrict,deathMunicipality,deathVillage,deathWardno,decedentCitishipIssuedDate,decedentCitishipIssuedDist,decedentCitizenshipNo,deathEducation,decedentFather,decedentMother,grandFather,userEmail
     })
-    res.status(200).json({
+    await sendMail({
+        email :userEmail,
+        subject : "Your Application for Death Registration",
+        message : "Thank You, we have successfully received your application for Death Registration. Please visit our office within 7 days"
+    })
+    res.status(201).json({
         message:"Death Registered"
     })
 })
-
-//GET API for Migration
+    
+    
 
 //API for Marriage Registration
 
 
 //Listen request at server
 app.listen(8000, (req, res) => {
-    console.log("Server has started at port 5000")
+    console.log("Server has started at port 8000")
 })
