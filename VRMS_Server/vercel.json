@@ -5,8 +5,11 @@
         "use":"@vercel/node"
         }],
     "routes":[{
-        "src":"/(.*)",
-        "dest":"/"
-        }]
+        "src":"/api/*",
+        "dest":"/api/*"
+        }],
+    "headers": [
+            { "key": "Access-Control-Allow-Origin", "value": "https://vrms-babaimuni.vercel.app/" }
+          ]
 
 }
