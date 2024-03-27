@@ -5,6 +5,7 @@ import Death from './pages/Death Registration/Death'
 import Services from './pages/E-Gov Services/Services'
 import Home from './pages/Home/Home'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import Success from './pages/success/Success'
 function App() {
 
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/eservices' element ={<Services/>} />
           <Route path='/birthRegistration' element ={<Birth/>} />
           <Route path='/deathRegistration' element ={<Death/>} />
+          <Route path='/success' element ={<Success/>} />
         </Routes>
       </BrowserRouter>
     </>

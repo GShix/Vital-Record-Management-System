@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Tauri&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 *{
     margin: 0;
     padding: 0;
@@ -7,3 +10,4 @@ body{font-family: "Tauri", sans-serif;;
     padding: 4px 70px;
     background-color: #355d90;
 }
+
