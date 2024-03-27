@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
-const birthSchema = new Schema({
+const deathSchema = new Schema({
     birthCertNo: { type: Number },
     decedentFirstName: { type: String },
     decedentMiddleName: { type: String },
@@ -24,7 +24,15 @@ const birthSchema = new Schema({
     decedentFather: { type: String },
     decedentMother: { type: String },
     grandFather: { type: String },
-    userEmail:{type:String}
+    userEmail:{type:String,lowercase:true},
+    applicationStatus:{
+        type:String,
+        enum:["underVerification"],
+        default:"underVerification"
+    },
+    userOtp:{
+        type:Number
+    }
 })
-const Death = mongoose.model("Death", birthSchema)
+const Death = mongoose.model("Death", deathSchema)
 module.exports = Death

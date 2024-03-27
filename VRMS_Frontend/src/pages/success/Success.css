@@ -1,13 +1,13 @@
 
 .success{
-    height: 500px;
+    height: 360px;
     background-color: rgb(220, 222, 223);
     justify-content: center;
     width: 100%;
 }
 .applicationSent{
     text-align: center;
-    margin-top: 50px;
+    margin-top: 30px;
     background-color: white;
     height: 300px;
     width:50%;
@@ -16,7 +16,7 @@
     border-radius: 8px;
 }
 .successGif img{
-    margin-top:35px;
+    margin-top:20px;
     display: inline;
     width: 125px;
     height: 125px;
@@ -24,9 +24,9 @@
 .successMessage{
     margin-top: 15px;
     opacity: 0;
-    transition: opacity 1s ease-in;
+    transition: opacity 1s ease-in 3s;
 }
-.successMessage::after{
+.successMessage{
     opacity: 1;
 }
 
@@ -46,6 +46,23 @@
     transition: opacity 5s ease-in-out;
   }
   
-  .delayed-content.show {
-    opacity: 1;
-  }
+.delayed-content.show {
+opacity: 1;
+}
+.successBtn{
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+.successHomeBtn, .successStatusBtn{
+    padding: 4px 5px;
+    background-color: #2d67b4;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    color:white;
+}
+.successHomeBtn:hover, .successStatusBtn :hover{
+    background-color: #2a5690;
+}

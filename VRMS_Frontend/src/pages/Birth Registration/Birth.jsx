@@ -12,11 +12,11 @@ const Birth = () => {
   e.preventDefault();
   const formData= new FormData(e.currentTarget);
   const data = Object.fromEntries(formData)
-  const response = await axios.post("http://localhost:8000/api/birthRegistration",data)
-  if(response.status==201){
-    Navigate('/birthRegistration')
-  }
-  // console.log(data)
+  // const response = await axios.post("https://vrms-server-seven.vercel.app/api/birthRegistration",data)
+  // if(response.status==201){
+  //   Navigate('/birthRegistration')
+  // }
+  console.log(data)
   }
   return (
     <div>
@@ -93,13 +93,13 @@ const Birth = () => {
                 <span>Birth Address(National)</span>
                 <div className="birth-address-details">
                   <label htmlFor="birth-district" id="two">District</label>
-                    <input className="margin-left margin-top" type="text" id="birth-district" />
+                    <input className="margin-left margin-top" type="text" name="birthDistrict" id="birth-district" />
                   <label className="margin-left" htmlFor="birth-municipality" id="two">Municipality</label>
-                    <input className="margin-left" type="text" id="birth-municipality" />
+                    <input className="margin-left" type="text" name="birthMunicipality" id="birth-municipality" />
                   <label className="margin-left" htmlFor="birth-wardno" id="two">Ward No.</label>
-                    <input className="margin-left" type="text" id="birth-wardno" /><br></br>
+                    <input className="margin-left" type="text" name="birthWardno" id="birth-wardno" /><br></br>
                   <label className="margin-top" htmlFor="birth-village" id="two">Village</label>
-                    <input className="margin-left margin-top" type="text" id="birth-village" />
+                    <input className="margin-left margin-top" type="text" name="birthVillage" id="birth-village" />
                 </div>
                 
               </div>
@@ -107,7 +107,7 @@ const Birth = () => {
                 <span>Grand Parent Details</span>
                 <div className="grand-father margin-top">
                   <label id="one" htmlFor="grand-father">Grand Father's Name:</label>
-                  <input className="margin-left" type="text" id="grand-father" />
+                  <input className="margin-left" type="text" name="grandFather" id="grand-father" />
                 </div>
               </div>
               <div className="baby-parent margin-top2">
@@ -125,15 +125,15 @@ const Birth = () => {
                       <input className='margin-left2' type='text' id='babyFather'name='babyFather'/>
                     </label>
                   </div>
-                  <div className="decedentMother margin-top">
-                    <label id="one" htmlFor="decedentMother">Mother's First Name:
-                      <input className='margin-left' type='text' id='decedentMother'name='decedentMother'/>
+                  <div className="babyMother margin-top">
+                    <label id="one" htmlFor="babyMother">Mother's First Name:
+                      <input className='margin-left' type='text' id='babyMother'name='babyMother'/>
                     </label>
-                    <label id="one" htmlFor="decedentMother" className='margin-left'>Middle Name:
-                      <input className='margin-left2' type='text' id='decedentMother'name='decedentMother'/>
+                    <label id="one" htmlFor="babyMother" className='margin-left'>Middle Name:
+                      <input className='margin-left2' type='text' id='babyMother'name='babyMother'/>
                     </label>
-                    <label id="one" htmlFor="decedentMother" className='margin-left'>Last Name:
-                      <input className='margin-left2 margin-top' type='text' id='decedentMother'name='decedentMother'/>
+                    <label id="one" htmlFor="babyMother" className='margin-left'>Last Name:
+                      <input className='margin-left2 margin-top' type='text' id='babyMother'name='babyMother'/>
                     </label>
                   </div>
                   </label>

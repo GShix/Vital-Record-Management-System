@@ -45,6 +45,7 @@ const Header = () => {
                     <li onClick={()=>Navigate('/')}>Notices</li>
                     <li onClick={()=>Navigate('/')}>Contact</li>
                 </ul>
+                <button className='successHomeBtn' onClick={()=>Navigate('/')}>Application Status</button>
                 <button id='employee-login-btn' type=''>Admin Login</button>
             </div>
             </div>
