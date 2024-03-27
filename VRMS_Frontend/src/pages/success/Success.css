@@ -1,0 +1,51 @@
+
+.success{
+    height: 500px;
+    background-color: rgb(220, 222, 223);
+    justify-content: center;
+    width: 100%;
+}
+.applicationSent{
+    text-align: center;
+    margin-top: 50px;
+    background-color: white;
+    height: 300px;
+    width:50%;
+    border: none;
+    color: black;
+    border-radius: 8px;
+}
+.successGif img{
+    margin-top:35px;
+    display: inline;
+    width: 125px;
+    height: 125px;
+}
+.successMessage{
+    margin-top: 15px;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+.successMessage::after{
+    opacity: 1;
+}
+
+.successMessage h4{
+
+    color: green;
+}
+.successMessage h6{
+    margin-top: 3.5px;
+    margin-bottom: 3px;
+    font-size: 11px;
+    font-family: arial;
+    font-weight: lighter;
+} 
+.delayed-content {
+    opacity: 0;
+    transition: opacity 5s ease-in-out;
+  }
+  
+  .delayed-content.show {
+    opacity: 1;
+  }

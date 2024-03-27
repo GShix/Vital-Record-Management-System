@@ -10,11 +10,12 @@ const Death = () => {
     e.preventDefault(); //prevent reloading
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData)
+    Navigate("/success")
     const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
     if(response.status==201){
-      Navigate("/eservices")
+      Navigate("/success")
     }
-    console.log(response)
+    // console.log(response)
   }
   return (
     <div>

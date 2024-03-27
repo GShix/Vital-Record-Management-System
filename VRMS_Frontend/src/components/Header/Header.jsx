@@ -45,7 +45,7 @@ const Header = () => {
                     <li onClick={()=>Navigate('/')}>Notices</li>
                     <li onClick={()=>Navigate('/')}>Contact</li>
                 </ul>
-                <button id='employee-login-btn' type=''>Employee Login</button>
+                <button id='employee-login-btn' type=''>Admin Login</button>
             </div>
             </div>
         </header>
