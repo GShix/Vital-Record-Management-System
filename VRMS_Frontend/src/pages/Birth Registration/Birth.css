@@ -1,5 +1,5 @@
 .birth-registration{
-    height: 900px;
+    height: 1200px;
     background-color: rgb(220, 222, 223);
 }
 .birth-title{
@@ -23,13 +23,13 @@
 }
 .birth-application{
     display: flex;
-    margin: 10px 0;
+    margin: 5px 0;
     padding: 50px 40px 35px 40px;
     background-color: white;
     justify-content: center;
     align-items: center;
     width: 820px;
-    height: 520px;
+    height: 980px;
     border: none;
     border-radius: 5px;
     color: black;

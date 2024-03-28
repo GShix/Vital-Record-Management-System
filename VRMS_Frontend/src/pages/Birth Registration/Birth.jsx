@@ -143,29 +143,29 @@ const Birth = () => {
               <div className="parentAddress margin-top2">
                   <span>Parent's Permanent Address</span>
                   <div className="parentAddressDetails">
-                    <label id="one" htmlFor="parentDistrict">District:</label><input type="text" name="parentDistrict" id="parentDistrict"/>
-                    <label id="one" htmlFor="parentMunicipality">Municipality:</label><input type="text" name="parentMunicipality" id="parentMunicipality"/>
-                    <label id="one" htmlFor="parentWardno">Wardno:</label><input type="number" name="parentWardno" id="parentWardno"/>
-                    <label id="one" htmlFor="parentVillage">Village:</label><input type="text" name="parentVillage" id="parentVillage"/>
-                    <label id="one" htmlFor="parentHouseno">Houseno:</label><input type="text" name="parentHouseno" id="parentHouseno"/>
+                    <label id="one" htmlFor="parentDistrict">District:</label><input type="text" className="margin-top margin-left2" name="parentDistrict" id="parentDistrict"/>
+                    <label id="one"className="margin-left" htmlFor="parentMunicipality">Municipality:</label><input type="text" className="margin-left2" name="parentMunicipality" id="parentMunicipality"/>
+                    <label id="one" className="margin-left" htmlFor="parentWardno">Wardno:</label><input type="number" className="margin-left2" name="parentWardno" id="parentWardno"/><br></br>
+                    <label id="one" htmlFor="parentVillage">Village:</label><input type="text" className="margin-top margin-left2" name="parentVillage" id="parentVillage"/>
+                    <label id="one" className="margin-left" htmlFor="parentHouseno">Houseno:</label><input type="text" className="margin-left2" name="parentHouseno" id="parentHouseno"/>
                   </div>
               </div>
               <div className="parentAgeDetails margin-top2">
                     <span>Parent's Age</span>
                       <div className="parentAge">
-                        <label id="one" htmlFor="parentFatherAge">Father's Age:</label><input type="number" name="parentFatherAge" id="parentFatherAge"/>
-                        <label id="one" htmlFor="parentMotherAge">Mother's Age:</label><input type="number" name="parentMotherAge" id="parentMotherAge"/>
+                        <label id="one" htmlFor="parentFatherAge">Father's Age:</label><input type="number" className="margin-top margin-left2" name="parentFatherAge" id="parentFatherAge"/>
+                        <label id="one" className="margin-left" htmlFor="parentMotherAge">Mother's Age:</label><input type="number" className="margin-left2" name="parentMotherAge" id="parentMotherAge"/>
                       </div>
               </div>
               <div className="parentCitizenDetails margin-top2">
                 <span>Citizenship Number:</span>
                 <div className="parentCitizenship">
-                  <label id="one" htmlFor="parentFatherCitizenshipno">Father's Citizenship No:</label><input type="number" name="parentFatherCitizenshipno" id="parentFatherCitizenshipno"/>
-                  <label id="one" htmlFor="parentFatherCitizenshipDistrict">Issued District:</label><input type="text" name="parentFatherCitizenshipDistrict" id="parentFatherCitizenshipDistrict"/>
-                  <label id="one" htmlFor="parentFatherCitizenshipDate">Issued Date:</label><input type="text" name="parentFatherCitizenshipDate" id="parentFatherCitizenshipDate"/>
-                  <label id="one" htmlFor="parentMotherCitizenshipno">Mother's Citizenship No:</label><input type="number" name="parentMotherCitizenshipno" id="parentMotherCitizenshipno"/>
-                  <label id="one" htmlFor="parentMotherCitizenshipDistrict">Issued District:</label><input type="text" name="parentMotherCitizenshipDistrict" id="parentMotherCitizenshipDistrict"/>
-                  <label id="one" htmlFor="parentMotherCitizenshipDate">Issued Date:</label><input type="text" name="parentMotherCitizenshipDate" id="parentMotherCitizenshipDate"/>
+                  <label id="one" htmlFor="parentFatherCitizenshipno"><strong>Father's </strong>Citizenship No:</label><input type="number" className="margin-top margin-left2" name="parentFatherCitizenshipno" id="parentFatherCitizenshipno"/>
+                  <label id="one" className="margin-left" htmlFor="parentFatherCitizenshipDistrict">Issued District:</label><input type="text" className="margin-left2" name="parentFatherCitizenshipDistrict" id="parentFatherCitizenshipDistrict"/><br></br>
+                  <label id="one" htmlFor="parentFatherCitizenshipDate">Issued Date:</label><input type="text" className="margin-top margin-left2" name="parentFatherCitizenshipDate" id="parentFatherCitizenshipDate"/><br></br>
+                  <label id="one" htmlFor="parentMotherCitizenshipno"><strong>Mother's </strong>Citizenship No:</label><input type="number" className="margin-left2 margin-top2" name="parentMotherCitizenshipno" id="parentMotherCitizenshipno"/>
+                  <label id="one" className="margin-left" htmlFor="parentMotherCitizenshipDistrict">Issued District:</label><input type="text" className="margin-left2" name="parentMotherCitizenshipDistrict" id="parentMotherCitizenshipDistrict"/><br></br>
+                  <label id="one" htmlFor="parentMotherCitizenshipDate">Issued Date:</label><input type="text" className="margin-top margin-left2" name="parentMotherCitizenshipDate" id="parentMotherCitizenshipDate"/>
                 </div>
               </div>
               <div className="parentOtherDetails margin-top2">
@@ -176,7 +176,7 @@ const Birth = () => {
                   <label id="one" className="margin-left" htmlFor="fatherReligion">Religion:</label><input type="text" className="margin-left2" id="fatherReligion" name="fatherReligion"/><br></br>
                   <label id="one" htmlFor="fatherMotherTongue">Mother Tongue:</label><input type="text" className="margin-top margin-left2"  id="fatherMotherTongue" name="fatherMotherTongue"/>
                 </div>
-                <div className="motherDetail margin-top">
+                <div className="motherDetail margin-top2">
                   <label id="one" htmlFor="motherEducation"><strong>Father's </strong>Education:</label><input type="text"className="margin-left2" id="motherEducation" name="motherEducation"/>
                   <label id="one" className="margin-left" htmlFor="motherOccupation">Occupation:</label><input type="text" className="margin-left2" id="motherOccupation" name="motherOccupation"/>
                   <label id="one" className="margin-left" htmlFor="motherReligion">Religion:</label><input type="text" className="margin-left2" id="motherReligion" name="motherReligion"/> <br></br>
@@ -193,7 +193,7 @@ const Birth = () => {
               </div>
             </div>
             <div className="submit-btn">
-              <button type="submit" id="birth-app-btn">Sumbit Application</button>
+              <button type="submit" className=" margin-top" id="birth-app-btn">Sumbit Application</button>
             </div>
           </form>
         </div>
