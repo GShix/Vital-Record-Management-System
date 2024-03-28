@@ -4,18 +4,24 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import './Death.css'
 import { useNavigate } from 'react-router-dom';
+import Success from '../success/Success';
 const Death = () => {
-  const Navigate = useNavigate()
-  const submitApplication = async(e)=>{
+    const [formSubmitted, setFormSubmitted] = useState(false);
+    const Navigate = useNavigate()
+    const submitApplication = async(e)=>{
     e.preventDefault(); //prevent reloading
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData)
-    // Navigate("/success")
-    const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
-    if(response.status==201){
-      Navigate("/success")
+    try{
+      const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
+      if(response.status==201){
+        Navigate('/success')
+      }
+      
+    }catch (error) {
+      console.error('Error submitting form:', error);
     }
-    // console.log(response)
+   
   }
   return (
     <div>

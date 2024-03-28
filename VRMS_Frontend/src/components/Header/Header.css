@@ -53,6 +53,7 @@ header{
 .nav-list{
     background-color:white;
     padding:0 25px;
+    font-size: 16px;
     align-items: center;
     justify-content: space-between;
     border-bottom: 3px solid whitesmoke;

@@ -5,6 +5,7 @@ const app = express()
 
 const cors = require('cors');
 const sendMail = require('./services/SendMail');
+const checkFormSubmission = require('./services/checkFormSubmit');
 app.use(cors({
     origin : 'https://vrms-babaimuni.vercel.app',
     methods:"GET,POST"
@@ -43,8 +44,6 @@ app.post('/api/deathRegistration', async(req, res) => {
         message:"Death Registered"
     })
 })
-    
-    
 
 //API for Marriage Registration
 

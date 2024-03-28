@@ -17,7 +17,7 @@ function App() {
           <Route path='/eservices' element ={<Services/>} />
           <Route path='/birthRegistration' element ={<Birth/>} />
           <Route path='/deathRegistration' element ={<Death/>} />
-          <Route path='/success' element ={<Success/>} />
+          {/* <Route path='/success' element ={<Success/>} /> */}
           <Route path='/vrms-admin' element ={<Admin/>} />
         </Routes>
       </BrowserRouter>
