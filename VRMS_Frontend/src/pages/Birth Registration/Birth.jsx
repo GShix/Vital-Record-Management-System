@@ -33,21 +33,21 @@ const Birth = () => {
                 <span>Newborn Baby's Details</span>
                 <div className="baby-name  margin-top">
                   <label id="one" htmlFor="firstName">First Name:
-                    <input className="margin-top margin-left" type="text" id="firstName" name="firstName" placeholder="Enter Child's First Name"/>
+                    <input className="margin-top margin-left" type="text" id="firstName" name="firstName" placeholder="Enter Baby's First Name"/>
                   </label>
                   <label className="margin-left" id="one" htmlFor="middleName">Middle Name:
                     <input className="margin-left2"
                     type="text"
                     id="middleName"
                     name="middleName"
-                    placeholder="Enter Child's Middle Name"/>
+                    placeholder="Enter Baby's Middle Name"/>
                   </label>
                   <label className="margin-left" id="one" htmlFor="lastName">Last Name:
                     <input className="margin-left2"
                     type="text"
                     id="lastName"
                     name="lastName"
-                    placeholder="Enter Child's Last Name"/>
+                    placeholder="Enter Baby's Last Name"/>
                   </label>
                 </div>
                 <div className="birth-time margin-top2">
@@ -77,17 +77,18 @@ const Birth = () => {
               </div>
               <div className="baby-gender margin-top2">
                 <label id="one" htmlFor="Gender">Gender:</label>
-                <input className="margin-left" type="radio" id="baby-male" name="baby-gender" value="Male"/><label className="margin-left2" htmlFor="baby-male" id="two">Male</label>
-                <input className="margin-left" type="radio" id="baby-female" name="baby-gender" value="Female"/><label className="margin-left2" htmlFor="baby-female" id="two">Female</label>
+                <input className="margin-left" type="radio" id="baby-male" name="babyGender" value="Male"/><label className="margin-left2" htmlFor="baby-male" id="two">Male</label>
+                <input className="margin-left" type="radio" id="baby-female" name="babyGender" value="Female"/><label className="margin-left2" htmlFor="baby-female" id="two">Female</label>
               </div>
               <div className="type-of-birth margin-top2">
                 <label id="one" htmlFor="type-of-birth">Type of Birth:</label>
-                <input className="margin-left" type="radio" id="birth-single" name="birth-type" value="Single" /><label className="margin-left2" id="two" htmlFor="birth-single">One</label>
-                <input className="margin-left" type="radio" id="birth-tweens" name="birth-type" value="Tweens" /><label className="margin-left2" id="two" htmlFor="birth-tweens">Tweens</label>
+                <input className="margin-left" type="radio" id="birth-single" name="birthType" value="Single" /><label className="margin-left2" id="two" htmlFor="birth-single">One</label>
+                <input className="margin-left" type="radio" id="birth-tweens" name="birthType" value="Tweens" /><label className="margin-left2" id="two" htmlFor="birth-tweens">Tweens</label>
+                <input type="radio" id="birthOthers" name="birthType" className="margin-left" value='Other'/><label className="margin-left2" id="two" htmlFor="birthOthers">Other</label>
               </div>
               <div className="baby-weight margin-top2">
                 <label id="one" htmlFor="baby-weight" >Baby's Weight in GM(At birth):</label>
-                <input className="margin-left" type="number" id="baby-weight" name="baby-weight" />
+                <input className="margin-left" type="number" id="baby-weight" name="babyWeight" />
               </div>
               <div className="birth-address margin-top2">
                 <span>Birth Address(National)</span>
@@ -116,27 +117,70 @@ const Birth = () => {
                   <label id="one" htmlFor="baby-parent">
                   <div className="babyFather">
                     <label id="one" htmlFor="babyFather">Father's First Name:
-                      <input className='margin-left' type='text' id='babyFather'name='babyFather'/>
+                      <input className='margin-left' type='text' id='babyFather'name='babyFatherFirstName'/>
                     </label>
                     <label id="one" htmlFor="babyFather" className='margin-left'>Middle Name:
-                      <input className='margin-left2' type='text' id='babyFather'name='babyFather'/>
+                      <input className='margin-left2' type='text' id='babyFather'name='babyFatherMiddleName'/>
                     </label>
                     <label id="one" htmlFor="babyFather" className='margin-left'>Last Name:
-                      <input className='margin-left2' type='text' id='babyFather'name='babyFather'/>
+                      <input className='margin-left2' type='text' id='babyFather'name='babyFatherLastName'/>
                     </label>
                   </div>
                   <div className="babyMother margin-top">
                     <label id="one" htmlFor="babyMother">Mother's First Name:
-                      <input className='margin-left' type='text' id='babyMother'name='babyMother'/>
+                      <input className='margin-left' type='text' id='babyMother'name='babyMotherFirstName'/>
                     </label>
                     <label id="one" htmlFor="babyMother" className='margin-left'>Middle Name:
-                      <input className='margin-left2' type='text' id='babyMother'name='babyMother'/>
+                      <input className='margin-left2' type='text' id='babyMother'name='babyMotherMiddleName'/>
                     </label>
                     <label id="one" htmlFor="babyMother" className='margin-left'>Last Name:
-                      <input className='margin-left2 margin-top' type='text' id='babyMother'name='babyMother'/>
+                      <input className='margin-left2 margin-top' type='text' id='babyMother'name='babyMotherLastName'/>
                     </label>
                   </div>
                   </label>
+                </div>
+              </div>
+              <div className="parentAddress margin-top2">
+                  <span>Parent's Permanent Address</span>
+                  <div className="parentAddressDetails">
+                    <label id="one" htmlFor="parentDistrict">District:</label><input type="text" name="parentDistrict" id="parentDistrict"/>
+                    <label id="one" htmlFor="parentMunicipality">Municipality:</label><input type="text" name="parentMunicipality" id="parentMunicipality"/>
+                    <label id="one" htmlFor="parentWardno">Wardno:</label><input type="number" name="parentWardno" id="parentWardno"/>
+                    <label id="one" htmlFor="parentVillage">Village:</label><input type="text" name="parentVillage" id="parentVillage"/>
+                    <label id="one" htmlFor="parentHouseno">Houseno:</label><input type="text" name="parentHouseno" id="parentHouseno"/>
+                  </div>
+              </div>
+              <div className="parentAgeDetails margin-top2">
+                    <span>Parent's Age</span>
+                      <div className="parentAge">
+                        <label id="one" htmlFor="parentFatherAge">Father's Age:</label><input type="number" name="parentFatherAge" id="parentFatherAge"/>
+                        <label id="one" htmlFor="parentMotherAge">Mother's Age:</label><input type="number" name="parentMotherAge" id="parentMotherAge"/>
+                      </div>
+              </div>
+              <div className="parentCitizenDetails margin-top2">
+                <span>Citizenship Number:</span>
+                <div className="parentCitizenship">
+                  <label id="one" htmlFor="parentFatherCitizenshipno">Father's Citizenship No:</label><input type="number" name="parentFatherCitizenshipno" id="parentFatherCitizenshipno"/>
+                  <label id="one" htmlFor="parentFatherCitizenshipDistrict">Issued District:</label><input type="text" name="parentFatherCitizenshipDistrict" id="parentFatherCitizenshipDistrict"/>
+                  <label id="one" htmlFor="parentFatherCitizenshipDate">Issued Date:</label><input type="text" name="parentFatherCitizenshipDate" id="parentFatherCitizenshipDate"/>
+                  <label id="one" htmlFor="parentMotherCitizenshipno">Mother's Citizenship No:</label><input type="number" name="parentMotherCitizenshipno" id="parentMotherCitizenshipno"/>
+                  <label id="one" htmlFor="parentMotherCitizenshipDistrict">Issued District:</label><input type="text" name="parentMotherCitizenshipDistrict" id="parentMotherCitizenshipDistrict"/>
+                  <label id="one" htmlFor="parentMotherCitizenshipDate">Issued Date:</label><input type="text" name="parentMotherCitizenshipDate" id="parentMotherCitizenshipDate"/>
+                </div>
+              </div>
+              <div className="parentOtherDetails margin-top2">
+                <span>Others:</span>
+                <div className="FatherDetail margin-top">
+                  <label id="one" htmlFor="fatherEducation"><strong>Father's </strong>Education:</label><input type="text" id="fatherEducation" className="margin-left2" name="fatherEducation"/>
+                  <label id="one" className="margin-left" htmlFor="fatherOccupation">Occupation:</label><input type="text" className="margin-left2" id="fatherOccupation" name="fatherOccupation"/>
+                  <label id="one" className="margin-left" htmlFor="fatherReligion">Religion:</label><input type="text" className="margin-left2" id="fatherReligion" name="fatherReligion"/><br></br>
+                  <label id="one" htmlFor="fatherMotherTongue">Mother Tongue:</label><input type="text" className="margin-top margin-left2"  id="fatherMotherTongue" name="fatherMotherTongue"/>
+                </div>
+                <div className="motherDetail margin-top">
+                  <label id="one" htmlFor="motherEducation"><strong>Father's </strong>Education:</label><input type="text"className="margin-left2" id="motherEducation" name="motherEducation"/>
+                  <label id="one" className="margin-left" htmlFor="motherOccupation">Occupation:</label><input type="text" className="margin-left2" id="motherOccupation" name="motherOccupation"/>
+                  <label id="one" className="margin-left" htmlFor="motherReligion">Religion:</label><input type="text" className="margin-left2" id="motherReligion" name="motherReligion"/> <br></br>
+                  <label id="one" htmlFor="motherMotherTongue">Mother Tongue:</label><input type="text" className="margin-top margin-left2" id="motherMotherTongue" name="motherMotherTongue"/>
                 </div>
               </div>
               <div className="userEmail margin-top2">
