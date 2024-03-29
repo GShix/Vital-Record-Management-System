@@ -46,7 +46,7 @@ const birthSchema = new Schema({
     userEmail:{type:String,lowercase:true},
     applicationStatus:{
         type:String,
-        enum:["underVerification","rejecteds","verified"],
+        enum:["underreview","rejected","verified"],
         default:"underVerification"
     },
     userApplicationId:{

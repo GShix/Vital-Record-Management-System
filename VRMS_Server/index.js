@@ -3,12 +3,6 @@ const { connectDatabase } = require('./database/database');
 const Death = require('./model/deathModel');
 const app = express()
 
-const cors = require('cors');
-const sendMail = require('./services/SendMail');
-app.use(cors({
-    origin : 'https://vrms-babaimuni.vercel.app/',
-    methods:"GET,POST"
-}))
 //Invoking dotenv(Telling nodejs to use .env)
 require('dotenv').config();
 
@@ -19,6 +13,13 @@ connectDatabase(process.env.Mongoose_URI);
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
+const cors = require('cors');
+app.use(cors({
+    // origin : 'https://vrms-babaimuni.vercel.app/',
+    origin : 'http://localhost:5173/',
+    methods:"GET,POST"
+}))
+
 //Home API
 app.get('/', (req, res) => {
     res.status(200).json({
@@ -27,14 +28,18 @@ app.get('/', (req, res) => {
 })
 
 //api
-const deathApplicationRoute = router('./routes/user/userDeathRoutes')
-const birthApplicationRoute = router('./routes/user/userBirthRoutes')
-const adminDeathRoute = router('./routes/admin/deathRoutes')
-const adminBirthRoute = router('./routes/admin/birthRoutes')
+const deathApplicationRoute = require('./routes/user/userDeathRoutes')
+const birthApplicationRoute = require('./routes/user/userBirthRoutes')
+const adminDeathRoute = require('./routes/admin/deathRoutes')
+const adminBirthRoute = require('./routes/admin/birthRoutes')
+const adminLoginRoute = require("./routes/admin/authRoutes")
+//api for admin login
+app.post("/vrms-server/admin")
 //API for Death Registration
 app.post('/api/deathRegistration',deathApplicationRoute)
 
-//API for Marriage Registration
+//API for Birth Registration
+app.post('api/birthRegistration',birthApplicationRoute)
 
 
 //Listen request at server

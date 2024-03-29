@@ -27,7 +27,7 @@ const deathSchema = new Schema({
     userEmail:{type:String,lowercase:true},
     applicationStatus:{
         type:String,
-        enum:["underVerification"],
+        enum:["underreview","rejected","verified"],
         default:"underVerification"
     },
     userApplicationId:{
