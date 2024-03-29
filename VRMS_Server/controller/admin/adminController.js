@@ -15,7 +15,7 @@ exports.getBirthApplications = async(req,res)=>{
 }
 exports.getSingleBirthApplication = async(req,res)=>{
     const {userApplicationId} = req.params
-    const applicationFound = await Birth.findById(applicationFound)
+    const applicationFound = await Birth.findById(userApplicationId)
     if(!applicationFound){
         return res.status(400).json({
             message:"No Application found with this id"
@@ -66,7 +66,7 @@ exports.getDeathApplications = async(req,res)=>{
 }
 exports.getSingleDeathApplication = async(req,res)=>{
     const {userApplicationId} = req.params
-    const applicationFound = await Death.findById(applicationFound)
+    const applicationFound = await Death.findById(userApplicationId)
     if(!applicationFound){
         return res.status(400).json({
             message:"No Application found with this id"

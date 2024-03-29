@@ -26,23 +26,13 @@ app.get('/', (req, res) => {
     })
 })
 
+//api
+const deathApplicationRoute = router('./routes/user/userDeathRoutes')
+const birthApplicationRoute = router('./routes/user/userBirthRoutes')
+const adminDeathRoute = router('./routes/admin/deathRoutes')
+const adminBirthRoute = router('./routes/admin/birthRoutes')
 //API for Death Registration
-app.post('/api/deathRegistration', async(req, res) => {
-    const { birthCertNo,decedentFirstName,decedentMiddleName,decedentLastName,birthDate,deathDate,gender,causeOfDeath,birthDistrict,birthMunicipality,birthVillage,birthWardno,deathDistrict,deathMunicipality,deathVillage,deathWardno,decedentCitishipIssuedDate,decedentCitishipIssuedDist,decedentCitizenshipNo,deathEducation,decedentFather,decedentMother,grandFather} = req.body
-    const {userEmail} = req.body
-
-    await Death.create({
-        birthCertNo,decedentFirstName,decedentMiddleName,decedentLastName,birthDate,deathDate,gender,causeOfDeath,birthDistrict,birthMunicipality,birthVillage,birthWardno,deathDistrict,deathMunicipality,deathVillage,deathWardno,decedentCitishipIssuedDate,decedentCitishipIssuedDist,decedentCitizenshipNo,deathEducation,decedentFather,decedentMother,grandFather,userEmail
-    })
-    await sendMail({
-        email :userEmail,
-        subject : "Your Application for Death Registration",
-        message : "Thank You, we have successfully received your application for Death Registration. Please visit our office within 7 days"
-    })
-    res.status(201).json({
-        message:"Death Registered"
-    })
-})
+app.post('/api/deathRegistration',deathApplicationRoute)
 
 //API for Marriage Registration
 
