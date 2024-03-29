@@ -6,7 +6,7 @@ const app = express()
 const cors = require('cors');
 const sendMail = require('./services/SendMail');
 app.use(cors({
-    origin : '',
+    origin : 'https://vrms-babaimuni.vercel.app/',
     methods:"GET,POST"
 }))
 //Invoking dotenv(Telling nodejs to use .env)
