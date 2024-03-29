@@ -16,6 +16,8 @@ const Death = () => {
       const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
       if(response.status==201){
         Navigate('/success')
+      }else{
+        alert("Error submitting form")
       }
       
     }catch (error) {
