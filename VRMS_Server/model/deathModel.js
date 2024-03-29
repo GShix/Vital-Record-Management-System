@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 const deathSchema = new Schema({
-    birthCertNo: { type: Number,required:[true,"Please enter Birth Certificate Number"] },
+    birthCertNo: { type: Number },
     decedentFirstName: { type: String },
     decedentMiddleName: { type: String },
     decedentLastName: { type: String },
