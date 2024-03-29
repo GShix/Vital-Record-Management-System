@@ -6,14 +6,14 @@ import './Death.css'
 import { useNavigate } from 'react-router-dom';
 import Success from '../success/Success';
 const Death = () => {
-    const [formSubmitted, setFormSubmitted] = useState(false);
     const Navigate = useNavigate()
     const submitApplication = async(e)=>{
     e.preventDefault(); //prevent reloading
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData)
     try{
-      const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
+      // const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
+      const response = await axios.post("http://localhost:8000/api/deathRegistration",data);
       if(response.status==201){
         Navigate('/success')
       }else{
