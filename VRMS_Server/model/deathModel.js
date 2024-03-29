@@ -30,7 +30,7 @@ const deathSchema = new Schema({
         enum:["underVerification"],
         default:"underVerification"
     },
-    userOtp:{
+    userApplicationId:{
         type:Number
     }
 })

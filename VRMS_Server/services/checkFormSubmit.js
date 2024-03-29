@@ -1,10 +1,12 @@
-const checkFormSubmission =(req, res, next)=>{
-    if (req.session && req.session.formSubmitted) {
-        // User has submitted the form, proceed to next middleware
-        next();
-    } else {
-        // User hasn't submitted the form, send an error response
-        res.status(403).send('Access forbidden');
+// catch asynchronous error
+module.exports = (fun)=>{
+    return (req,res,next)=>{
+        // console.log(fun)
+        fun(req,res,next).catch((err)=>{
+             return res.status(500).json({
+                message:err.message,
+                fullError: err
+            })
+        })
     }
 }
-module.exports = checkFormSubmission

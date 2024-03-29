@@ -49,7 +49,7 @@ const birthSchema = new Schema({
         enum:["underVerification","rejecteds","verified"],
         default:"underVerification"
     },
-    userOtp:{
+    userApplicationId:{
         type:Number
     }
 })
