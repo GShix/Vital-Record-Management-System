@@ -22,7 +22,6 @@ const birthSchema = new Schema({
     babyMotherFirstName:{type:String},
     babyMotherMiddleName:{type:String},
     babyMotherLastName:{type:String},
-    
     parentMunicipality:{type:String},
     parentDistrict:{type:String},
     parentVillage:{type:String},
@@ -47,7 +46,7 @@ const birthSchema = new Schema({
     userEmail:{type:String,lowercase:true},
     applicationStatus:{
         type:String,
-        enum:["underVerification"],
+        enum:["underVerification","rejecteds","verified"],
         default:"underVerification"
     },
     userOtp:{
