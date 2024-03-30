@@ -1,20 +1,19 @@
 import React, { useState } from 'react'
 import './Admin.css'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const Admin = () => {
   const [password, hidePassword] = useState(0);
-  const showPassword =()=>{
-
+  const Navigate = useNavigate();
     const loginAdmin =(e)=>{
       e.preventDefault();
       const formData = new FormData(e.currentTarget)
       const data = Object.fromEntries(formData)
-      const response = axios.post("http://localhost:8000/vrms-server/admin/adminLogin",data)
+      const response = axios.post("http://localhost:9000/vrms/admin/login",data)
       if(response.status==200){
-
+        Navigate("/")
       }
     }
-  }
   return (
     <div>
         <div className="admin">

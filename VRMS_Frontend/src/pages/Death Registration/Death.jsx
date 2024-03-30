@@ -13,7 +13,7 @@ const Death = () => {
     const data = Object.fromEntries(formData)
     try{
       // const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
-      const response = await axios.post("http://localhost:8000/api/deathRegistration",data);
+      const response = await axios.post("http://localhost:9000/api/deathRegistration",data);
       if(response.status==201){
         Navigate('/success')
       }else{

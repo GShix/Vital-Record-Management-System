@@ -1,0 +1,39 @@
+.adminHome{
+    height: 100vh;
+    display: flex;
+    width: 100%;
+    font-family: arial;
+    padding: 8px;
+    text-align: center;
+    background-color: white;
+}
+.adminSidebar{
+    width: 150px;
+    border-right: 5px solid #2d67b4;
+}
+.adminSidebar .logo img{
+    margin-top: 30px;
+}
+.adminSide h4{
+    margin-top: 12px;
+    cursor: pointer;
+}
+#adminMain{
+    margin-left: 10px;
+    background-color: #f3f4f6;
+    width: 85%;
+    color: red;
+}
+#adminMain h1{
+    margin-top: 10px;
+    text-align: center;
+}
+#adminMain h2{
+    margin-top: 8px;
+    padding-bottom: 12px;
+    border-bottom: 5px solid white;
+}
+.mainApplications{
+    height: 80vh;
+    background-color: #fff;
+}

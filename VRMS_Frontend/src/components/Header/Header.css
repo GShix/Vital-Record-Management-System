@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Tauri&display=swap');
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number']{
+    -moz-appearance: textfield;
+}
 .flex{
     display: flex;
 }
