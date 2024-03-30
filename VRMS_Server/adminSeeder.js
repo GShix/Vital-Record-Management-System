@@ -7,7 +7,7 @@ exports.adminSeeder= async()=>{
         await Admin.create({
             adminName:"babaimuni",
             adminEmail:"admin.babaimuni@gmail.com",
-            adminPassword:bcrypt.hashSync("AdminBabaiMuni",10),
+            adminPassword:bcrypt.hashSync("AdminBabaiMuni",10)
         })
         console.log("Admin seeded successfully")
     }else{

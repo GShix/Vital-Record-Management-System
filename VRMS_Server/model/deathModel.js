@@ -28,7 +28,7 @@ const deathSchema = new Schema({
     applicationStatus:{
         type:String,
         enum:["underreview","rejected","verified"],
-        default:"underVerification"
+        default:"underreview"
     },
     userApplicationId:{
         type:Number

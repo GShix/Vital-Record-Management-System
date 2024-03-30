@@ -19,7 +19,7 @@ exports.submitBirthApplication =async(req, res) => {
 }
 
 exports.getMyBirthApplication =async()=>{
-    const userApplicationId = req.userApplicationId
+    const {userApplicationId} = req.body
     if(!userApplicationId){
         return res.status(400).json({
             message:"Enter your application id"
@@ -44,6 +44,11 @@ exports.submitDeathApplication = async(req, res) => {
     const { birthCertNo,decedentFirstName,decedentMiddleName,decedentLastName,birthDate,deathDate,gender,causeOfDeath,birthDistrict,birthMunicipality,birthVillage,birthWardno,deathDistrict,deathMunicipality,deathVillage,deathWardno,decedentCitishipIssuedDate,decedentCitishipIssuedDist,decedentCitizenshipNo,deathEducation,decedentFather,decedentMother,grandFather} = req.body
     const {userEmail} = req.body
 
+    if(!birthCertNo,!decedentFirstName,!decedentMiddleName,!decedentLastName,!birthDate,!deathDate,!gender,!causeOfDeath,!birthDistrict,!birthMunicipality,!birthVillage,!birthWardno,!deathDistrict,!deathMunicipality,!deathVillage,!deathWardno,decedentCitishipIssuedDate,!decedentCitishipIssuedDist,!decedentCitizenshipNo,!deathEducation,!decedentFather,!decedentMother,!grandFather,!userEmail){
+        res.status(400).json({
+            message:"Please fill the form"
+        })
+    }
     await Death.create({
         birthCertNo,decedentFirstName,decedentMiddleName,decedentLastName,birthDate,deathDate,gender,causeOfDeath,birthDistrict,birthMunicipality,birthVillage,birthWardno,deathDistrict,deathMunicipality,deathVillage,deathWardno,decedentCitishipIssuedDate,decedentCitishipIssuedDist,decedentCitizenshipNo,deathEducation,decedentFather,decedentMother,grandFather,userEmail
     })
@@ -57,7 +62,7 @@ exports.submitDeathApplication = async(req, res) => {
     })
 }
 exports.getMyDeathApplication =async()=>{
-    const userApplicationId = req.userApplicationId
+    const {userApplicationId} = req.body
     if(!userApplicationId){
         return res.status(400).json({
             message:"Enter your application id"
