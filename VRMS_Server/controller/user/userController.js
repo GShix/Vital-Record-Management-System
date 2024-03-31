@@ -61,7 +61,7 @@ exports.submitDeathApplication = async(req, res) => {
         message:"Death Registered"
     })
 }
-exports.getMyDeathApplication =async()=>{
+exports.getMyDeathApplication =async(req,res)=>{
     const {userApplicationId} = req.body
     if(!userApplicationId){
         return res.status(400).json({
