@@ -4,18 +4,23 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import './Death.css'
 import { useNavigate } from 'react-router-dom';
-import Success from '../success/Success';
 const Death = () => {
     const Navigate = useNavigate()
+    const [userApplicationId, setUserApplicationId] = useState(100); 
     const submitApplication = async(e)=>{
     e.preventDefault(); //prevent reloading
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData)
+
+    setUserApplicationId(prevId => prevId + 1);
+      // Add userApplicationId to form data
+      data.userApplicationId = userApplicationId;
     try{
       // const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
-      const response = await axios.post("http://localhost:9000/api/deathRegistration",data);
+      const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
       if(response.status==201){
-        Navigate('/success')
+        alert("You Application is Successfully Submitted")
+        Navigate('/')
       }else{
         alert("Error submitting form")
       }
@@ -41,10 +46,6 @@ const Death = () => {
                 <div className="decedent-birth-certi-no margin-btm margin-top">
                   <label id='one' htmlFor='birthCertNo'>Birth Certificate No.:</label>
                     <input type='number'className='margin-top margin-btm margin-left' id='birthCertNo' name='birthCertNo'/>
-                  {/* <div className="decedent-photo margin-left3 ">
-                    <label htmlFor='decedent-photo' id='one'>Decedent Photo:</label>
-                      <input className='margin-left2' type='file' id='decedent-photo' name='decendent-photo'/>
-                  </div> */}
                 </div>
                 <div className="decedent-name">
                   <label id="one" htmlFor="decedentFirstName">First Name:

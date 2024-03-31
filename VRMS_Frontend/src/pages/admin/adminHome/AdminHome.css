@@ -1,5 +1,7 @@
+
 .adminHome{
     height: 100vh;
+    margin-top: 0;
     display: flex;
     width: 100%;
     font-family: arial;
@@ -9,7 +11,7 @@
 }
 .adminSidebar{
     width: 150px;
-    border-right: 5px solid #2d67b4;
+    border-right: 5px solid #f3f4f6;
 }
 .adminSidebar .logo img{
     margin-top: 30px;
@@ -18,7 +20,20 @@
     margin-top: 12px;
     cursor: pointer;
 }
+.adminSide button {
+    margin-top: 15px;
+    padding: 4px 6px;
+    cursor: pointer;
+    background-color: #2d67b4;
+    border: none;
+    color: white;
+    border-radius: 4px;
+}
+.adminSide button:hover{
+    background-color: #2d67b4;
+}
 #adminMain{
+    margin-top: 5px;
     margin-left: 10px;
     background-color: #f3f4f6;
     width: 85%;
@@ -33,6 +48,7 @@
     padding-bottom: 12px;
     border-bottom: 5px solid white;
 }
+
 .mainApplications{
     height: 80vh;
     background-color: #fff;
