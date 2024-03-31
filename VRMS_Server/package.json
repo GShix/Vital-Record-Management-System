@@ -1,6 +1,6 @@
 {
   "name": "vrms_server",
-  "version": "3.1.2",
+  "version": "3.0.1",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"
