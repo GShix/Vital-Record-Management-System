@@ -18,7 +18,7 @@ const ApplicationStatus = () => {
             const response = await axios.get(`https://vrms-server-seven.vercel.app/api/deathApplication/${userApplicationId}`);
             
             if (response.status === 200) {
-                setApplication(response.data);
+                setApplication(response.data.deathApplication);
                 setError(null);
             } else {
                 setApplication(null);
@@ -56,7 +56,7 @@ const ApplicationStatus = () => {
                         </div>
                     </div>
                     <div className="statusOfApplication">
-                        {/* <h6>Your Death Application Status is{application.deathApplication.applicationStatus}</h6> */}
+                        {/* <h6>Your Death Application Status is{application.deathApplication.applicationStatus}</h6>s */}
                     </div>
                 </div>
                 
