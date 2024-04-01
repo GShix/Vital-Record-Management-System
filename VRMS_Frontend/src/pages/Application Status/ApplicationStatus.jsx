@@ -19,7 +19,7 @@ const ApplicationStatus = () => {
             // const response = await axios.get(`http://localhost:9000/api/deathApplication/${userApplicationId}`);
             
             if (response.status === 200 || response.status ==304) {
-                setApplication(response.data);
+                setApplication(response);
                 console.log(application)
                 setError(null);
             } else {
