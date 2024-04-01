@@ -1,4 +1,9 @@
-
+#statusStyle{
+    display: inline;
+    color: red;
+    font-weight: normal;
+    border-bottom: 1.2px dashed red;
+}
 .applicationStatus{
     display: flex;
     height: 250px;

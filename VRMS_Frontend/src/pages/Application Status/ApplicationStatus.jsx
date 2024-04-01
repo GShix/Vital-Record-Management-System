@@ -16,9 +16,11 @@ const ApplicationStatus = () => {
         e.preventDefault();
         try {
             const response = await axios.get(`https://vrms-server-seven.vercel.app/api/deathApplication/${userApplicationId}`);
+            // const response = await axios.get(`http://localhost:9000/api/deathApplication/${userApplicationId}`);
             
-            if (response.status === 200) {
+            if (response.status === 200 || response.status ==304) {
                 setApplication(response.data.deathApplication);
+                console.log(application[0])
                 setError(null);
             } else {
                 setApplication(null);
@@ -30,10 +32,10 @@ const ApplicationStatus = () => {
         }
     }
 
-    useEffect(()=>{
-        searchDeathApplication();
+    // useEffect(()=>{
+    //     searchDeathApplication();
 
-    },[])
+    // },[])
     // const searchDeathApplication =async(e)=>{
     //     e.preventDefault();
 
@@ -56,7 +58,7 @@ const ApplicationStatus = () => {
                         </div>
                     </div>
                     <div className="statusOfApplication">
-                        {/* <h6>Your Death Application Status is{application.deathApplication.applicationStatus}</h6>s */}
+                        <h6>Your Death Application Status is <span id='statusStyle'>{application[0].applicationStatus}</span></h6>
                     </div>
                 </div>
                 
