@@ -58,7 +58,7 @@ const ApplicationStatus = () => {
                         </div>
                     </div>
                     <div className="statusOfApplication">
-                        <h6>Your Death Application Status is <span id='statusStyle'>{application[0].applicationStatus}</span></h6>
+                        <h6>Your Death Application Status is <span id='statusStyle'>{application.applicationStatus}</span></h6>
                     </div>
                 </div>
                 
