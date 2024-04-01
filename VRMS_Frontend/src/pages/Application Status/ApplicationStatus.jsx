@@ -20,7 +20,7 @@ const ApplicationStatus = () => {
             
             if (response.status === 200 || response.status ==304) {
                 setApplication(response);
-                console.log(application)
+                console.log(application.data.deathApplication.applicationStatus);
                 setError(null);
             } else {
                 setApplication(null);
