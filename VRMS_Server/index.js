@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 //cors
 const cors = require("cors")
 app.use(cors({
-    origin:"",
+    origin:"https://vrms-babaimuni.vercel.app",
     methods:['GET', 'PUT', 'POST']
 }))
 
