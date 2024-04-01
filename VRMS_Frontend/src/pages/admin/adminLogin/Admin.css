@@ -19,7 +19,7 @@
 .loginForm{
     background-color: rgb(244, 244, 244);
     height: 250px;
-    width: 45%;
+    width: 40%;
     margin-top: 25px;
     border-radius: 8px;
     padding: 20px;
@@ -46,4 +46,8 @@
 #adminLoginBtn:hover{
     background-color: #2a5690;
     color:white
+}
+.adminAuth input{
+    margin-top: 2px;
+    padding: 2.5px 5px;
 }

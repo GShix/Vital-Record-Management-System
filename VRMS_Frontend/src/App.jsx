@@ -9,7 +9,6 @@ import Admin from './pages/admin/adminLogin/Admin'
 import AdminHome from './pages/admin/adminHome/AdminHome'
 import ApplicationStatus from './pages/Application Status/ApplicationStatus'
 
-import Cookies from 'js-cookie'
 function App() {
   return (
     <>

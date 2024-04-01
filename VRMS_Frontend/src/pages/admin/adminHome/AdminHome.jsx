@@ -1,14 +1,21 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './AdminHome.css'
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import BarLoader from "react-spinners/BarLoader";
 const AdminHome = () => {
+  const [loading, setLoading]=useState(false);
+
     const isAuthenticated = !!Cookies.get('auth');
     const Navigate = useNavigate();
     useEffect(()=>{
       if(!isAuthenticated){
         Navigate('/vrms-admin');
       }
+      setLoading(true);
+      setTimeout(()=>{
+        setLoading(false)
+      },2000)
     },[])
 
     var handleLogout =()=>{
@@ -25,7 +32,15 @@ const AdminHome = () => {
     }
       
   return (
-    <div>
+    <div className="sweet-loading">
+
+    {loading ? (<BarLoader
+      color={"white"}
+      loading={loading}
+      size={50}
+    />)
+    :(
+      <div>
         <div className="adminHome">
             <div className="adminSidebar">
                 <div className="logo">
@@ -47,6 +62,9 @@ const AdminHome = () => {
             </div>
         </div>
     </div>
+    )}
+    </div>
+    
   )
 }
 

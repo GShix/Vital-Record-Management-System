@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Home.css'
 import PhotoCard from '../../components/PhotoCard/PhotoCard'
 import Footer from '../../components/Footer/Footer'
 import Header from '../../components/Header/Header'
+import BarLoader from "react-spinners/BarLoader";
+
 const Home = () => {
+  const [loading, setLoading] = useState(false);
+  useEffect(()=>{
+    setLoading(true);
+    setTimeout(()=>{
+      setLoading(false)
+    },2000)
+  },[])
   return (
-    <div>
-        
+    <div className="sweet-loading">
+
+    {loading ? (<BarLoader
+      color={"white"}
+      loading={loading}
+      size={50}
+    />)
+    :(
+      <div className='homeBabai'>
         <Header/>
         <div className="hero">
             <img src='.././hero1.jpg'/>
@@ -20,6 +36,11 @@ const Home = () => {
 
           <Footer/>
     </div>
+    )
+    }
+      
+    </div>
+    
   )
 }
 
