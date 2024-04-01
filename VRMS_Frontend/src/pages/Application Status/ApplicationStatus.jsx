@@ -19,7 +19,7 @@ const ApplicationStatus = () => {
             // const response = await axios.get(`http://localhost:9000/api/deathApplication/${userApplicationId}`);
             
             if (response.status === 200 || response.status ==304) {
-                setApplication(response.data.deathApplication);
+                setApplication(response.data);
                 console.log(application[0])
                 setError(null);
             } else {
@@ -58,7 +58,7 @@ const ApplicationStatus = () => {
                         </div>
                     </div>
                     <div className="statusOfApplication">
-                        <h6>Your Death Application Status is <span id='statusStyle'>{application[0].applicationStatus}</span></h6>
+                        <h6>Your Death Application Status is <span id='statusStyle'>{application.deathApplication[0].applicationStatus}</span></h6>
                     </div>
                 </div>
                 
