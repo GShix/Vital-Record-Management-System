@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Header.css'
 import {useNavigate} from 'react-router-dom'
 const Header = () => {
-    const Navigate = useNavigate()
+    const Navigate = useNavigate();
+    const [menu,setMenu] = useState(false);
   return (
     <div>
         <header>
@@ -36,7 +37,7 @@ const Header = () => {
                     <h2 style={{fontSize:"20px"}}>News</h2>
                 </div>
             <div className="nav-list flex">
-                <ul >
+                <ul className={setMenu?" nav-list-items":"nav-list-items"}>
                     <li onClick={()=>Navigate('/')}>Home</li>
                     <li onClick={()=>Navigate('/')}>Introduction</li>
                     <li onClick={()=>Navigate('/eservices')}>E-Gov Services</li>
@@ -47,7 +48,7 @@ const Header = () => {
                 <button className='successHomeBtn' onClick={()=>Navigate('/applicationStatus')}>Application Status</button>
                 <button id='employee-login-btn' type='' onClick={()=>Navigate('/vrms-admin')}>Admin Login</button>
                 <div className="list-menu">
-                    <img src='.././menu.png'/>
+                    <img src='.././menu.png' onClick={()=>setMenu(!menu)}/>
                 </div>
             </div>
             </div>

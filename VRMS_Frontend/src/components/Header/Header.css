@@ -91,11 +91,11 @@ header{
     height: 25px;
     justify-content: end;
     width: 100%;
-    cursor: pointer;
     color: red;
     display: none;
 }
 .list-menu img{
+    cursor: pointer;
 }
 .nav-list ul{
     text-decoration: none;
@@ -167,8 +167,29 @@ header{
         margin-top: 15px;
         margin-left: 4px;
     }
-    .nav-list ul, .nav-list button{
+    .nav-list{
+        height:35px;
+    }
+    .nav-list ul{
         display: none;
+    }
+    .nav-list .successHomeBtn{
+        width: 170px;
+        font-family: arial;
+        height: 28px;
+        padding: 1px 5px;
+        margin-right: 10px;
+        font-size: 10px;
+        font-weight: 600;
+    }
+    .nav-list #employee-login-btn{
+        width: 140px;
+        font-family: arial;
+        height: 28px;
+        padding: 1px 5px;
+        margin-right: 10px;
+        font-size: 10px;
+        font-weight: 600;
     }
     .list-menu{
         display: flex;
@@ -176,5 +197,8 @@ header{
     .mini-nav img{
         width: 15px;
         height: 15px;
+    }
+    .nav-list-items{
+        display: flex;
     }
 }
