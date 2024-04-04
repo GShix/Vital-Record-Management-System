@@ -11,15 +11,15 @@ const Footer = () => {
               <div className="footer-logo">
                   <img onClick={()=>Navigate('/')} src='.././logo.png'/>
               </div>
-            <h2 style={{ fontSize: "24px" }}>Babai Rural Municipality</h2>
-            <h3 style={{ fontSize: "15px", fontWeight: "lighter" }}>
+            <h2>Babai Rural Municipality</h2>
+            <h3>
               Office of Municipal Executive
             </h3>
-            <h3 style={{ fontSize: "12px", fontWeight: "lighter" }}>
+            <h4>
             Lumbini Province, Hapure, Dang
-            </h3>
-            <h5 style={{ fontSize: "12px", fontWeight: "lighter", marginTop:"15px" }}>Phone: <span style={{ fontSize: "10px", fontWeight: "100" }}> 082403067</span></h5>
-            <h5 style={{ fontSize: "12px", fontWeight: "lighter", marginTop:"3px" }}>Email: <span style={{ fontSize: "10px", fontWeight: "100" }}>ito.babaimun@gmail.com</span></h5>
+            </h4>
+            <h5>Phone: <span> 082403067</span></h5>
+            <h5 style={{ marginTop:"3px" }}>Email: <span>ito.babaimun@gmail.com</span></h5>
           </div>
           <div className="foot-egovServices" style={{ marginLeft: "5vw" }}>
             <h3 style={{ fontSize: "20px" }}>E-Gov Services</h3>

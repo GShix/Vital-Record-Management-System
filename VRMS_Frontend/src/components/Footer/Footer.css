@@ -3,7 +3,32 @@
     color: white;
 }
 .footer{
+    text-align: start;
     width: 100%;
+}
+.foot-office-details h2{
+    font-size: 24px;
+}
+.foot-office-details h3{
+    font-size: 15px;
+    font-weight: lighter;
+}
+.foot-office-details h4{
+    font-size: 12px;
+    font-weight: lighter;
+}
+.foot-office-details h5{
+    font-size: 12px;
+    font-weight: lighter;
+    margin-top: 15px;
+}
+.foot-office-details span{
+    font-size: 10px;
+    font-weight: 100;
+}
+.footer-logo img{
+    width: 80px;
+    cursor: pointer;
 }
 .footer-first{
     background-color: #2d67b4;
@@ -19,11 +44,32 @@
 .location iframe{
     width: 330px;
 }
-.footer-logo img{
-    width: 80px;
-    cursor: pointer;
-}
 .foot-egovServices li,.important-links  li{
     margin-top: 3px;
     cursor: pointer;
+}
+
+@media only screen and (max-width:600px){
+    .footer-logo img{
+        width: 11vw;
+        height: auto;
+    }
+    .foot-office-details h2{
+        font-size: 4vw;
+    }
+    .foot-office-details h3{
+        font-size: 2vw;
+        margin-top: 2px;
+    }
+    .foot-office-details h4{
+        font-size: 1.7vw;
+        margin-top: 1.5px;
+    }
+    .foot-office-details h5{
+        font-size: 1.7vw;
+        margin-top: 5px;
+    }
+    .foot-office-details span{
+        font-size: 1.5vw;
+    }
 }

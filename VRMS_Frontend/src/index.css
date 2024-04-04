@@ -4,10 +4,15 @@
     padding: 0;
 }
 body{font-family: "Tauri", sans-serif;;
-    padding: 4px 70px;
+    padding: 2px 70px;
     background-color: #355d90;
 }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@media only screen and (max-width:600px){
+    body{
+        padding: 1px;
+    }
+}

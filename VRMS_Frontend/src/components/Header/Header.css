@@ -138,7 +138,8 @@ header{
 
 @media only screen and (max-width:600px){
     .mini-nav{
-        margin-bottom: 0;
+        margin-bottom: 5px;
+        padding: 8px 5px;
     }
     .nav-logo{
         /* display: inline; */
@@ -148,6 +149,10 @@ header{
     }
     .nav-logo .logo img{
         width: 11vw;
+    }
+    .main-nav{
+        height: 60px;
+        margin-bottom: 5px;
     }
     .main-nav-text h2{
         font-size: 4vw;

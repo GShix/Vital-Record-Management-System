@@ -29,3 +29,10 @@
 .staffPhone{
     padding-top: 1px;
 }
+
+@media only screen and (max-width:600px){
+    .staff{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
