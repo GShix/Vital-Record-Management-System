@@ -1,7 +1,6 @@
 import React from 'react'
 import './Header.css'
 import {useNavigate} from 'react-router-dom'
-import Services from '../../pages/E-Gov Services/Services'
 const Header = () => {
     const Navigate = useNavigate()
   return (
@@ -10,12 +9,12 @@ const Header = () => {
             <div className="navbar">
                 <div className="mini-nav flex">
                     <div className="mini-nav1">
-                    <img style={{width:"20px",height:"20px"}} src='.././facebook.png'/>
-                    <img style={{width:"20px",height:"20px"}} src='.././twitter.png'/>
+                    <img src='.././facebook.png'/>
+                    <img src='.././twitter.png'/>
                     </div>
                     <div className="mini-nav2">
-                        <img style={{width:"20px",height:"20px"}} src='.././phone.png'/>
-                        <img style={{width:"20px",height:"20px"}} src='.././gmail.png'/>
+                        <img src='.././phone.png'/>
+                        <img src='.././gmail.png'/>
                     </div>
                 </div>
                 <div className="main-nav flex">
@@ -24,13 +23,13 @@ const Header = () => {
                             <img onClick={()=>Navigate('/')} src='.././logo.png'/>
                         </div>
                         <div className="main-nav-text">
-                            <h2 onClick={()=>Navigate('/')} style={{fontSize:"30px"}}>Babai Rural Municipality</h2>
-                            <h3 style={{fontSize:"18px",fontWeight:"lighter"}}>Office of Municipal Executive, Dang, Lumbini Province</h3>
+                            <h2 onClick={()=>Navigate('/')}>Babai Rural Municipality</h2>
+                            <h3>Office of Municipal Executive, Dang, Lumbini Province</h3>
                         </div>
                         
                     </div>
                     <div className="main-nav-flag">
-                        <img style={{width:"70px",height:"auto",marginRight:"10px"}} src='.././np_flag.gif'/>
+                        <img src='.././np_flag.gif'/>
                     </div>
                 </div>
                 <div className="nav-news flex">
@@ -47,6 +46,9 @@ const Header = () => {
                 </ul>
                 <button className='successHomeBtn' onClick={()=>Navigate('/applicationStatus')}>Application Status</button>
                 <button id='employee-login-btn' type='' onClick={()=>Navigate('/vrms-admin')}>Admin Login</button>
+                <div className="list-menu">
+                    <img src='.././menu.png'/>
+                </div>
             </div>
             </div>
         </header>
