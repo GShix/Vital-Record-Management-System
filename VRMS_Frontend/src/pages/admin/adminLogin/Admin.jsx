@@ -14,7 +14,8 @@ const Admin = () => {
         adminName,
         adminPassword
       }
-      const response = await axios.post("https://vrms-server-seven.vercel.app/vrms/admin/login",authData)
+      // const response = await axios.post("https://vrms-server-seven.vercel.app/vrms/admin/login",authData)
+      const response = await axios.post("http://localhost:9000/vrms/admin/login",authData)
       if(response.status==200){
         const expirationTime = new Date(new Date().getTime() + 60000);
         Cookies.set('auth',JSON.stringify(authData),{expires:expirationTime});

@@ -13,15 +13,15 @@ const Death = () => {
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData)
       
-    const getId = await axios.get("http://localhost:9000/api/deathApplication")
-    console.log(getId)
-    return
+    // const getId = await axios.get("http://localhost:9000/api/deathApplication")
+    // console.log(getId)
+    // return
     setUserApplicationId(prevId => prevId + 1);
       // Add userApplicationId to form data
       data.userApplicationId = userApplicationId;
     try{
-      // const response = await axios.post("http://localhost:9000/api/deathRegistration",data);
-      const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
+      const response = await axios.post("http://localhost:9000/api/deathRegistration",data);
+      // const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
       if(response.status==201){
         alert("You Application is Successfully Submitted")
         Navigate('/')

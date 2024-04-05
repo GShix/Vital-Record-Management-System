@@ -15,8 +15,10 @@ const ApplicationStatus = () => {
     const searchDeathApplication = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.get(`https://vrms-server-seven.vercel.app/api/deathApplication/${userApplicationId}`);
-            // const response = await axios.get(`http://localhost:9000/api/deathApplication/${userApplicationId}`);
+            // const response = await axios.get(`https://vrms-server-seven.vercel.app/api/deathApplication/${userApplicationId}`);
+            const response = await axios.get(`http://localhost:9000/api/deathApplication/${userApplicationId}`);
+            console.log(response.deathApplication[0])
+            return
             
             if (response.status === 200 || response.status ==304) {
                 setApplication(response.data);
