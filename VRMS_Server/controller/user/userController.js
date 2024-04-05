@@ -19,21 +19,21 @@ exports.submitBirthApplication =async(req, res) => {
 }
 
 exports.getMyBirthApplication =async()=>{
-    const {userApplicationId} = req.body
+    const {userApplicationId} = req.params
     if(!userApplicationId){
         return res.status(400).json({
             message:"Enter your application id"
         })
     }
-    const applicationIdFound = await Birth.findById(userApplicationId)
-    if(!applicationIdFound){
+    const applicationIdFound = await Birth.find({userApplicationId})
+    if(applicationIdFound.length==0){
         return res.status(404).json({
-            message:"Your application id doesnot match"
+            message:"No application found with the provided ID"
         })
     }
     res.status(200).json({
         message:"Application fetched successfully",
-        data: applicationIdFound
+        birthApplication: applicationIdFound
     })
 
 }
@@ -62,21 +62,25 @@ exports.submitDeathApplication = async(req, res) => {
     })
 }
 exports.getMyDeathApplication =async(req,res)=>{
-    const {userApplicationId} = req.body
-    if(!userApplicationId){
-        return res.status(400).json({
-            message:"Enter your application id"
+    const {userApplicationId} = req.params
+    try{
+        if(!userApplicationId){
+            return res.status(400).json({
+                message:"Enter your application id"
+            })
+        }
+        const applicationIdFound = await Death.findById({userApplicationId})
+        if(applicationIdFound.length==0){
+            return res.status(404).json({
+                message:"No application found with the provided ID"
+            })
+        }
+        res.status(200).json({
+            message:"Application fetched successfully",
+            deathApplication: applicationIdFound
         })
+    }catch (error) {
+        console.error("Error fetching death application:", error);
     }
-    const applicationIdFound = await Death.findById(userApplicationId)
-    if(!applicationIdFound){
-        return res.status(404).json({
-            message:"Your application id doesnot match"
-        })
-    }
-    res.status(200).json({
-        message:"Application fetched successfully",
-        data: applicationIdFound
-    })
 
 }

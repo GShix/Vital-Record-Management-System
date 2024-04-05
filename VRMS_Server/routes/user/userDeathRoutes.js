@@ -4,6 +4,8 @@ const router = require('express').Router()
 
 router.route('/')
 .post(submitDeathApplication)
-.get(getMyDeathApplication)
+
+router.route('/:userApplicationId')
+// .get(getMyDeathApplication)
 
 module.exports = router
