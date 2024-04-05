@@ -26,8 +26,8 @@ const Admin = () => {
         <div className="admin">
           <div className="adminLogo">
             <img src='../logo.png'/>
-            <h2 onClick={()=>Navigate('/')} style={{fontSize:"30px",marginTop:"2px"}}>Babai Rural Municipality</h2>
-            <h3 style={{fontSize:"18px",marginTop:"3px",fontWeight:"lighter"}}>Office of Municipal Executive, Dang, Lumbini Province</h3>
+            <h2 onClick={()=>Navigate('/')}>Babai Rural Municipality</h2>
+            <h3>Office of Municipal Executive, Dang, Lumbini Province</h3>
           </div>
           <div className="adminLogin">
             <div className="loginForm">

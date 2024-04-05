@@ -16,6 +16,15 @@
     text-align: center;
     color: white;
 }
+.adminLogo h2{
+    font-size: 30px;
+    margin-top: 3px;
+}
+.adminLogo h3{
+    font-size: 18px;
+    margin-top: 3px;
+    font-weight: lighter;
+}
 .loginForm{
     background-color: rgb(244, 244, 244);
     height: 250px;
@@ -50,4 +59,35 @@
 .adminAuth input{
     margin-top: 2px;
     padding: 2.5px 5px;
+}
+
+@media only screen and (max-width:600px){
+    .adminLogo{
+        margin-top: 20px;
+    }
+    .adminLogo img{
+        width: 90px;
+    }
+    .adminLogo h2{
+        font-size: 25px;
+        margin-top: 3px;
+    }
+    .adminLogo h3{
+        font-size: 9px;
+        margin-top: 3px;
+        font-weight: lighter;
+    }
+    .adminLogin{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .loginForm{
+        width: 75%;
+        padding: 10px;
+    }
+    .adminAuth{
+        padding: 30px 45px 0px 50px;
+    }
+
 }

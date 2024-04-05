@@ -12,7 +12,10 @@ const Death = () => {
     e.preventDefault(); //prevent reloading
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData)
-
+      
+    const getId = await axios.get("http://localhost:9000/api/deathApplication")
+    console.log(getId)
+    return
     setUserApplicationId(prevId => prevId + 1);
       // Add userApplicationId to form data
       data.userApplicationId = userApplicationId;

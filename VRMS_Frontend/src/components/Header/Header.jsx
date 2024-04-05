@@ -34,10 +34,10 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="nav-news flex">
-                    <h2 style={{fontSize:"20px"}}>News</h2>
+                    <h2>News</h2>
                 </div>
             <div className="nav-list flex">
-                <ul className={setMenu?" nav-list-items":"nav-list-items"}>
+                <ul className={setMenu?" nav-list-items mobileNavList":"nav-list-items"}>
                     <li onClick={()=>Navigate('/')}>Home</li>
                     <li onClick={()=>Navigate('/')}>Introduction</li>
                     <li onClick={()=>Navigate('/eservices')}>E-Gov Services</li>
