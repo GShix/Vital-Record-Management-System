@@ -41,10 +41,12 @@ const adminApplicationRoute =require('./routes/admin/adminApplicationsRoutes')
 app.post('/vrms/admin',adminLoginRoute)
 
 // for admin
-app.get("/admin",adminApplicationRoute)
-app.get("/api/admin/deathApplications",async(req,res)=>{
-    const adminName = req.user.adminName
-    const deathApplications = await Death.find({_id:{$ne:adminName}})
+// app.get("/admin",adminApplicationRoute)
+app.get("/admin/death",async(req,res)=>{
+    // const adminName = req.user.adminName
+    // const deathApplications = await Death.find({_id:{$ne:adminName}})
+    const deathApplications = await Death.find().populate("applicationStatus")
+    return
     if(deathApplications.length>1){
         return res.status(200).json({
             message:"Death Applications fetched successfully",
