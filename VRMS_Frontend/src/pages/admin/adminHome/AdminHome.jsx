@@ -1,11 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import './AdminHome.css'
 import Cookies from 'js-cookie';
+import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import BarLoader from "react-spinners/BarLoader";
 const AdminHome = () => {
   const [loading, setLoading]=useState(false);
-
+  const [showBirth, setShowBirth] = useState(false);
+  const [showDeath, setShowDeath] = useState(false);
+  const [showDashboard,setShowDashboard] = useState(false);
+  const handleDashboardClick =()=>{
+    setShowDashboard(true);
+    setShowBirth(false);
+    setShowDeath(false);
+  }
+  const handleBirthClick =()=>{
+    setShowBirth(true);
+    setShowDeath(false);
+    setShowDashboard(false);
+  }
+  const handleDeathClick =async()=>{
+    setShowBirth(false);
+    setShowDeath(true);
+    setShowDashboard(false);
+    // const deathApplications = await axios.get("https://vrms-server-seven.vercel.app/api/admin/deathApplications")
+    const deathApplications = await axios.get("http://localhost:9000/admin/death")
+      console.log(deathApplications)
+  }
     // const isAuthenticated = !!Cookies.get('auth');
     // const Navigate = useNavigate();
     // useEffect(()=>{
@@ -25,11 +46,6 @@ const AdminHome = () => {
     // if(!isAuthenticated){
     //   return null;
     // }
-
-    const getDeathApplication =async() =>{
-      const deathApplications = await axios.get("https://vrms-server-seven.vercel.app/api/admin/deathApplications")
-      console.log(deathApplications)
-    }
       
   return (
     <div className="sweet-loading">
@@ -47,72 +63,88 @@ const AdminHome = () => {
                     <img src='../logo.png'/>
                 </div>
                 <div className="adminSide">
-                    <h4>Dashboard</h4>
-                    <h4>Birth Application</h4>
-                    <h4>Death Application</h4>
+                    <h4 onClick={()=>handleDashboardClick()}>Dashboard</h4>
+                    <h4 onClick={()=>handleBirthClick()}>Birth Application</h4>
+                    <h4 onClick={()=>handleDeathClick()}>Death Application</h4>
                     <button id='adminLogOutBtn' onClick={handleLogout}>Log Out</button>
                 </div>
             </div>
             <div id='adminMain'>
-                <h1 onClick={getDeathApplication}>Babai Rural Municipality</h1>
+                <h1>Babai Rural Municipality</h1>
                 <h2>Office of Municipal Executive, Dang, Lumbini Province</h2>
                 <div className="mainApplications">
-                    <div className="allDeathApplications">
-                      <h3 id='allDeathh2'>All Death Applications</h3>
-                      <div className="allDeathAppDetails">
-                        <span style={{border:"none"}} className="applicationId">
-                          <h5>Application ID</h5>
-                          <p>1</p>
-                        </span>
-                        <span className='applicantFullName'>
-                          <h5>Applicant Full Name</h5>
-                          <p>Hari OM</p>
-                          </span>
-                        <span className="applicantBOD">
-                          <h5>Applicant Birth Date</h5>
-                          <p>2020002</p>
-                        </span>
-                        <span className="applicationsStatus">
-                          <h5>Application Status</h5>
-                          <p>Under Review</p>
-                        </span>
-                        <span className="adminActions">
-                          <h5>Admin Actions</h5>
-                          <p>
-                            <button>View</button>
-                            <button>Verify</button>
-                          </p>
-                        </span>
+                  {/* Dashboard */}
+                  {showDashboard && (
+                    <div className="adminDashboard">
+                      <h1>Admin Dashboard</h1>
+                      <div className="totalApplications">
+                        <h4>Total Death Applications:</h4>
+                        <h4>Total Birth Applications:</h4>
                       </div>
                     </div>
-                    <div className="allBirthApplications">
-                      <h3>All Birth Applications</h3>
-                      <div className="allBirthAppDetails">
-                        <span style={{border:"none"}} className="applicationId">
-                          <h5>Application ID</h5>
-                          <p>1</p>
-                        </span>
-                        <span className='applicantFullName'>
-                          <h5>Applicant Full Name</h5>
-                          <p>Hari OM</p>
+                  )}
+                    {/* Birth Applications */}
+                    {showBirth && (
+                      <div className="allBirthApplications">
+                        <h3>All Birth Applications</h3>
+                        <div className="allBirthAppDetails">
+                          <span style={{border:"none"}} className="applicationId">
+                            <h5>Application ID</h5>
+                            <p>1</p>
                           </span>
-                        <span className="applicantBOD">
-                          <h5>Applicant Birth Date</h5>
-                          <p>2020002</p>
-                        </span>
-                        <span className="applicationsStatus">
-                          <h5>Application Status</h5>
-                          <p>Under Review</p>
-                        </span>
-                        <span className="adminActions">
-                          <h5>Admin Actions</h5>
-                          <p>
-                            <button>View</button>
-                            <button>Verify</button>
-                          </p>
-                        </span>
-                      </div>
+                          <span className='childFullName'>
+                            <h5>Child's Full Name</h5>
+                            <p>Hari OM</p>
+                            </span>
+                          <span className="childBOD">
+                            <h5>Child Birth Date</h5>
+                            <p>2020002</p>
+                          </span>
+                          <span className="applicationsStatus">
+                            <h5>Application Status</h5>
+                            <p>Under Review</p>
+                          </span>
+                          <span className="adminActions">
+                            <h5>Admin Actions</h5>
+                            <p>
+                              <button>View</button>
+                              <button>Verify</button>
+                            </p>
+                          </span>
+                        </div>
                     </div>
+                    )}
+                    {/* Death */}
+                    {showDeath && (
+                      <div className="allDeathApplications">
+                        <h3>All Death Applications</h3>
+                        <div className="allDeathAppDetails">
+                          <span style={{border:"none"}} className="applicationId">
+                            <h5>Application ID</h5>
+                            <p>1</p>
+                          </span>
+                          <span className='decedentFullName'>
+                            <h5>Decedent's Full Name</h5>
+                            <p>Hari OM</p>
+                            </span>
+                          <span className="decedentBOD">
+                            <h5>Decedent Birth Date</h5>
+                            <p>2020002</p>
+                          </span>
+                          <span className="applicationsStatus">
+                            <h5>Application Status</h5>
+                            <p>Under Review</p>
+                          </span>
+                          <span className="adminActions">
+                            <h5>Admin Actions</h5>
+                            <p>
+                              <button>View</button>
+                              <button>Verify</button>
+                            </p>
+                          </span>
+                        </div>
+                    </div>
+                    )}
                 </div>
             </div>
         </div>

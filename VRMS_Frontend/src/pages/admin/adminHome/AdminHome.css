@@ -65,7 +65,28 @@
     background-color: #fff;
     
 }
-.allDeathApplications{
+.adminDashboard{
+    padding-top: 10px;
+}
+.adminDashboard h1{
+    color:#2d67b4;
+    height: 10px;
+    font-size: 1px;
+    font-weight: bolder;
+    text-decoration: dashed;
+}
+.adminDashboard .totalApplications{
+    margin-top: 20px;
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
+}
+.totalApplications h4{
+    margin-top: 4vw;
+    border-right: 1px solid rgb(232, 232, 232);
+    color: black;
+}
+.allDeathApplications, .allBirthApplications{
     padding-top: 10px;
 }
 .allDeathApplications h3, .allBirthApplications h3{
