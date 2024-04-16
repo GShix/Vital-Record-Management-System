@@ -1,4 +1,6 @@
-
+.allDeathAppDetails p{
+    color: black;
+}
 .adminHome{
     height: 100vh;
     margin-top: 0;

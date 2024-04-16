@@ -9,6 +9,8 @@ const AdminHome = () => {
   const [showBirth, setShowBirth] = useState(false);
   const [showDeath, setShowDeath] = useState(false);
   const [showDashboard,setShowDashboard] = useState(false);
+  const [deathApplications, setDeathApplications] = useState([]);
+
   const handleDashboardClick =()=>{
     setShowDashboard(true);
     setShowBirth(false);
@@ -24,8 +26,14 @@ const AdminHome = () => {
     setShowDeath(true);
     setShowDashboard(false);
     // const deathApplications = await axios.get("https://vrms-server-seven.vercel.app/api/admin/deathApplications")
-    const deathApplications = await axios.get("http://localhost:9000/admin/death")
+    try {
+      const response = await axios.get("http://localhost:9000/admin/death");
+      setDeathApplications(response.data.data); // Update deathApplications state with fetched data
       console.log(deathApplications)
+      console.log(deathApplications.userApplicationId)
+    } catch (error) {
+      console.error("Error fetching death applications:", error);
+    }
   }
     // const isAuthenticated = !!Cookies.get('auth');
     // const Navigate = useNavigate();
@@ -49,7 +57,7 @@ const AdminHome = () => {
       
   return (
     <div className="sweet-loading">
-
+    
     {loading ? (<BarLoader
       color={"white"}
       loading={loading}
@@ -118,22 +126,25 @@ const AdminHome = () => {
                     {showDeath && (
                       <div className="allDeathApplications">
                         <h3>All Death Applications</h3>
-                        <div className="allDeathAppDetails">
+                        {
+                          deathApplications.map((death)=>{ //data not showing
+                            return (
+                              <div key={death._id} className="allDeathAppDetails">
                           <span style={{border:"none"}} className="applicationId">
                             <h5>Application ID</h5>
-                            <p>1</p>
+                            <p>{death.userApplicationId}</p>
                           </span>
                           <span className='decedentFullName'>
                             <h5>Decedent's Full Name</h5>
-                            <p>Hari OM</p>
+                            <p>{death.decedentFirstName}{death.decedentMiddleName}{death.decedentLastName}</p>
                             </span>
                           <span className="decedentBOD">
                             <h5>Decedent Birth Date</h5>
-                            <p>2020002</p>
+                            <p>{death.birthDate}</p>
                           </span>
                           <span className="applicationsStatus">
                             <h5>Application Status</h5>
-                            <p>Under Review</p>
+                            <p>{death.applicationStatus}</p>
                           </span>
                           <span className="adminActions">
                             <h5>Admin Actions</h5>
@@ -143,6 +154,9 @@ const AdminHome = () => {
                             </p>
                           </span>
                         </div>
+                            )
+                          })
+                        }
                     </div>
                     )}
                 </div>

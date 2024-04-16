@@ -58,6 +58,9 @@
     align-items: center;
     justify-content: center;
 }
+.location{
+    margin-left: 2vw;
+}
 .location iframe{
     width: 330px;
 }

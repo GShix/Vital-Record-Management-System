@@ -53,7 +53,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-second flex">
-          <h5 style={{fontWeight:"lighter"}}>Copyright &copy Babai Rural Municipality, Dang
+          <h5 style={{fontWeight:"lighter"}}>&copy; Babai Rural Municipality, Dang
           </h5>
         </div>
       </div>
