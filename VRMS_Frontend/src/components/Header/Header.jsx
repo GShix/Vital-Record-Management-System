@@ -39,11 +39,11 @@ const Header = () => {
             <div className="nav-list flex">
                 <ul className={setMenu?" nav-list-items mobileNavList":"nav-list-items"}>
                     <li onClick={()=>Navigate('/')}>Home</li>
-                    <li onClick={()=>Navigate('/')}>Introduction</li>
+                    <li onClick={()=>Navigate('/introduction')}>Introduction</li>
                     <li onClick={()=>Navigate('/eservices')}>E-Gov Services</li>
                     <li onClick={()=>Navigate('/')}>Download</li>
                     <li onClick={()=>Navigate('/')}>Notices</li>
-                    <li onClick={()=>Navigate('/')}>Contact</li>
+                    <li onClick={()=>Navigate('/contact')}>Contact</li>
                 </ul>
                 <button className='successHomeBtn' onClick={()=>Navigate('/applicationStatus')}>Application Status</button>
                 <button id='employee-login-btn' type='' onClick={()=>Navigate('/vrms-admin')}>Admin Login</button>

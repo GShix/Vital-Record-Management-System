@@ -8,6 +8,8 @@ import {BrowserRouter,Routes,Route, useNavigate} from 'react-router-dom'
 import Admin from './pages/admin/adminLogin/Admin'
 import AdminHome from './pages/admin/adminHome/AdminHome'
 import ApplicationStatus from './pages/Application Status/ApplicationStatus'
+import Contact from './pages/Contact/Contact'
+import Introduction from './pages/Introduction/Introduction'
 
 function App() {
   return (
@@ -19,7 +21,8 @@ function App() {
           <Route path='/birthRegistration' element ={<Birth/>} />
           <Route path='/deathRegistration' element ={<Death/>} />
           <Route path='/applicationStatus' element ={<ApplicationStatus/>} />
-          {/* <Route path='/success' element ={<Success/>} /> */}
+          <Route path='/contact' element ={<Contact/>} /> 
+          <Route path='/introduction' element ={<Introduction/>} /> 
           <Route path='/vrms-admin' element ={<Admin/>} />
           <Route path='/adminHome' element ={<AdminHome/>} />
         </Routes>

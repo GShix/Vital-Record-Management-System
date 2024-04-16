@@ -1,0 +1,11 @@
+.introBabai{
+    font-family: arial;
+    justify-content: center;
+    color: black;
+    background-color: rgb(231, 231, 231);
+    padding: 20px;
+}
+.introBabai h1{
+    border-bottom: 1px solid white;
+    margin-bottom: 10px;
+}
