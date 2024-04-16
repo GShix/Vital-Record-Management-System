@@ -54,7 +54,11 @@ const deathSchema = new Schema({
     userApplicationId:{
         type:Number,
         required:true
-    }
+    },
+    otp : {
+        type : Number,
+        select : false
+    },
 })
 const Death = mongoose.model("Death", deathSchema)
 module.exports = Death

@@ -1,10 +1,10 @@
 const express = require('express');
 const { connectDatabase } = require('./database/database');
 const app = express()
-const bcrypt = require("bcryptjs")
 //Invoking dotenv(Telling nodejs to use .env)
 require('dotenv').config();
-
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs")
 //Connect Database
 connectDatabase(process.env.Mongoose_URI);
 
@@ -29,25 +29,54 @@ app.get('/', (req, res) => {
 
 //api router
 const Death = require('./model/deathModel');
-const sendMail = require('./services/SendMail');
-const Admin = require('./model/adminModel');
 
 const deathRegistrationRoute =require('./routes/user/userDeathRoutes');
 const birthRegistrationRoute = require('./routes/user/userBirthRoutes')
-const adminLoginRoute = require('./routes/admin/authRoutes')
-const adminApplicationRoute =require('./routes/admin/adminApplicationsRoutes')
+const adminLoginRoute = require("./routes/admin/authRoutes")
+const adminApplicationRoute =require('./routes/admin/adminApplicationsRoutes');
+const Admin = require('./model/adminModel');
 
 //api for admin login
-app.post('/vrms/admin',adminLoginRoute)
+// app.post('/vrms/admin/login',adminLoginRoute)
+app.post("/vrms/admin/login", async(req,res)=>{
+    const {adminName,adminPassword}=req.body
+    if(!adminName ||!adminPassword){
+        return res.status(400).json({
+            message:"Enter Email & Password."
+        })
+    }
+    //else
+    const adminFound = await Admin.find({adminName:adminName})
+    if(adminFound.length==0){
+        return res.status(400).json({
+            message:"You have not permission to Login"
+        })
+    }
+    //password match
+    const matchPassword = bcrypt.compareSync(adminPassword,adminFound[0].adminPassword);
+    if(matchPassword){
+        //generate token
+        const token = jwt.sign({id:adminFound[0]._id},process.env.SECRET_KEY,{expiresIn:'1d'})
+        res.status(200).json({
+            message:"admin logined successfully.",
+            data:adminFound,
+            token:token
+        })
+    }
+    else{
+        res.status(400).json({
+            message:"Invalid Email or Password"
+        })
+    }
+})
 
 // for admin
 // app.get("/admin",adminApplicationRoute)
 app.get("/admin/death",async(req,res)=>{
     // const adminName = req.user.adminName
     // const deathApplications = await Death.find({_id:{$ne:adminName}})
-    const deathApplications = await Death.find().populate("applicationStatus")
-    return
-    if(deathApplications.length>1){
+    const deathApplications = await Death.find();
+    if(deathApplications.length !==0){
         return res.status(200).json({
             message:"Death Applications fetched successfully",
             data: deathApplications
@@ -60,34 +89,34 @@ app.get("/admin/death",async(req,res)=>{
 })
 
 //API for Death Registration
-app.post("/api/deathRegistration",deathRegistrationRoute)
+// app.post("/api/deathRegistration",deathRegistrationRoute)
 
-// app.get("/api/deathApplication/:userApplicationId",async(req,res)=>{
-//     const {userApplicationId} = req.params
-//     try{
-//         if(!userApplicationId){
-//             return res.status(400).json({
-//                 message:"Enter your application id"
-//             })
-//         }
-//         const applicationIdFound = await Death.find({userApplicationId:userApplicationId})
-//         console.log(applicationIdFound)
+app.get("/api/deathApplication/:userApplicationId",async(req,res)=>{
+    const {userApplicationId} = req.params
+    try{
+        if(!userApplicationId){
+            return res.status(400).json({
+                message:"Enter your application id"
+            })
+        }
+        const applicationIdFound = await Death.find({userApplicationId:userApplicationId})
+        console.log(applicationIdFound)
         
-//         res.status(200).json({
-//             message:"Application fetched successfully",
-//             deathApplication: applicationIdFound
-//         })
-//         return
-//         if(applicationIdFound.length==0){
-//             return res.status(404).json({
-//                 message:"No application found with the provided ID"
-//             })
-//         }
-//     }catch (error) {
-//         console.error("Error fetching death application:", error);
-//     }
+        res.status(200).json({
+            message:"Application fetched successfully",
+            deathApplication: applicationIdFound
+        })
+        return
+        if(applicationIdFound.length==0){
+            return res.status(404).json({
+                message:"No application found with the provided ID"
+            })
+        }
+    }catch (error) {
+        console.error("Error fetching death application:", error);
+    }
 
-// })
+})
 
 //API for Birth Registration
 // app.post('/api/birthRegistration',birthApplicationRoute)
