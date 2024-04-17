@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const Death = () => {
     const Navigate = useNavigate();
     const [date, setDate] = useState('');
-    const [userApplicationId, setUserApplicationId] = useState(100); 
+    const [applicationId, setApplicationId] = useState(100); 
     const submitApplication = async(e)=>{
     e.preventDefault(); //prevent reloading
     const formData = new FormData(e.currentTarget);
@@ -16,9 +16,9 @@ const Death = () => {
     // const getId = await axios.get("http://localhost:9000/api/deathApplication")
     // console.log(getId)
     // return
-    setUserApplicationId(prevId => prevId + 1);
+    setApplicationId(prevId => prevId + 1);
       // Add userApplicationId to form data
-      data.userApplicationId = userApplicationId;
+      data.userApplicationId = applicationId;
     try{
       const response = await axios.post("http://localhost:9000/api/deathRegistration",data);
       // const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);

@@ -10,11 +10,24 @@ const AdminHome = () => {
   const [showDeath, setShowDeath] = useState(false);
   const [showDashboard,setShowDashboard] = useState(false);
   const [deathApplications, setDeathApplications] = useState([]);
+  
+  const [totalBirth, setTotalBirth] = useState([]);
+  const [totalDeath, setTotalDeath] = useState([]);
 
-  const handleDashboardClick =()=>{
+  const handleDashboardClick =async()=>{
     setShowDashboard(true);
     setShowBirth(false);
     setShowDeath(false);
+    try {
+      const response1 = await axios.get("http://localhost:9000/admin/death");
+      // const response2 = await axios.get("http://localhost:9000/admin/birth");
+      setTotalDeath(response1.data.data)
+      console.log(totalDeath)
+      console.log(totalDeath.length)
+      
+  } catch (error) {
+      console.log(error)
+  }
   }
   const handleBirthClick =()=>{
     setShowBirth(true);
@@ -86,8 +99,8 @@ const AdminHome = () => {
                     <div className="adminDashboard">
                       <h1>Admin Dashboard</h1>
                       <div className="totalApplications">
-                        <h4>Total Death Applications:</h4>
-                        <h4>Total Birth Applications:</h4>
+                        <h4>Total Death Applications: <i style={{color:"red"}}>{totalDeath.length}</i></h4>
+                        <h4>Total Birth Applications: <i style={{color:"red"}}>{totalBirth.length}</i></h4>
                       </div>
                     </div>
                   )}
