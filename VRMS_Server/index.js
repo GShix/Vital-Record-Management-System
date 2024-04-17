@@ -35,6 +35,8 @@ const birthRegistrationRoute = require('./routes/user/userBirthRoutes')
 const adminLoginRoute = require("./routes/admin/authRoutes")
 const adminApplicationRoute =require('./routes/admin/adminApplicationsRoutes');
 const Admin = require('./model/adminModel');
+const sendMail = require('./services/SendMail');
+const Birth = require('./model/birthModel');
 
 //api for admin login
 // app.post('/vrms/admin/login',adminLoginRoute)
@@ -87,9 +89,53 @@ app.get("/admin/death",async(req,res)=>{
         data  : []
     })
 })
+//admin birth
+app.get("/admin/birth",async(req,res)=>{
+    // const adminName = req.user.adminName
+    // const deathApplications = await Death.find({_id:{$ne:adminName}})
+    const birthApplications = await Birth.find();
+    if(birthApplications.length !==0){
+        return res.status(200).json({
+            message:"Birth Applications fetched successfully",
+            data: birthApplications
+        })
+    }
+    res.status(404).json({
+        message : "User Collection is empty",
+        data  : []
+    })
+})
 
 //API for Death Registration
 // app.post("/api/deathRegistration",deathRegistrationRoute)
+app.post("/api/deathRegistration",async(req, res) => {
+    try {
+        const { birthCertNo,decedentFirstName,decedentMiddleName,decedentLastName,birthDate,deathDate,gender,causeOfDeath,birthDistrict,birthMunicipality,birthVillage,birthWardno,deathDistrict,deathMunicipality,deathVillage,deathWardno,decedentCitishipIssuedDate,decedentCitishipIssuedDist,decedentCitizenshipNo,deathEducation,decedentFather,decedentMother,grandFather} = req.body
+    const {userEmail} = req.body
+
+    if(!birthCertNo,!decedentFirstName,!decedentMiddleName,!decedentLastName,!birthDate,!deathDate,!gender,!causeOfDeath,!birthDistrict,!birthMunicipality,!birthVillage,!birthWardno,!deathDistrict,!deathMunicipality,!deathVillage,!deathWardno,decedentCitishipIssuedDate,!decedentCitishipIssuedDist,!decedentCitizenshipNo,!deathEducation,!decedentFather,!decedentMother,!grandFather,!userEmail){
+        res.status(400).json({
+            message:"Please fill the form"
+        })
+    }
+    await Death.create({
+        birthCertNo,decedentFirstName,decedentMiddleName,decedentLastName,birthDate,deathDate,gender,causeOfDeath,birthDistrict,birthMunicipality,birthVillage,birthWardno,deathDistrict,deathMunicipality,deathVillage,deathWardno,decedentCitishipIssuedDate,decedentCitishipIssuedDist,decedentCitizenshipNo,deathEducation,decedentFather,decedentMother,grandFather,userEmail
+    })
+    await sendMail({
+        email :userEmail,
+        subject : "Your Application for Death Registration",
+        message : "Thank You, we have successfully received your application for Death Registration. Please visit our office within 7 days"
+    })
+    res.status(201).json({
+        message:"Death Registered"
+    })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Internal Server Error"
+        });
+    }
+})
 
 app.get("/api/deathApplication/:userApplicationId",async(req,res)=>{
     const {userApplicationId} = req.params

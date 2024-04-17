@@ -52,8 +52,7 @@ const deathSchema = new Schema({
         default:"underreview"
     },
     userApplicationId:{
-        type:Number,
-        required:true
+        type:Number
     },
     otp : {
         type : Number,
