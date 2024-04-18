@@ -6,7 +6,7 @@ const birthSchema = new Schema({
     lastName:{type:String},
     middleName:{type:String},
     birthDate:{type:Date},
-    birthTime:{type:Date},
+    birthTime:{type:String},
     birthPlace:{type:String},
     babyGender:{type:String},
     birthType:{type:String},

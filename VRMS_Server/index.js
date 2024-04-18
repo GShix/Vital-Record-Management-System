@@ -8,6 +8,8 @@ const bcrypt = require("bcryptjs")
 //Connect Database
 connectDatabase(process.env.Mongoose_URI);
 
+const shortId = require("shortid")
+
 //Telling node to understand json 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
@@ -29,6 +31,7 @@ app.get('/', (req, res) => {
 
 //api router
 const Death = require('./model/deathModel');
+const Birth = require('./model/birthModel');
 
 const deathRegistrationRoute =require('./routes/user/userDeathRoutes');
 const birthRegistrationRoute = require('./routes/user/userBirthRoutes')
@@ -36,7 +39,6 @@ const adminLoginRoute = require("./routes/admin/authRoutes")
 const adminApplicationRoute =require('./routes/admin/adminApplicationsRoutes');
 const Admin = require('./model/adminModel');
 const sendMail = require('./services/SendMail');
-const Birth = require('./model/birthModel');
 
 //api for admin login
 // app.post('/vrms/admin/login',adminLoginRoute)
@@ -118,7 +120,13 @@ app.post("/api/deathRegistration",async(req, res) => {
             message:"Please fill the form"
         })
     }
+    
+    // Generate a short ID
+    const id = shortId.generate();
+    const userApplicationId = parseInt(id, 36);
+
     await Death.create({
+        userApplicationId,
         birthCertNo,decedentFirstName,decedentMiddleName,decedentLastName,birthDate,deathDate,gender,causeOfDeath,birthDistrict,birthMunicipality,birthVillage,birthWardno,deathDistrict,deathMunicipality,deathVillage,deathWardno,decedentCitishipIssuedDate,decedentCitishipIssuedDist,decedentCitizenshipNo,deathEducation,decedentFather,decedentMother,grandFather,userEmail
     })
     await sendMail({
@@ -165,7 +173,29 @@ app.get("/api/deathApplication/:userApplicationId",async(req,res)=>{
 })
 
 //API for Birth Registration
-// app.post('/api/birthRegistration',birthApplicationRoute)
+app.post("/api/birthRegistration",async(req, res) => {
+    const {firstName,lastName,middleName,birthDate,birthTime,birthPlace,babyGender,birthType,babyWeight,birthDistrict,birthMunicipality,birthWardno,birthVillage,grandFather,babyFatherFirstName,babyFatherMiddleName,babyFatherLastName,babyMotherFirstName,babyMotherMiddleName,babyMotherLastName,parentMunicipality,parentDistrict,parentVillage,parentWardno,parentHouseno,parentFatherAge,parentMotherAge,parentFatherCitizenshipno,parentFatherCitizenshipDistrict,parentFatherCitizenshipDate,parentMotherCitizenshipno,parentMotherCitizenshipDistrict,parentMotherCitizenshipDate,fatherEducation,fatherMotherTongue,fatherOccupation,fatherReligion,motherEducation,motherMotherTongue,motherOccupation,motherReligion,userEmail} = req.body
+    
+    const id = shortId.generate();
+    const userApplicationId = parseInt(id, 36);
+
+    try {
+        await Birth.create({
+            userApplicationId,
+            firstName,lastName,middleName,birthDate,birthTime,birthPlace,babyGender,birthType,babyWeight,birthDistrict,birthMunicipality,birthWardno,birthVillage,grandFather,babyFatherFirstName,babyFatherMiddleName,babyFatherLastName,babyMotherFirstName,babyMotherMiddleName,babyMotherLastName,parentMunicipality,parentDistrict,parentVillage,parentWardno,parentHouseno,parentFatherAge,parentMotherAge,parentFatherCitizenshipno,parentFatherCitizenshipDistrict,parentFatherCitizenshipDate,parentMotherCitizenshipno,parentMotherCitizenshipDistrict,parentMotherCitizenshipDate,fatherEducation,fatherMotherTongue,fatherOccupation,fatherReligion,motherEducation,motherMotherTongue,motherOccupation,motherReligion,userEmail
+        })
+        await sendMail({
+            email :userEmail,
+            subject : "Your Application for Birth Registration",
+            message : "Thank You, we have successfully received your application for Birth Registration. Please visit our office within 7 days"
+        })
+        res.status(201).json({
+            message:"Birth Registered"
+        })
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 
 //Listen request at server
