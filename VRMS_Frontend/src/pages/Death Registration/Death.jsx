@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
@@ -7,31 +7,48 @@ import { useNavigate } from 'react-router-dom';
 const Death = () => {
     const Navigate = useNavigate();
     const [date, setDate] = useState('');
-    const [applicationId, setApplicationId] = useState(100); 
+    const [applicationId, setApplicationId] = useState(0); 
+
+
+    // const fetchSubmittedApp =async()=>{
+    //   try {
+    //     const response = await axios.get("http://localhost:9000/admin/death")
+    //     const allDeathApp = response.data.data
+    //     console.log(allDeathApp)
+    //     let maxId = 100;
+    //     allDeathApp.forEach(application => {
+    //         if (application.userApplicationId > maxId) {
+    //             maxId = application.userApplicationId;
+    //         }
+    //     });
+    //     setApplicationId(maxId+1)
+    //     // console.log(applicationId)
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // }
+    // useEffect(()=>{
+    //   fetchSubmittedApp();
+    // },[])
+
     const submitApplication = async(e)=>{
-    e.preventDefault(); //prevent reloading
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData)
-      
-    // const getId = await axios.get("http://localhost:9000/api/deathApplication")
-    // console.log(getId)
-    // return
-    setApplicationId(prevId => prevId + 1);
-      // Add userApplicationId to form data
-      data.userApplicationId = applicationId;
-    try{
-      const response = await axios.post("http://localhost:9000/api/deathRegistration",data);
-      // const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
-      if(response.status==201){
-        alert("You Application is Successfully Submitted")
-        Navigate('/')
-      }else{
-        alert("Error submitting form")
+      e.preventDefault(); //prevent reloading
+      const formData = new FormData(e.currentTarget);
+      const data = Object.fromEntries(formData)
+      try{
+        const response = await axios.post("http://localhost:9000/api/deathRegistration",data);
+        // const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
+        if(response.status==201){
+          alert("You Application is Successfully Submitted")
+          Navigate('/')
+          console.log(applicationId)
+        }else{
+          alert("Error submitting form")
+        }
+        
+      }catch (error) {
+        console.error('Error submitting form:', error);
       }
-      
-    }catch (error) {
-      console.error('Error submitting form:', error);
-    }
    
   }
   const handleDate =(e, inputName)=>{

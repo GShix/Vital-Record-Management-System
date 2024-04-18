@@ -79,6 +79,12 @@ header{
     color: black;
     border-bottom: 2px solid #2d67b4;
 }
+marquee a{
+    color: white;
+    font-size: 14px;
+    font-family: arial;
+    text-decoration: none;
+}
 .nav-list{
     background-color:white;
     padding:0 20px 0px 10px;
