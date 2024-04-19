@@ -191,10 +191,10 @@ const Birth = () => {
                 <div className="parentCitizenship">
                   <label id="one" htmlFor="parentFatherCitizenshipno"><strong>Father's </strong>Citizenship No:</label><input required type="number" className="margin-top margin-left2" name="parentFatherCitizenshipno" id="parentFatherCitizenshipno"/>
                   <label id="one" className="margin-left" htmlFor="parentFatherCitizenshipDistrict">Issued District:</label><input required type="text" className="margin-left2" name="parentFatherCitizenshipDistrict" id="parentFatherCitizenshipDistrict"/><br></br>
-                  <label id="one" htmlFor="parentFatherCitizenshipDate">Issued Date:</label><input required type="date" className="margin-top margin-left2" name="parentFatherCitizenshipDate" id="parentFatherCitizenshipDate"/><br></br>
+                  <label id="one" htmlFor="parentFatherCitizenshipDate">Issued Date:</label><input required type="date" className="margin-top margin-left2" value={date.parentFatherCitizenshipDate} onChange={(e)=>handleDate(e,"parentFatherCitizenshipDate")} name="parentFatherCitizenshipDate" id="parentFatherCitizenshipDate"/><br></br>
                   <label id="one" htmlFor="parentMotherCitizenshipno"><strong>Mother's </strong>Citizenship No:</label><input required type="number" className="margin-left2 margin-top2" name="parentMotherCitizenshipno" id="parentMotherCitizenshipno"/>
                   <label id="one" className="margin-left" htmlFor="parentMotherCitizenshipDistrict">Issued District:</label><input required type="text" className="margin-left2" name="parentMotherCitizenshipDistrict" id="parentMotherCitizenshipDistrict"/><br></br>
-                  <label id="one" htmlFor="parentMotherCitizenshipDate">Issued Date:</label><input required type="date" className="margin-top margin-left2" name="parentMotherCitizenshipDate" id="parentMotherCitizenshipDate"/>
+                  <label id="one" htmlFor="parentMotherCitizenshipDate">Issued Date:</label><input required type="date" className="margin-top margin-left2" value={date.parentMotherCitizenshipDate} onChange={(e)=>handleDate(e,"parentMotherCitizenshipDate")}  name="parentMotherCitizenshipDate" id="parentMotherCitizenshipDate"/>
                 </div>
               </div>
               <div className="parentOtherDetails margin-top2">

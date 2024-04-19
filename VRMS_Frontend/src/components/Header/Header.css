@@ -80,6 +80,7 @@ header{
     border-bottom: 2px solid #2d67b4;
 }
 marquee a{
+    transition: 4s ease ;
     color: white;
     font-size: 14px;
     font-family: arial;

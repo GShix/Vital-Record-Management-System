@@ -1,12 +1,12 @@
 .card{
     border: 2px solid white;
-    width: 260px;
+    width: 100%;
     height: 360px;
     background-color: white;
     border-radius: 9px;
 }
 .photo{
-    padding: 10px;
+    padding: 8px;
 }
 .photo img{
     width: 240px;
@@ -34,5 +34,13 @@
     .staff{
         display: flex;
         flex-wrap: wrap;
+    }
+    .card{
+        margin-bottom: 10px;
+        height: 420px;
+    }
+    .photo img{
+        width: 320px;
+        height: 300px;
     }
 }

@@ -20,10 +20,9 @@ const AdminHome = () => {
     setShowDeath(false);
     try {
       const response1 = await axios.get("http://localhost:9000/admin/death");
-      // const response2 = await axios.get("http://localhost:9000/admin/birth");
+      const response2 = await axios.get("http://localhost:9000/admin/birth");
       setTotalDeath(response1.data.data)
-      console.log(totalDeath)
-      console.log(totalDeath.length)
+      setTotalBirth(response2.data.data)
       
   } catch (error) {
       console.log(error)
@@ -48,6 +47,11 @@ const AdminHome = () => {
       console.error("Error fetching death applications:", error);
     }
   }
+  const handleVerification =async(applicationId)=>{
+    const id = applicationId;
+    const response = await axios.post(`http://localhost:9000/api/admin/birthApprobation/${id}`)
+  }
+
     // const isAuthenticated = !!Cookies.get('auth');
     // const Navigate = useNavigate();
     // useEffect(()=>{
@@ -162,8 +166,8 @@ const AdminHome = () => {
                           <span className="adminActions">
                             <h5>Admin Actions</h5>
                             <p>
-                              <button>View</button>
-                              <button>Verify</button>
+                              <button onChange={()=>handleButton()}>View</button>
+                              <button onChange={()=>handleVerification(death._id)}>Verify</button>
                             </p>
                           </span>
                         </div>
