@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import './Admin.css'
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'
+import API from '../../http';
 
 const Admin = () => {
   const Navigate = useNavigate();
@@ -15,7 +15,7 @@ const Admin = () => {
         adminPassword
       }
       // const response = await axios.post("https://vrms-server-seven.vercel.app/vrms/admin/login",authData)
-      const response = await axios.post("http://localhost:9000/vrms/admin/login",authData)
+      const response = await API.post("/vrms/admin/login",authData)
       if(response.status==200){
         const expirationTime = new Date(new Date().getTime() + 60000);
         Cookies.set('auth',JSON.stringify(authData),{expires:expirationTime});

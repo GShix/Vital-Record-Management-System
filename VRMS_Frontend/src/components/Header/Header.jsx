@@ -42,7 +42,13 @@ const Header = () => {
                     <li onClick={()=>Navigate('/')}>Home</li>
                     <li onClick={()=>Navigate('/introduction')}>Introduction</li>
                     <li onClick={()=>Navigate('/eservices')}>E-Gov Services</li>
-                    <li onClick={()=>Navigate('/')}>Download</li>
+                    <li onClick={()=>Navigate('/')}>
+                        <select style={{border:'none',textDecoration:"none"}} className="dropdown">
+                            <option id='#'>Download</option>
+                            <option id='one'>Birth Certificate</option>
+                            <option id='two'>Death Certificate</option>
+                        </select>
+                    </li>
                     <li onClick={()=>Navigate('/')}>Notices</li>
                     <li onClick={()=>Navigate('/contact')}>Contact</li>
                 </ul>

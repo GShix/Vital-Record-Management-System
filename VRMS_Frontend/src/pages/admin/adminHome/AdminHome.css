@@ -1,6 +1,9 @@
 .allDeathAppDetails p{
     color: black;
 }
+.statusVerified{
+    color: green;
+}
 .adminHome{
     height: 100vh;
     margin-top: 0;
@@ -128,7 +131,9 @@
     font-weight: lighter;
     font-size: 13px;
 }
-
+.statusVerified{
+    color: green;
+}
 @media only screen and (max-width:600px){
     .adminSidebar .logo img{
         width: 80px;

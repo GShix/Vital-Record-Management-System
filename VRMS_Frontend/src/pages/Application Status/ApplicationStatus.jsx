@@ -2,49 +2,60 @@ import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import './ApplicationStatus.css'
-import axios from 'axios'
+import API from '../http'
 const ApplicationStatus = () => {
     const [userApplicationId,setId]= useState(0);
     const [error, setError] = useState(null);
-    const [application,setApplication] = useState(0)
+    const [deathApplication,setDeathApplication] = useState(0);
+    const [birthApplication,setBirthApplication] = useState(0);
+    const [isbirthButton,clickBirthButton] = useState(false);
+    const [isdeathButton,clickDeathButton] = useState(false);
     const searchBirthApplication =async(e)=>{
         e.preventDefault();
+        clickDeathButton(false);
+        clickBirthButton(true);
+        try {
+            // const response = await axios.get(`https://vrms-server-seven.vercel.app/api/birthApplication/${userApplicationId}`);
+            const response = await API.get(`/birthApplication/${userApplicationId}`);
+
+            if (response.status === 200) {
+                setBirthApplication(response.data.brithApplication[0]);
+                console.log(birthApplication);
+                setError(null);
+            } else {
+                setBirthApplication(null);
+                setError(response.data.message);
+            }
+        } catch (error) {
+            setBirthApplication(null);
+            setError("An error occurred while fetching the application. Please try again later.");
+        }
     }
 
 
     const searchDeathApplication = async (e) => {
         e.preventDefault();
+        clickDeathButton(true);
+        clickBirthButton(false);
         try {
             // const response = await axios.get(`https://vrms-server-seven.vercel.app/api/deathApplication/${userApplicationId}`);
-            const response = await axios.get(`http://localhost:9000/api/deathApplication/${userApplicationId}`);
-            console.log(response.deathApplication[0])
-            return
+            const response = await API.get(`/deathApplication/${userApplicationId}`);
             
-            if (response.status === 200 || response.status ==304) {
-                setApplication(response.data);
-                console.log(application);
+            if (response.status === 200) {
+                console.log(response)
+                setDeathApplication(response.data.deathApplication[0]);
+                console.log(deathApplication);
                 setError(null);
             } else {
-                setApplication(null);
+                setDeathApplication(null);
                 setError(response.data.message);
             }
         } catch (error) {
-            setApplication(null);
+            setDeathApplication(null);
             setError("An error occurred while fetching the application. Please try again later.");
         }
     }
 
-    // useEffect(()=>{
-    //     searchDeathApplication();
-
-    // },[])
-    // const searchDeathApplication =async(e)=>{
-    //     e.preventDefault();
-
-    //     const response = await axios.get(`http://localhost:9000/api/deathApplication/:${userApplicationId}`);
-    //     console.log(response)
-        
-    // }
   return (
     <div>
         <div className="checkApplicationStatus">
@@ -60,7 +71,17 @@ const ApplicationStatus = () => {
                         </div>
                     </div>
                     <div className="statusOfApplication">
-                        {/* <h6>Your Death Application Status is <span id='statusStyle'>{application.deathApplication[0].applicationStatus}</span></h6> */}
+                        {isbirthButton && (
+                            <div className="birthAppStatus">
+                            <h6>Your Birth Application Status is <span id='statusStyle'>{birthApplication?.applicationStatus}</span></h6>
+                        </div>
+                        )}
+                        {/*  */}
+                        {isdeathButton && (
+                            <div className="deathAppStatus">
+                            <h6>Your Death Application Status is <span id='statusStyle'>{deathApplication?.applicationStatus}</span></h6>
+                        </div>
+                        )}
                     </div>
                 </div>
                 

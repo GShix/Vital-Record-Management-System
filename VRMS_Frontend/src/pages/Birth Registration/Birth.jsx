@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./Birth.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import API from "../http";
 
 const Birth = () => {
   const Navigate = useNavigate();
@@ -16,7 +16,7 @@ const Birth = () => {
     const data = Object.fromEntries(formData)
 
     try{
-        const response = await axios.post("http://localhost:9000/api/birthRegistration",data);
+        const response = await API.post("/birthRegistration",data);
         // const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
         if(response.status==201){
           alert("You Application is Successfully Submitted")

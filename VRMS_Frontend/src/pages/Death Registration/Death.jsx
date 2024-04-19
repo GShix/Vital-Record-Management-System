@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import axios from "axios";
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import './Death.css'
 import { useNavigate } from 'react-router-dom';
+import API from '../http';
 const Death = () => {
     const Navigate = useNavigate();
     const [date, setDate] = useState('');
@@ -36,7 +36,7 @@ const Death = () => {
       const formData = new FormData(e.currentTarget);
       const data = Object.fromEntries(formData)
       try{
-        const response = await axios.post("http://localhost:9000/api/deathRegistration",data);
+        const response = await API.post("api/deathRegistration",data);
         // const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
         if(response.status==201){
           alert("You Application is Successfully Submitted")

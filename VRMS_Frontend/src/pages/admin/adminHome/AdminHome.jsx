@@ -4,12 +4,14 @@ import Cookies from 'js-cookie';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import BarLoader from "react-spinners/BarLoader";
+import API from '../../http';
 const AdminHome = () => {
   const [loading, setLoading]=useState(false);
   const [showBirth, setShowBirth] = useState(false);
   const [showDeath, setShowDeath] = useState(false);
   const [showDashboard,setShowDashboard] = useState(false);
   const [deathApplications, setDeathApplications] = useState([]);
+  const [birthApplications, setBirthApplications] = useState([]);
   
   const [totalBirth, setTotalBirth] = useState([]);
   const [totalDeath, setTotalDeath] = useState([]);
@@ -19,8 +21,8 @@ const AdminHome = () => {
     setShowBirth(false);
     setShowDeath(false);
     try {
-      const response1 = await axios.get("http://localhost:9000/admin/death");
-      const response2 = await axios.get("http://localhost:9000/admin/birth");
+      const response1 = await API.get("/admin/death");
+      const response2 = await API.get("/admin/birth");
       setTotalDeath(response1.data.data)
       setTotalBirth(response2.data.data)
       
@@ -28,28 +30,47 @@ const AdminHome = () => {
       console.log(error)
   }
   }
-  const handleBirthClick =()=>{
+  const handleBirthClick =async()=>{
     setShowBirth(true);
     setShowDeath(false);
     setShowDashboard(false);
+    try {
+      const response = await API.get("/admin/birth");
+      setBirthApplications(response.data.data); // Update deathApplications state with fetched data
+      // console.log(birthApplications)
+    } catch (error) {
+      console.error("Error fetching death applications:", error);
+    }
   }
   const handleDeathClick =async()=>{
     setShowBirth(false);
     setShowDeath(true);
     setShowDashboard(false);
-    // const deathApplications = await axios.get("https://vrms-server-seven.vercel.app/api/admin/deathApplications")
     try {
-      const response = await axios.get("http://localhost:9000/admin/death");
+      const response = await API.get("/admin/death");
       setDeathApplications(response.data.data); // Update deathApplications state with fetched data
-      console.log(deathApplications)
-      console.log(deathApplications.userApplicationId)
+      // console.log(deathApplications)
     } catch (error) {
       console.error("Error fetching death applications:", error);
     }
   }
-  const handleVerification =async(applicationId)=>{
-    const id = applicationId;
-    const response = await axios.post(`http://localhost:9000/api/admin/birthApprobation/${id}`)
+  const handleBirthVerification =async(applicationId)=>{
+    try {
+      const id = applicationId;
+      console.log(id)
+    const response = await API.post(`/admin/birthVerification/${id}`)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const handleDeathVerification =async(applicationId)=>{
+    try {
+      const id = applicationId;
+      console.log(id)
+    const response = await API.post(`/admin/deathVerification/${id}`)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
     // const isAuthenticated = !!Cookies.get('auth');
@@ -112,31 +133,38 @@ const AdminHome = () => {
                     {showBirth && (
                       <div className="allBirthApplications">
                         <h3>All Birth Applications</h3>
-                        <div className="allBirthAppDetails">
+                        {
+                          birthApplications.map((birth)=>{
+                            // console.log(birth._id)
+                            return (
+                              <div key={birth._id} className="allBirthAppDetails">
                           <span style={{border:"none"}} className="applicationId">
                             <h5>Application ID</h5>
-                            <p>1</p>
+                            <p>{birth.userApplicationId}</p>
                           </span>
                           <span className='childFullName'>
                             <h5>Child's Full Name</h5>
-                            <p>Hari OM</p>
+                            <p>{birth.firstName} {birth.middleName} {birth.lastName} </p>
                             </span>
                           <span className="childBOD">
                             <h5>Child Birth Date</h5>
-                            <p>2020002</p>
+                            <p>{birth.birthDate}</p>
                           </span>
                           <span className="applicationsStatus">
                             <h5>Application Status</h5>
-                            <p>Under Review</p>
+                            <p className={birth.applicationStatus==='verified'?"statusVerified":" "}>{birth.applicationStatus}</p>
                           </span>
                           <span className="adminActions">
                             <h5>Admin Actions</h5>
                             <p>
-                              <button>View</button>
-                              <button>Verify</button>
+                              <button onClick={()=>handleBirthView(birth._id)}>View</button>
+                              <button onClick={()=>handleBirthVerification(birth._id)}>Verify</button>
                             </p>
                           </span>
                         </div>
+                            )
+                          })
+                        }
                     </div>
                     )}
                     {/* Death */}
@@ -166,8 +194,8 @@ const AdminHome = () => {
                           <span className="adminActions">
                             <h5>Admin Actions</h5>
                             <p>
-                              <button onChange={()=>handleButton()}>View</button>
-                              <button onChange={()=>handleVerification(death._id)}>Verify</button>
+                              <button onClick={()=>handleDeathView()}>View</button>
+                              <button onClick={()=>handleDeathVerification(death._id)}>Verify</button>
                             </p>
                           </span>
                         </div>
