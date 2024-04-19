@@ -5,7 +5,10 @@ const birthSchema = new Schema({
     firstName:{type:String},
     lastName:{type:String},
     middleName:{type:String},
-    birthDate:{type:Date},
+    birthDate:
+    {
+        type:Date
+    },
     birthTime:{type:String},
     birthPlace:{type:String},
     babyGender:{type:String},

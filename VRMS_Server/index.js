@@ -42,7 +42,7 @@ const sendMail = require('./services/SendMail');
 
 //api for admin login
 // app.post('/vrms/admin/login',adminLoginRoute)
-app.post("/vrms/admin/login", async(req,res)=>{
+app.post("/api/vrms/admin/login", async(req,res)=>{
     const {adminName,adminPassword}=req.body
     if(!adminName ||!adminPassword){
         return res.status(400).json({
@@ -76,7 +76,7 @@ app.post("/vrms/admin/login", async(req,res)=>{
 
 // for admin
 // app.get("/admin",adminApplicationRoute)
-app.get("/admin/death",async(req,res)=>{
+app.get("/api/admin/death",async(req,res)=>{
     // const adminName = req.user.adminName
     // const deathApplications = await Death.find({_id:{$ne:adminName}})
     const deathApplications = await Death.find();
@@ -92,7 +92,7 @@ app.get("/admin/death",async(req,res)=>{
     })
 })
 //admin birth
-app.get("/admin/birth",async(req,res)=>{
+app.get("/api/admin/birth",async(req,res)=>{
     // const adminName = req.user.adminName
     // const deathApplications = await Death.find({_id:{$ne:adminName}})
     const birthApplications = await Birth.find();
@@ -107,6 +107,53 @@ app.get("/admin/birth",async(req,res)=>{
         data  : []
     })
 })
+//API for application approbation
+app.post("/api/admin/birthVerification/:id",async(req,res)=>{
+    const {id} = req.params
+    const applicationFound = await Birth.findById(id)
+    if(!applicationFound ){
+        return res.status(400).json({
+            messageL:"No application with this id"
+        })
+    }
+    if(!applicationFound.applicationStatus || !['underreview','rejected','verified'].includes(applicationFound.applicationStatus.toLowerCase())){
+        return res.status(400).json({
+            message:"Invalid Application Status"
+        })
+    }
+    const updateStatus = await Birth.findByIdAndUpdate(id,{
+        applicationStatus:"verified"
+    },{new:true})
+    res.status(200).json({
+        message:"Order updated",
+        data:updateStatus
+    })
+
+})
+
+app.post("/api/admin/deathVerification/:id",async(req,res)=>{
+    const {id} = req.params
+    const applicationFound = await Death.findById(id)
+    if(!applicationFound ){
+        return res.status(400).json({
+            messageL:"No application with this id"
+        })
+    }
+    if(!applicationFound.applicationStatus || !['underreview','rejected','verified'].includes(applicationFound.applicationStatus.toLowerCase())){
+        return res.status(400).json({
+            message:"Invalid Application Status"
+        })
+    }
+    const updateStatus = await Death.findByIdAndUpdate(id,{
+        applicationStatus:"verified"
+    },{new:true})
+    res.status(200).json({
+        message:"Order updated",
+        data:updateStatus
+    })
+
+})
+
 
 //API for Death Registration
 // app.post("/api/deathRegistration",deathRegistrationRoute)
@@ -148,22 +195,22 @@ app.post("/api/deathRegistration",async(req, res) => {
 app.get("/api/deathApplication/:userApplicationId",async(req,res)=>{
     const {userApplicationId} = req.params
     try{
-        if(!userApplicationId){
+        if(!userApplicationId || userApplicationId ==0){
             return res.status(400).json({
                 message:"Enter your application id"
             })
         }
         const applicationIdFound = await Death.find({userApplicationId:userApplicationId})
-        console.log(applicationIdFound)
-        
-        res.status(200).json({
-            message:"Application fetched successfully",
-            deathApplication: applicationIdFound
-        })
-        return
+        // console.log(applicationIdFound)
+        if(applicationIdFound.length!==0){
+            return res.status(200).json({
+                message:"Death Application fetched successfully",
+                deathApplication: applicationIdFound
+            })
+        }
         if(applicationIdFound.length==0){
             return res.status(404).json({
-                message:"No application found with the provided ID"
+                message:"No application found with the this ID"
             })
         }
     }catch (error) {
@@ -187,7 +234,9 @@ app.post("/api/birthRegistration",async(req, res) => {
         await sendMail({
             email :userEmail,
             subject : "Your Application for Birth Registration",
-            message : "Thank You, we have successfully received your application for Birth Registration. Please visit our office within 7 days"
+            message : `Thank You, we have successfully received your application for Birth Registration. 
+            Here is your Application ID: ${userApplicationId}
+            Please be patience till your application is approved. `
         })
         res.status(201).json({
             message:"Birth Registered"
@@ -197,6 +246,32 @@ app.post("/api/birthRegistration",async(req, res) => {
     }
 })
 
+app.get("/api/birthApplication/:userApplicationId",async(req,res)=>{
+    const {userApplicationId} = req.params
+    try{
+        if(!userApplicationId || userApplicationId ==0){
+            return res.status(400).json({
+                message:"Enter your application id"
+            })
+        }
+        const applicationIdFound = await Birth.find({userApplicationId:userApplicationId})
+        // console.log(applicationIdFound)
+        if(applicationIdFound.length!==0){
+            return res.status(200).json({
+                message:"Birth Application fetched successfully",
+                brithApplication: applicationIdFound
+            })
+        }
+        if(applicationIdFound.length==0){
+            return res.status(404).json({
+                message:"No application found with the this ID"
+            })
+        }
+    }catch (error) {
+        console.error("Error fetching death application:", error);
+    }
+
+})
 
 //Listen request at server
 app.listen(9000, (req, res) => {
