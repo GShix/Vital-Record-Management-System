@@ -16,6 +16,7 @@
     background-color: white;
 }
 .adminSidebar{
+    height: 100vh;
     width: 150px;
     border-right: 5px solid #f3f4f6;
 }
@@ -44,12 +45,13 @@
 .adminSide button:hover{
     background-color: #2a5690;
 }
-#adminMain{
+.adminMain{
     margin-top: 5px;
     margin-left: 5px;
     margin-right: 2px;
     background-color: #f3f4f6;
     width: 86%;
+    height: 100vh;
     color: red;
 }
 #adminMain h1{
@@ -66,7 +68,7 @@
 }
 
 .mainApplications{
-    height: 70vh;
+    height: 100%;
     background-color: #fff;
     
 }
@@ -133,6 +135,27 @@
 }
 .statusVerified{
     color: green;
+}
+.singleDeath label, .singleBirth label{
+    font-weight: lighter;
+    font-size: 12px;
+}
+#singleSmallSpan{
+    color:red;
+    font-size: 12px;
+    border: none;
+    font-weight: lighter;
+  }
+.birthApplication ,.deathApplication{
+    padding: 10px 20px;
+    margin: 5px 0;
+    background-color: white;
+    justify-content: center;
+    width: 820px;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    color: black;
 }
 @media only screen and (max-width:600px){
     .adminSidebar .logo img{

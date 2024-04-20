@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './AdminHome.css'
 import Cookies from 'js-cookie';
-import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import BarLoader from "react-spinners/BarLoader";
 import API from '../../http';
@@ -15,11 +14,20 @@ const AdminHome = () => {
   
   const [totalBirth, setTotalBirth] = useState([]);
   const [totalDeath, setTotalDeath] = useState([]);
+  const [isSingleBirth, setSingleBirth] = useState(false);
+  const [isSingleDeath, setSingleDeath] = useState(false);
+  const [singleDeathShow,setSingleDeathShow]= useState([]);
+  const [singleBirthShow,setSingleBirthShow]= useState([]);
 
+  // useEffect(()=>{
+  //   setShowDashboard(true);
+  // },[])
   const handleDashboardClick =async()=>{
     setShowDashboard(true);
     setShowBirth(false);
     setShowDeath(false);
+    setSingleBirth(false);
+    setSingleDeath(false);
     try {
       const response1 = await API.get("/admin/death");
       const response2 = await API.get("/admin/birth");
@@ -34,10 +42,11 @@ const AdminHome = () => {
     setShowBirth(true);
     setShowDeath(false);
     setShowDashboard(false);
+    setSingleBirth(false);
+    setSingleDeath(false);
     try {
       const response = await API.get("/admin/birth");
-      setBirthApplications(response.data.data); // Update deathApplications state with fetched data
-      // console.log(birthApplications)
+      setBirthApplications(response.data.data); 
     } catch (error) {
       console.error("Error fetching death applications:", error);
     }
@@ -46,44 +55,133 @@ const AdminHome = () => {
     setShowBirth(false);
     setShowDeath(true);
     setShowDashboard(false);
+    setSingleBirth(false);
+    setSingleDeath(false);
     try {
       const response = await API.get("/admin/death");
-      setDeathApplications(response.data.data); // Update deathApplications state with fetched data
-      // console.log(deathApplications)
+      setDeathApplications(response.data.data);
     } catch (error) {
       console.error("Error fetching death applications:", error);
     }
   }
-  const handleBirthVerification =async(applicationId)=>{
+  //application verification
+  const handleBirthVerification =async(applicationId,appStatus,uid)=>{
+    
+    setShowDashboard(false);
     try {
       const id = applicationId;
-      console.log(id)
-    const response = await API.post(`/admin/birthVerification/${id}`)
+      const applicationStatus = appStatus
+      const userApplicationId = uid
+      if(applicationStatus =="verified"){
+        alert(`Application with id: ${userApplicationId} is already verified`)
+      }else{
+        const response = await API.post(`/admin/deathVerification/${id}`)
+        alert(`Application with id: ${userApplicationId} is verified successfully`)
+      
+      }
+    
     } catch (error) {
       console.log(error)
     }
   }
-  const handleDeathVerification =async(applicationId)=>{
+  const handleDeathVerification =async(applicationId,appStatus,uid)=>{
+    setShowDeath(true);
+    setShowDashboard(false);
+    setSingleBirth(false);
+    setShowBirth(false);
+    setShowDashboard(false);
+    setSingleDeath(false);
     try {
       const id = applicationId;
-      console.log(id)
-    const response = await API.post(`/admin/deathVerification/${id}`)
+      const applicationStatus = appStatus
+      const userApplicationId = uid
+      if(applicationStatus =="verified"){
+        alert(`Application with id: ${userApplicationId} is already verified`)
+      }else{
+        const response = await API.post(`/admin/deathVerification/${id}`)
+        alert(`Application with id: ${userApplicationId} is verified successfully`)
+      
+      }
+    
     } catch (error) {
       console.log(error)
     }
   }
 
-    // const isAuthenticated = !!Cookies.get('auth');
-    // const Navigate = useNavigate();
-    // useEffect(()=>{
-    //   if(!isAuthenticated){
-    //     Navigate('/vrms-admin');
-    //   }
-    //   setLoading(true);
-    //   setTimeout(()=>{
-    //     setLoading(false)
-    //   },2000)
-    // },[])
+  //single application click
+  const handleSingleDeath =async(uid)=>{
+    setSingleBirth(false);
+    setShowBirth(false);
+    setShowDeath(false);
+    setShowDashboard(false);
+    setSingleDeath(true);
+    const userAppId = uid
+    try {
+      const response = await API.get(`/deathApplication/${userAppId}`)
+      setSingleDeathShow(response.data.deathApplication[0])
+    } catch (error) {
+      
+    }
+  }
+  const handleSingleBirth = async(uid)=>{
+    setSingleBirth(true);
+    setShowBirth(false);
+    setShowDeath(false);
+    setShowDashboard(false);
+    setSingleDeath(false);
+    const userAppId = uid
+    try {
+      const response = await API.get(`/birthApplication/${userAppId}`)
+      // console.log(response)
+      const data = response.data.birthApplication;
+      setSingleBirthShow(data)
+      console.log(singleBirthShow)
+      
+    } catch (error) {
+      
+    }
+  }
+  //deathRejection
+  const handleDeathRejection =async(uid)=>{
+    setShowDashboard(false);
+    const id = uid;
+    try {
+      const response = await API.post(`/admin/deathRejection/${id}`);
+      console.log(response)
+      if(response.status ==200){
+        alert(`Application with id: ${id} is rejected successfully`)
+      }
+    } catch (error) {
+      
+    }
+  }
+  //birthRejection
+  const handleBirthRejection =async(uid)=>{
+    setShowDashboard(false);
+    const id = uid;
+    try {
+      const response = await API.post(`/admin/birthRejection/${id}`);
+      if(response.status ==200){
+        alert(`Application with id: ${id} is rejected successfully`)
+      }
+    } catch (error) {
+      
+    }
+  }
+
+    
+  //auth authentication
+  // const isAuthenticated = !!Cookies.get('auth');
+  //   const Navigate = useNavigate();
+  //   useEffect(()=>{
+  //     if(!isAuthenticated){
+  //       Navigate('/vrms-admin');
+  //     }
+  //     setLoading(true);
+  //     setTimeout(()=>{
+  //       setLoading(false)
+  //     },2000)
+  //   },[])
 
     var handleLogout =()=>{
       Cookies.remove('auth');
@@ -115,7 +213,7 @@ const AdminHome = () => {
                     <button id='adminLogOutBtn' onClick={handleLogout}>Log Out</button>
                 </div>
             </div>
-            <div id='adminMain'>
+            <div className='adminMain'>
                 <h1>Babai Rural Municipality</h1>
                 <h2>Office of Municipal Executive, Dang, Lumbini Province</h2>
                 <div className="mainApplications">
@@ -135,7 +233,6 @@ const AdminHome = () => {
                         <h3>All Birth Applications</h3>
                         {
                           birthApplications.map((birth)=>{
-                            // console.log(birth._id)
                             return (
                               <div key={birth._id} className="allBirthAppDetails">
                           <span style={{border:"none"}} className="applicationId">
@@ -157,8 +254,8 @@ const AdminHome = () => {
                           <span className="adminActions">
                             <h5>Admin Actions</h5>
                             <p>
-                              <button onClick={()=>handleBirthView(birth._id)}>View</button>
-                              <button onClick={()=>handleBirthVerification(birth._id)}>Verify</button>
+                              {/* <button onClick={()=>handleSingleBirth(birth.userApplicationId)}>View</button> */}
+                              <button onClick={()=>handleBirthVerification(birth._id,birth.applicationStatus,birth.userApplicationId)}>Verify</button>
                             </p>
                           </span>
                         </div>
@@ -194,8 +291,8 @@ const AdminHome = () => {
                           <span className="adminActions">
                             <h5>Admin Actions</h5>
                             <p>
-                              <button onClick={()=>handleDeathView()}>View</button>
-                              <button onClick={()=>handleDeathVerification(death._id)}>Verify</button>
+                              <button onClick={()=>handleSingleDeath(death.userApplicationId)}>View</button>
+                              <button onClick={()=>handleDeathVerification(death._id,death.applicationStatus,death.userApplicationId)}>Verify</button>
                             </p>
                           </span>
                         </div>
@@ -204,6 +301,234 @@ const AdminHome = () => {
                         }
                     </div>
                     )}
+
+                  {isSingleDeath && (
+                    <div className="singleDeath">
+                      <div className="allDeathApplications">
+                    <h3>ID:<i>{singleDeathShow.userApplicationId}</i> Death Applications</h3>
+                      <div className="deathData">
+                          <div className="deathApplication">
+                            <div className="death-details">
+                              <span>Decedent's Details</span>
+                              <div className="decedent-birth-certi-no margin-btm margin-top">
+                                <label htmlFor='birthCertNo'>Birth Certificate No.: <span id='singleSmallSpan'>{singleDeathShow.birthCertNo}</span> </label>
+                              </div>
+                              <div className="decedent-name">
+                                <label  htmlFor="decedentFirstName">First Name: <span id='singleSmallSpan'>{singleDeathShow.decedentFirstName}</span>
+                                </label>
+                                <label className="margin-left"  htmlFor="decedentMiddleName">Middle Name: <span id='singleSmallSpan'>{singleDeathShow.decedentMiddleName}</span>
+                                </label>
+                                <label className="margin-left"  htmlFor="decedentLastName">Last Name: <span id='singleSmallSpan'>{singleDeathShow.decedentLastName}</span>
+                                </label>
+                              </div>
+                              <div className="birth-death-date margin-top3">
+                                <label  htmlFor="birthDate">Birth Date: <span id='singleSmallSpan'>{singleDeathShow.birthDate}</span>
+                                </label>
+                                <label className="margin-left"  htmlFor="deathDate">Death Date: <span id='singleSmallSpan'>{singleDeathShow.deathDate}</span>
+                                </label>
+                              </div>
+                              <div className="death-gender margin-top">
+                              <label htmlFor="Gender">Gender: <span id='singleSmallSpan'>{singleDeathShow.gender}</span> </label>
+                              </div>
+                              <div className="cause-of-death margin-top">
+                              <label  htmlFor="causeOfDeath">Cause of Death: <span id='singleSmallSpan'>{singleDeathShow.causeOfDeath}</span> </label>
+                              </div>
+                              <div className="birth-address margin-top2">
+                                <span>Birth Address(National)</span>
+                                <div className="birth-address-details">
+                                  <label htmlFor="birthDistrict" id="two">District: <span id='singleSmallSpan'>{singleDeathShow.birthDistrict}</span> </label>
+                                  <label className="margin-left" htmlFor="birthMunicipality" id="two">Municipality: <span id='singleSmallSpan'>{singleDeathShow.birthMunicipality}</span> </label>
+                                  <label className="margin-left" htmlFor="birthWardno" id="two">Ward No.: <span id='singleSmallSpan'>{singleDeathShow.birthWardno}</span> </label><br></br>
+                                  <label className="margin-top" htmlFor="birthVillage" id="two">Village: <span id='singleSmallSpan'>{singleDeathShow.birthVillage}</span> </label>
+                                </div>
+                              </div>
+                              <div className="death-address margin-top2">
+                                <span>Death Address(National)</span>
+                                <div className="death-address-details">
+                                  <label htmlFor="deathDistrict" id="two">District: <span id='singleSmallSpan'>{singleDeathShow.deathDistrict}</span> </label>
+                                  <label className="margin-left" htmlFor="deathMunicipality" id="two">Municipality: <span id='singleSmallSpan'>{singleDeathShow.deathMunicipality}</span> </label>
+                                  <label className="margin-left" htmlFor="deathWardno" id="two">Ward No.: <span id='singleSmallSpan'>{singleDeathShow.deathWardno}</span> </label><br></br>
+                                  <label className="margin-top" htmlFor="deathVillage" id="two">Village: <span id='singleSmallSpan'>{singleDeathShow.deathVillage}</span> </label>
+                                </div>
+                                <div className="death-place margin-top2">
+                                <label htmlFor="deathPlace">Death Place: <span id='singleSmallSpan'>{singleDeathShow.deathPlace}</span> </label>
+                                </div>
+                              </div>
+                              <div className="death-other-details margin-top2">
+                                <span>Other Details</span>
+                                <div className="death-citizenship margin-top">
+                                  <label htmlFor='decedentCitizenshipNo' id='one' className=''>Citizenship No.: <span id='singleSmallSpan'>{singleDeathShow.decedentCitizenshipNo}</span> </label>
+                                  <label htmlFor='decedentCitishipIssuedDist' id='one' className='margin-left'>Issued District: <span id='singleSmallSpan'>{singleDeathShow.decedentCitishipIssuedDist}</span> </label>
+                                  <label htmlFor='decedentCitishipIssuedDate' id='one' className='margin-left'>Issued Date: <span id='singleSmallSpan'>{singleDeathShow.decedentCitishipIssuedDate}</span> </label>
+                                </div>
+                                <div className="death-marrital-stat">
+                                  <label id='one'>Marrital Status: <span id='singleSmallSpan'></span></label>
+                                </div>
+                                <div className="death-edu margin-top2">
+                                  <label htmlFor='deathEducation' id='one'>Education: <span id='singleSmallSpan'>{singleDeathShow.deathEducation}</span></label>
+                                </div>
+                              </div>
+                              <div className="decedent-parent margin-top2">
+                              <span>Parent Details</span>
+                              <div className="decedent-parent-details margin-top">
+                                <div className="decedentFather">
+                                  <label  htmlFor="decedentFather">Father's Name: <span id='singleSmallSpan'>{singleDeathShow.decedentFather}</span>
+                                  </label>
+                                </div>
+                                <div className="decedentMother margin-top">
+                                  <label  htmlFor="decedentMother">Mother's Name: <span id='singleSmallSpan'>{singleDeathShow.decedentMother}</span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="grand-details margin-top2">
+                              <span>Grand Parent Details</span>
+                              <div className="grand-father margin-top">
+                                <label htmlFor="grandFather">Grand Father's Name: <span id='singleSmallSpan'>{singleDeathShow.grandFather}</span></label>
+                              </div>
+                            </div>
+                            <div className="userEmail margin-top2">
+                              <label htmlFor='userEmail'>Recipient Mail: <span id='singleSmallSpan'>{singleDeathShow.userEmail}</span></label>
+                            </div>
+                            </div>
+                          </div>
+                          <div className="submit-btn">
+                            <button onClick={()=>handleDeathVerification(singleDeathShow._id)}>Verify Application</button>
+                            <button onClick={()=>handleDeathRejection(singleDeathShow._id)}>Reject Application</button>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+                  )}
+                  {isSingleBirth && (
+                      <div className="singleBirth">
+                        <div className="allBirthApplications">
+                          <h3>ID:<i>{singleBirthShow.userApplicationId}</i> Birth Applications</h3>
+                        <div className="birthData">
+                            <div className="birthApplication">
+                                <div className="birth-details">
+                                <span>Newborn Baby's Details</span>
+                                <div className="baby-name  margin-top">
+                                  <label  htmlFor="firstName">First Name: <span id='singleSmallSpan'>{singleBirthShow.firstName}</span>
+                                  </label>
+                                  <label className="margin-left"  htmlFor="middleName">Middle Name: {singleBirthShow.middleName}
+                                  </label>
+                                  <label className="margin-left"  htmlFor="lastName">Last Name: {singleBirthShow.lastName}
+                                  </label>
+                                </div>
+                                <div className="birth-time margin-top2">
+                                  <label  htmlFor="birthDate">Date: {singleBirthShow.birthDate}
+                                  </label>
+                                  <label className="margin-left"  htmlFor="birthTime">Time: {singleBirthShow.birthTime}
+                                  </label>
+                                </div>
+                                <div className="birth-place margin-top2">
+                                  <label htmlFor="birthPlace">Birth Place: {singleBirthShow.birthPlace}</label>
+                              </div>
+                              <div className="baby-gender margin-top2">
+                                <label  htmlFor="Gender">Gender: {singleBirthShow.babyGender}</label>
+                              </div>
+                              <div className="type-of-birth margin-top2">
+                                <label  htmlFor="type-of-birth">Type of Birth: {singleBirthShow.birthType}</label>
+                              </div>
+                              <div className="baby-weight margin-top2">
+                                <label  htmlFor="baby-weight" >Baby's Weight in GM(At birth): {singleBirthShow.babyWeight}</label>
+                              </div>
+                              <div className="birth-address margin-top2">
+                                <span>Birth Address(National)</span>
+                                <div className="birth-address-details">
+                                  <label htmlFor="birth-district" id="two">District: {singleBirthShow.birthDistrict}</label>
+                                  <label className="margin-left" htmlFor="birth-municipality" id="two">Municipality: {singleBirthShow.birthMunicipality}</label>
+                                  <label className="margin-left" htmlFor="birth-wardno" id="two">Ward No.: {singleBirthShow.birthWardno}</label><br></br>
+                                  <label className="margin-top" htmlFor="birth-village" id="two">Village: {singleBirthShow.birthVillage}</label>
+                                </div>
+                                
+                              </div>
+                              <div className="grand-details margin-top2">
+                                <span>Grand Parent Details</span>
+                                <div className="grand-father margin-top">
+                                  <label  htmlFor="grand-father">Grand Father's Name: {singleBirthShow.grandFather}</label>
+                                </div>
+                              </div>
+                              <div className="baby-parent margin-top2">
+                                <span>Parent Details</span>
+                                <div className="baby-parent-details margin-top">
+                                  <label  htmlFor="baby-parent">
+                                  <div className="babyFather">
+                                    <label  htmlFor="babyFather">Father's First Name: {singleBirthShow.babyFatherFirstName}
+                                    </label>
+                                    <label  htmlFor="babyFather" className='margin-left'>Middle Name: {singleBirthShow.babyFatherMiddleName}
+                                    </label>
+                                    <label  htmlFor="babyFather" className='margin-left'>Last Name: {singleBirthShow.babyFatherLastName}
+                                    </label>
+                                  </div>
+                                  <div className="babyMother margin-top">
+                                    <label  htmlFor="babyMother">Mother's First Name: {singleBirthShow.babyMotherFirstName}
+                                    </label>
+                                    <label  htmlFor="babyMother" className='margin-left'>Middle Name: {singleBirthShow.babyMotherMiddleName}
+                                    </label>
+                                    <label  htmlFor="babyMother" className='margin-left'>Last Name: {singleBirthShow.babyMotherLastName}
+                                    </label>
+                                  </div>
+                                  </label>
+                                </div>
+                              </div>
+                              <div className="parentAddress margin-top2">
+                                  <span>Parent's Permanent Address</span>
+                                  <div className="parentAddressDetails">
+                                    <label  htmlFor="parentDistrict">District: {singleBirthShow.parentDistrict}</label>
+                                    <label className="margin-left" htmlFor="parentMunicipality">Municipality: {singleBirthShow.parentMunicipality}</label>
+                                    <label  className="margin-left" htmlFor="parentWardno">Wardno: {singleBirthShow.parentWardno}</label><br></br>
+                                    <label  htmlFor="parentVillage">Village: {singleBirthShow.parentVillage}</label>
+                                    <label  className="margin-left" htmlFor="parentHouseno">Houseno: {singleBirthShow.parentHouseno}</label>
+                                  </div>
+                              </div>
+                              <div className="parentAgeDetails margin-top2">
+                                    <span>Parent's Age</span>
+                                      <div className="parentAge">
+                                        <label  htmlFor="parentFatherAge">Father's Age: {singleBirthShow.parentFatherAge}</label>
+                                        <label  className="margin-left" htmlFor="parentMotherAge">Mother's Age: {singleBirthShow.parentMotherAge}</label>
+                                      </div>
+                              </div>
+                              <div className="parentCitizenDetails margin-top2">
+                                <span>Citizenship Number:</span>
+                                <div className="parentCitizenship">
+                                  <label  htmlFor="parentFatherCitizenshipno">Father's Citizenship No: {singleBirthShow.parentFatherCitizenshipno}</label>
+                                  <label  className="margin-left" htmlFor="parentFatherCitizenshipDistrict">Issued District: {singleBirthShow.parentFatherCitizenshipDistrict}</label><br></br>
+                                  <label  htmlFor="parentFatherCitizenshipDate">Issued Date: {singleBirthShow.parentFatherCitizenshipDate}</label><br></br>
+                                  <label  htmlFor="parentMotherCitizenshipno">Mother's Citizenship No: {singleBirthShow.parentMotherCitizenshipno}</label>
+                                  <label  className="margin-left" htmlFor="parentMotherCitizenshipDistrict">Issued District: {singleBirthShow.parentMotherCitizenshipDistrict}</label><br></br>
+                                  <label  htmlFor="parentMotherCitizenshipDate">Issued Date: {singleBirthShow.parentMotherCitizenshipDate}</label>
+                                </div>
+                              </div>
+                              <div className="parentOtherDetails margin-top2">
+                                <span>Others:</span>
+                                <div className="FatherDetail margin-top">
+                                  <label  htmlFor="fatherEducation">Father's Education: {singleBirthShow.fatherEducation}</label>
+                                  <label  className="margin-left" htmlFor="fatherOccupation">Occupation: {singleBirthShow.fatherOccupation}</label>
+                                  <label  className="margin-left" htmlFor="fatherReligion">Religion: {singleBirthShow.fatherReligion}</label><br></br>
+                                  <label  htmlFor="fatherMotherTongue">Mother Tongue: {singleBirthShow.fatherMotherTongue}</label>
+                                </div>
+                                <div className="motherDetail margin-top2">
+                                  <label  htmlFor="motherEducation">Mother's Education: {singleBirthShow.motherEducation}</label>
+                                  <label  className="margin-left" htmlFor="motherOccupation">Occupation: {singleBirthShow.motherOccupation}</label>
+                                  <label  className="margin-left" htmlFor="motherReligion">Religion: {singleBirthShow.motherReligion}</label><br></br>
+                                  <label  htmlFor="motherMotherTongue">Mother Tongue: {singleBirthShow.motherMotherTongue}</label>
+                                </div>
+                              </div>
+                              <div className="userEmail margin-top2">
+                                <label id='one' htmlFor='userEmail'>Reciepient Gmail: <span id="singleSmallSpan">{singleBirthShow.userEmail}</span></label>
+                              </div>
+                              </div>
+                            </div>
+                            <div className="submit-btn">
+                              <button onClick={()=>handleBirthVerification(singleBirthShow._id)} className=" margin-top" id="birth-app-btn">Verified Application</button>
+                              <button onClick={()=>handleBirthRejection(singleBirthShow._id)} className=" margin-top" id="birth-app-btn">Reject Application</button>
+                            </div>
+                        </div>
+                      </div>
+                      </div>
+                  )}
                 </div>
             </div>
         </div>

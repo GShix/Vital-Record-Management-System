@@ -43,13 +43,13 @@ const Header = () => {
                     <li onClick={()=>Navigate('/introduction')}>Introduction</li>
                     <li onClick={()=>Navigate('/eservices')}>E-Gov Services</li>
                     <li onClick={()=>Navigate('/')}>
-                        <select style={{border:'none',textDecoration:"none"}} className="dropdown">
+                        <select style={{border:'none',fontSize:"16px",textDecoration:"none"}} className="dropdown">
                             <option id='#'>Download</option>
-                            <option id='one'>Birth Certificate</option>
-                            <option id='two'>Death Certificate</option>
+                            <option id=''>Birth Certificate</option>
+                            <option id=''>Death Certificate</option>
                         </select>
                     </li>
-                    <li onClick={()=>Navigate('/')}>Notices</li>
+                    <li onClick={()=>Navigate('/')}>How to use VRMS?</li>
                     <li onClick={()=>Navigate('/contact')}>Contact</li>
                 </ul>
                 <button className='successHomeBtn' onClick={()=>Navigate('/applicationStatus')}>Application Status</button>

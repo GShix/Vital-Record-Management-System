@@ -125,6 +125,22 @@ marquee a{
     background-color: #2a5690;
     color:white;
 }
+.nav-list ul li select{
+    background-color: #fff;
+    appearance: none;
+  background-image: none;
+  width: 70px;
+}
+.nav-list ul li select:hover{
+    background-color: #2a5690;
+    color: white;
+    transition: 0.4s ease;
+}
+.nav-list select option:hover{
+    background-color: #2a5690;
+    color: white;
+    transition: 0.4s ease;
+}
 .nav-list button{
     background-color: #2d67b4;
     height: 32px;

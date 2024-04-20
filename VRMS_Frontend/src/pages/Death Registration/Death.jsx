@@ -36,11 +36,11 @@ const Death = () => {
       const formData = new FormData(e.currentTarget);
       const data = Object.fromEntries(formData)
       try{
-        const response = await API.post("api/deathRegistration",data);
+        const response = await API.post("/deathRegistration",data);
         // const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
         if(response.status==201){
           alert("You Application is Successfully Submitted")
-          Navigate('/')
+          Navigate('/eservices')
           console.log(applicationId)
         }else{
           alert("Error submitting form")
@@ -146,18 +146,18 @@ const Death = () => {
                       <input required className="margin-left margin-top" type="text" name='deathVillage' id="deathVillage" />
                   </div>
                   <div className="death-place margin-top2">
-                  <label htmlFor="birthPlace">Death Place:</label>
+                  <label htmlFor="deathPlace">Death Place:</label>
                     <input className="margin-left"
                     type="radio"
-                    id="birth-home"
-                    name="birthPlace" value="Home"/><label className="margin-left2" htmlFor="birth-home" id="two">Home
+                    id="death-home"
+                    name="deathPlace" value="Home"/><label className="margin-left2" htmlFor="death-home" id="two">Home
                   </label>
                   <input className="margin-left"
                     type="radio"
-                    id="birth-hospital" name="birthPlace" value="Hospital"/><label className="margin-left2" htmlFor="birth-hospital" id="two">Hospital</label>
+                    id="death-hospital" name="birthPlace" value="Hospital"/><label className="margin-left2" htmlFor="death-hospital" id="two">Hospital</label>
                   <input className="margin-left"
                     type="radio"
-                    id="birth-other" name="birthPlace" value="Other"/><label className="margin-left2" htmlFor="birth-other" id="two">Other</label>
+                    id="death-other" name="birthPlace" value="Other"/><label className="margin-left2" htmlFor="death-other" id="two">Other</label>
                   </div>
                 </div>
                 <div className="death-other-details margin-top2">

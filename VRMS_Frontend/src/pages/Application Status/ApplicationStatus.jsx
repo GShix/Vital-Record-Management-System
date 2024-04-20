@@ -49,6 +49,7 @@ const ApplicationStatus = () => {
             } else {
                 setDeathApplication(null);
                 setError(response.data.message);
+                Navigate("/applicationStatus")
             }
         } catch (error) {
             setDeathApplication(null);
@@ -73,13 +74,13 @@ const ApplicationStatus = () => {
                     <div className="statusOfApplication">
                         {isbirthButton && (
                             <div className="birthAppStatus">
-                            <h6>Your Birth Application Status is <span id='statusStyle'>{birthApplication?.applicationStatus}</span></h6>
+                            {birthApplication?(<h6>Your Birth Application Status is <span id='statusStyle'>{birthApplication.applicationStatus}</span></h6>):<h6 style={{color:"red"}}>No Birth Application found with id: {userApplicationId}</h6>}
                         </div>
                         )}
                         {/*  */}
                         {isdeathButton && (
                             <div className="deathAppStatus">
-                            <h6>Your Death Application Status is <span id='statusStyle'>{deathApplication?.applicationStatus}</span></h6>
+                            {deathApplication?(<h6>Your Death Application Status is <span id='statusStyle'>{deathApplication.applicationStatus}</span></h6>):<h6 style={{color:"red"}}>No Death Application found with id: {userApplicationId}</h6>}
                         </div>
                         )}
                     </div>
