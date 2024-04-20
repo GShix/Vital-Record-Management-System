@@ -113,7 +113,7 @@ app.post("/api/admin/birthVerification/:id",async(req,res)=>{
     const applicationFound = await Birth.findById(id)
     if(!applicationFound ){
         return res.status(400).json({
-            messageL:"No application with this id"
+            message:"No application with this id"
         })
     }
     if(!applicationFound.applicationStatus || !['underreview','rejected','verified'].includes(applicationFound.applicationStatus.toLowerCase())){
@@ -125,7 +125,7 @@ app.post("/api/admin/birthVerification/:id",async(req,res)=>{
         applicationStatus:"verified"
     },{new:true})
     res.status(200).json({
-        message:"Order updated",
+        message:"Application Verified Successfully",
         data:updateStatus
     })
 
@@ -136,7 +136,7 @@ app.post("/api/admin/deathVerification/:id",async(req,res)=>{
     const applicationFound = await Death.findById(id)
     if(!applicationFound ){
         return res.status(400).json({
-            messageL:"No application with this id"
+            message:"No application with this id"
         })
     }
     if(!applicationFound.applicationStatus || !['underreview','rejected','verified'].includes(applicationFound.applicationStatus.toLowerCase())){
@@ -148,12 +148,51 @@ app.post("/api/admin/deathVerification/:id",async(req,res)=>{
         applicationStatus:"verified"
     },{new:true})
     res.status(200).json({
-        message:"Order updated",
+        message:"Application Verified Successfully",
         data:updateStatus
     })
 
 })
 
+//API for delete form
+app.post("/api/admin/birthRejection/:id",async(req,res)=>{
+    const {id} = req.params;
+    if(!id || id==0){
+        return res.status(400).json({
+            message:"Please enter a valid id"
+        })
+    }
+    const applicationFound = await Birth.findById(id);
+    if(!applicationFound){
+        return res.status(400).json({
+            message:"No application with this id"
+        })
+    }
+    const rejectApplication = await Birth.findByIdAndDelete(id);
+    res.status(200).json({
+        message:`The Birth Application with id: ${id} is rejected successfully`
+    })
+})
+
+app.post("/api/admin/deathRejection/:id",async(req,res)=>{
+    const {id} = req.params;
+    if(!id || id==0){
+        return res.status(400).json({
+            message:"Please enter a valid id"
+        })
+    }
+    const applicationFound = await Death.findById(id);
+    if(!applicationFound){
+        return res.status(400).json({
+            message:"No application with this id"
+        })
+    }
+    const rejectApplication = await Death.findByIdAndDelete(id);
+    res.status(200).json({
+        message:`The Death Application with id: ${id} is rejected successfully`
+    })
+
+})
 
 //API for Death Registration
 // app.post("/api/deathRegistration",deathRegistrationRoute)
