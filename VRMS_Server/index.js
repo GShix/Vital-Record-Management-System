@@ -43,7 +43,8 @@ const sendMail = require('./services/SendMail');
 //api for admin login
 // app.post('/vrms/admin/login',adminLoginRoute)
 app.post("/api/vrms/admin/login", async(req,res)=>{
-    const {adminName,adminPassword}=req.body
+    try {
+        const {adminName,adminPassword}=req.body
     if(!adminName ||!adminPassword){
         return res.status(400).json({
             message:"Enter Email & Password."
@@ -71,6 +72,9 @@ app.post("/api/vrms/admin/login", async(req,res)=>{
         res.status(400).json({
             message:"Invalid Email or Password"
         })
+    }
+    } catch (error) {
+        console.log(error);
     }
 })
 
