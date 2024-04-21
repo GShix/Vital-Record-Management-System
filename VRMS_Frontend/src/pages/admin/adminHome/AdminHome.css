@@ -4,8 +4,8 @@
 .statusVerified{
     color: green;
 }
+
 .adminHome{
-    height: 100vh;
     margin-top: 0;
     display: flex;
     justify-content: center;
@@ -16,7 +16,7 @@
     background-color: white;
 }
 .adminSidebar{
-    height: 100vh;
+    height: 100%;
     width: 150px;
     border-right: 5px solid #f3f4f6;
 }
@@ -54,12 +54,12 @@
     height: 100vh;
     color: red;
 }
-#adminMain h1{
+.adminMain h1{
     margin-top: 10px;
     text-align: center;
     font-size: 32px;
 }
-#adminMain h2{
+.adminMain h2{
     font-size: 18px;
     font-weight: normal;
     margin-top: 8px;
@@ -69,6 +69,7 @@
 
 .mainApplications{
     height: 100%;
+    /* display: none; */
     background-color: #fff;
     
 }
@@ -150,12 +151,29 @@
     padding: 10px 20px;
     margin: 5px 0;
     background-color: white;
-    justify-content: center;
     width: 820px;
     height: 100%;
     border: none;
     border-radius: 5px;
     color: black;
+}
+.singleAppBtn{
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+}
+.singleAppBtn button{
+    margin-top: 5px;
+    height: 25px;
+    width: 20%;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.singleAppBtn button:hover{
+    background-color: #2a5690;
+    color: white;
+    padding: 2px 6px;
+    border: none;
 }
 @media only screen and (max-width:600px){
     .adminSidebar .logo img{

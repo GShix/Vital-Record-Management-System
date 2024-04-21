@@ -6,7 +6,7 @@
 }
 .applicationStatus{
     display: flex;
-    height: 250px;
+    height: 280px;
     justify-content: center;
     background-color: rgb(236, 236, 237);
     width: 100%;
@@ -51,4 +51,14 @@ input::-webkit-inner-spin-button {
     text-align: center;
     height: 10px;
     width: 50%;
+}
+.downloadBtn{
+    margin-top: 10px;
+    padding: 4px 6px;
+}
+.downloadBtn:hover{
+    background-color: #2d67b4;
+    color: white;
+    border: none;
+    border-radius: 4px;
 }

@@ -49,7 +49,7 @@ const Header = () => {
                             <option id=''>Death Certificate</option>
                         </select>
                     </li>
-                    <li onClick={()=>Navigate('/')}>How to use VRMS?</li>
+                    <a href='.././VRMS_Guide.png'><li>How to use VRMS?</li></a>    
                     <li onClick={()=>Navigate('/contact')}>Contact</li>
                 </ul>
                 <button className='successHomeBtn' onClick={()=>Navigate('/applicationStatus')}>Application Status</button>

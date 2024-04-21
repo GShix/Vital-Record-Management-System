@@ -73,10 +73,10 @@ const AdminHome = () => {
       const applicationStatus = appStatus
       const userApplicationId = uid
       if(applicationStatus =="verified"){
-        alert(`Application with id: ${userApplicationId} is already verified`)
+        alert(`Application with uid: ${userApplicationId} is already verified`)
       }else{
         const response = await API.post(`/admin/deathVerification/${id}`)
-        alert(`Application with id: ${userApplicationId} is verified successfully`)
+        alert(`Application with uid: ${userApplicationId} is verified successfully`)
       
       }
     
@@ -96,10 +96,10 @@ const AdminHome = () => {
       const applicationStatus = appStatus
       const userApplicationId = uid
       if(applicationStatus =="verified"){
-        alert(`Application with id: ${userApplicationId} is already verified`)
+        alert(`Application with uid: ${userApplicationId} is already verified`)
       }else{
         const response = await API.post(`/admin/deathVerification/${id}`)
-        alert(`Application with id: ${userApplicationId} is verified successfully`)
+        alert(`Application with uid: ${userApplicationId} is verified successfully`)
       
       }
     
@@ -120,25 +120,25 @@ const AdminHome = () => {
       const response = await API.get(`/deathApplication/${userAppId}`)
       setSingleDeathShow(response.data.deathApplication[0])
     } catch (error) {
-      
+      alert("Error",error);
     }
   }
   const handleSingleBirth = async(uid)=>{
     setSingleBirth(true);
-    setShowBirth(false);
+    setShowBirth(true);
     setShowDeath(false);
     setShowDashboard(false);
     setSingleDeath(false);
     const userAppId = uid
     try {
       const response = await API.get(`/birthApplication/${userAppId}`)
-      // console.log(response)
-      const data = response.data.birthApplication;
-      setSingleBirthShow(data)
+      // console.log(response.data.birthApplication[0])
+      setSingleBirthShow(response.data.birthApplication[0])
       console.log(singleBirthShow)
       
     } catch (error) {
-      
+      alert("Error",error);
+      console.log(error);
     }
   }
   //deathRejection
@@ -152,7 +152,7 @@ const AdminHome = () => {
         alert(`Application with id: ${id} is rejected successfully`)
       }
     } catch (error) {
-      
+      alert("Error",error);
     }
   }
   //birthRejection
@@ -165,7 +165,7 @@ const AdminHome = () => {
         alert(`Application with id: ${id} is rejected successfully`)
       }
     } catch (error) {
-      
+      alert("Error",error);
     }
   }
 
@@ -201,6 +201,7 @@ const AdminHome = () => {
     />)
     :(
       <div>
+        <div className="adminPanel">
         <div className="adminHome">
             <div className="adminSidebar">
                 <div className="logo">
@@ -249,12 +250,12 @@ const AdminHome = () => {
                           </span>
                           <span className="applicationsStatus">
                             <h5>Application Status</h5>
-                            <p className={birth.applicationStatus==='verified'?"statusVerified":" "}>{birth.applicationStatus}</p>
+                            <p className={birth.applicationStatus=='verified'?"statusVerified":" "}>{birth.applicationStatus}</p>
                           </span>
                           <span className="adminActions">
                             <h5>Admin Actions</h5>
                             <p>
-                              {/* <button onClick={()=>handleSingleBirth(birth.userApplicationId)}>View</button> */}
+                              <button onClick={()=>handleSingleBirth(birth.userApplicationId)}>View</button>
                               <button onClick={()=>handleBirthVerification(birth._id,birth.applicationStatus,birth.userApplicationId)}>Verify</button>
                             </p>
                           </span>
@@ -308,7 +309,7 @@ const AdminHome = () => {
                     <h3>ID:<i>{singleDeathShow.userApplicationId}</i> Death Applications</h3>
                       <div className="deathData">
                           <div className="deathApplication">
-                            <div className="death-details">
+                            <div className="deathDetails">
                               <span>Decedent's Details</span>
                               <div className="decedent-birth-certi-no margin-btm margin-top">
                                 <label htmlFor='birthCertNo'>Birth Certificate No.: <span id='singleSmallSpan'>{singleDeathShow.birthCertNo}</span> </label>
@@ -392,8 +393,8 @@ const AdminHome = () => {
                             </div>
                             </div>
                           </div>
-                          <div className="submit-btn">
-                            <button onClick={()=>handleDeathVerification(singleDeathShow._id)}>Verify Application</button>
+                          <div className="singleAppBtn">
+                            <button onClick={()=>handleDeathVerification(singleDeathShow._id,singleDeathShow.applicationStatus,singleDeathShow.userApplicationId)}>Verify Application</button>
                             <button onClick={()=>handleDeathRejection(singleDeathShow._id)}>Reject Application</button>
                           </div>
                       </div>
@@ -403,7 +404,7 @@ const AdminHome = () => {
                   {isSingleBirth && (
                       <div className="singleBirth">
                         <div className="allBirthApplications">
-                          <h3>ID:<i>{singleBirthShow.userApplicationId}</i> Birth Applications</h3>
+                          {/*<h3>ID:<i>{singleBirthShow.userApplicationId}</i> Birth Applications</h3>
                         <div className="birthData">
                             <div className="birthApplication">
                                 <div className="birth-details">
@@ -521,16 +522,17 @@ const AdminHome = () => {
                               </div>
                               </div>
                             </div>
-                            <div className="submit-btn">
+                            <div className="singleAppBtn">
                               <button onClick={()=>handleBirthVerification(singleBirthShow._id)} className=" margin-top" id="birth-app-btn">Verified Application</button>
                               <button onClick={()=>handleBirthRejection(singleBirthShow._id)} className=" margin-top" id="birth-app-btn">Reject Application</button>
                             </div>
-                        </div>
+                        </div>*/}
                       </div>
                       </div>
                   )}
                 </div>
             </div>
+        </div>
         </div>
     </div>
     )}

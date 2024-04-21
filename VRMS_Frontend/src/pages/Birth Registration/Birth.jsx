@@ -8,7 +8,6 @@ import API from "../http";
 const Birth = () => {
   const Navigate = useNavigate();
   const [date, setDate] = useState('');
-  const [applicationId, setApplicationId] = useState(100); 
 
   const sumbitApplication=async(e)=>{
     e.preventDefault();
@@ -19,7 +18,7 @@ const Birth = () => {
         const response = await API.post("/birthRegistration",data);
         if(response.status==201){
           alert("You Application is Successfully Submitted")
-          Navigate('/')
+          Navigate('/eservices')
         }else{
           alert("Error submitting form")
         }

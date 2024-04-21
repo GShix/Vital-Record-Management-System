@@ -79,8 +79,8 @@ const ApplicationStatus = () => {
                         )}
                         {/*  */}
                         {isdeathButton && (
-                            <div className="deathAppStatus">
-                            {deathApplication?(<h6>Your Death Application Status is <span id='statusStyle'>{deathApplication.applicationStatus}</span></h6>):<h6 style={{color:"red"}}>No Death Application found with id: {userApplicationId}</h6>}
+                        <div className="deathAppStatus">
+                            {deathApplication?(<div className="success"><h6>Your Death Application Status is <span id='statusStyle'>{deathApplication.applicationStatus}</span></h6> <button className='downloadBtn'>Download Your Certificate</button></div>):<h6 style={{color:"red"}}>No Death Application found with id: {userApplicationId}</h6>}
                         </div>
                         )}
                     </div>
