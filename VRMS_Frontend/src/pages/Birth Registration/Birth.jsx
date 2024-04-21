@@ -17,7 +17,6 @@ const Birth = () => {
 
     try{
         const response = await API.post("/birthRegistration",data);
-        // const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
         if(response.status==201){
           alert("You Application is Successfully Submitted")
           Navigate('/')

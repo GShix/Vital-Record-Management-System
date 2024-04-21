@@ -7,29 +7,6 @@ import API from '../http';
 const Death = () => {
     const Navigate = useNavigate();
     const [date, setDate] = useState('');
-    const [applicationId, setApplicationId] = useState(0); 
-
-
-    // const fetchSubmittedApp =async()=>{
-    //   try {
-    //     const response = await axios.get("http://localhost:9000/admin/death")
-    //     const allDeathApp = response.data.data
-    //     console.log(allDeathApp)
-    //     let maxId = 100;
-    //     allDeathApp.forEach(application => {
-    //         if (application.userApplicationId > maxId) {
-    //             maxId = application.userApplicationId;
-    //         }
-    //     });
-    //     setApplicationId(maxId+1)
-    //     // console.log(applicationId)
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // }
-    // useEffect(()=>{
-    //   fetchSubmittedApp();
-    // },[])
 
     const submitApplication = async(e)=>{
       e.preventDefault(); //prevent reloading
@@ -37,11 +14,9 @@ const Death = () => {
       const data = Object.fromEntries(formData)
       try{
         const response = await API.post("/deathRegistration",data);
-        // const response = await axios.post("https://vrms-server-seven.vercel.app/api/deathRegistration",data);
         if(response.status==201){
           alert("You Application is Successfully Submitted")
           Navigate('/eservices')
-          console.log(applicationId)
         }else{
           alert("Error submitting form")
         }
