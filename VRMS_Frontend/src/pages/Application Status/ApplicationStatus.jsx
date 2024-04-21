@@ -20,7 +20,6 @@ const ApplicationStatus = () => {
 
             if (response.status === 200) {
                 setBirthApplication(response.data.brithApplication[0]);
-                console.log(birthApplication);
                 setError(null);
             } else {
                 setBirthApplication(null);
@@ -38,13 +37,10 @@ const ApplicationStatus = () => {
         clickDeathButton(true);
         clickBirthButton(false);
         try {
-            // const response = await axios.get(`https://vrms-server-seven.vercel.app/api/deathApplication/${userApplicationId}`);
             const response = await API.get(`/deathApplication/${userApplicationId}`);
             
             if (response.status === 200) {
-                console.log(response)
                 setDeathApplication(response.data.deathApplication[0]);
-                console.log(deathApplication);
                 setError(null);
             } else {
                 setDeathApplication(null);
@@ -80,7 +76,7 @@ const ApplicationStatus = () => {
                         {/*  */}
                         {isdeathButton && (
                         <div className="deathAppStatus">
-                            {deathApplication?(<div className="success"><h6>Your Death Application Status is <span id='statusStyle'>{deathApplication.applicationStatus}</span></h6> <button className='downloadBtn'>Download Your Certificate</button></div>):<h6 style={{color:"red"}}>No Death Application found with id: {userApplicationId}</h6>}
+                            {deathApplication?(<div className="success"><h6>Your Death Application Status is <span id='statusStyle'>{deathApplication.applicationStatus}</span></h6>{(deathApplication.applicationStatus=="verified")?<button className='downloadBtn'>Download Your Certificate</button>:""}</div>):<h6 style={{color:"red"}}>No Death Application found with id: {userApplicationId}</h6>}
                         </div>
                         )}
                     </div>

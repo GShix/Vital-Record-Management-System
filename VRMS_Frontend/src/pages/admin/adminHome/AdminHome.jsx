@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './AdminHome.css'
 import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useFetcher, useNavigate } from 'react-router-dom';
 import BarLoader from "react-spinners/BarLoader";
 import API from '../../http';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTotalApplication } from '../../../store/dashboardSlice';
+
 const AdminHome = () => {
   const [loading, setLoading]=useState(false);
   const [showBirth, setShowBirth] = useState(false);
@@ -19,21 +22,21 @@ const AdminHome = () => {
   const [singleDeathShow,setSingleDeathShow]= useState([]);
   const [singleBirthShow,setSingleBirthShow]= useState([]);
 
-  // useEffect(()=>{
-  //   setShowDashboard(true);
-  // },[])
-  const handleDashboardClick =async()=>{
+  const dispatch = useDispatch();
+  const {birth,death} =useSelector((state)=>state.dashboard);
+  // console.log(birth,death)
+  useEffect(()=>{
+    dispatch(fetchTotalApplication());
     setShowDashboard(true);
+  },[])
+
+  const handleDashboardClick =async()=>{
+    try {
+      setShowDashboard(true);
     setShowBirth(false);
     setShowDeath(false);
     setSingleBirth(false);
     setSingleDeath(false);
-    try {
-      const response1 = await API.get("/admin/death");
-      const response2 = await API.get("/admin/birth");
-      setTotalDeath(response1.data.data)
-      setTotalBirth(response2.data.data)
-      
   } catch (error) {
       console.log(error)
   }
@@ -45,8 +48,7 @@ const AdminHome = () => {
     setSingleBirth(false);
     setSingleDeath(false);
     try {
-      const response = await API.get("/admin/birth");
-      setBirthApplications(response.data.data); 
+      setBirthApplications(birth); 
     } catch (error) {
       console.error("Error fetching death applications:", error);
     }
@@ -58,8 +60,7 @@ const AdminHome = () => {
     setSingleBirth(false);
     setSingleDeath(false);
     try {
-      const response = await API.get("/admin/death");
-      setDeathApplications(response.data.data);
+      setDeathApplications(death);
     } catch (error) {
       console.error("Error fetching death applications:", error);
     }
@@ -133,36 +134,38 @@ const AdminHome = () => {
     try {
       const response = await API.get(`/birthApplication/${userAppId}`)
       // console.log(response.data.birthApplication[0])
-      setSingleBirthShow(response.data.birthApplication[0])
-      console.log(singleBirthShow)
-      
+      setSingleBirthShow(response.data)
     } catch (error) {
       alert("Error",error);
       console.log(error);
     }
   }
   //deathRejection
-  const handleDeathRejection =async(uid)=>{
+  const handleDeathRejection =async(applicationId,uid)=>{
     setShowDashboard(false);
-    const id = uid;
+    const id = applicationId;
+    const userApplicationId =uid
     try {
       const response = await API.post(`/admin/deathRejection/${id}`);
       console.log(response)
       if(response.status ==200){
-        alert(`Application with id: ${id} is rejected successfully`)
+        alert(`Application with id: ${userApplicationId} is rejected successfully`)
+        setShowDeath(true);
+        Navigate("/AdminHome")
       }
     } catch (error) {
       alert("Error",error);
     }
   }
   //birthRejection
-  const handleBirthRejection =async(uid)=>{
+  const handleBirthRejection =async(applicationId,uid)=>{
     setShowDashboard(false);
-    const id = uid;
+    const id = applicationId;
+    const userApplicationId =uid
     try {
       const response = await API.post(`/admin/birthRejection/${id}`);
       if(response.status ==200){
-        alert(`Application with id: ${id} is rejected successfully`)
+        alert(`Application with id: ${userApplicationId} is rejected successfully`)
       }
     } catch (error) {
       alert("Error",error);
@@ -221,10 +224,14 @@ const AdminHome = () => {
                   {/* Dashboard */}
                   {showDashboard && (
                     <div className="adminDashboard">
-                      <h1>Admin Dashboard</h1>
+                      <h2>Admin Dashboard</h2>
                       <div className="totalApplications">
-                        <h4>Total Death Applications: <i style={{color:"red"}}>{totalDeath.length}</i></h4>
-                        <h4>Total Birth Applications: <i style={{color:"red"}}>{totalBirth.length}</i></h4>
+                        {death.length>0 && (
+                          <h4>Total Death Applications: <i style={{color:"red"}}>{death.length}</i></h4>
+                        )}
+                        {birth.length>0 && (
+                          <h4>Total Birth Applications: <i style={{color:"red"}}>{birth.length}</i></h4>
+                        )}
                       </div>
                     </div>
                   )}
@@ -395,7 +402,7 @@ const AdminHome = () => {
                           </div>
                           <div className="singleAppBtn">
                             <button onClick={()=>handleDeathVerification(singleDeathShow._id,singleDeathShow.applicationStatus,singleDeathShow.userApplicationId)}>Verify Application</button>
-                            <button onClick={()=>handleDeathRejection(singleDeathShow._id)}>Reject Application</button>
+                            <button onClick={()=>handleDeathRejection(singleDeathShow._id,singleDeathShow.userApplicationId)}>Reject Application</button>
                           </div>
                       </div>
                     </div>

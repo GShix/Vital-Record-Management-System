@@ -74,17 +74,16 @@
     
 }
 .adminDashboard{
-    padding-top: 10px;
+    padding-top: 5px;
 }
-.adminDashboard h1{
-    color:#2d67b4;
+.adminDashboard h2{
+    color:#2a5690;
     height: 10px;
-    font-size: 1px;
-    font-weight: bolder;
+    font-size: 30px;
     text-decoration: dashed;
 }
-.adminDashboard .totalApplications{
-    margin-top: 20px;
+.totalApplications{
+    margin-top: 5px;
     justify-content: space-evenly;
     align-items: center;
     display: flex;

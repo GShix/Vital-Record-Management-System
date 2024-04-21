@@ -55,6 +55,7 @@ input::-webkit-inner-spin-button {
 .downloadBtn{
     margin-top: 10px;
     padding: 4px 6px;
+    cursor: pointer;
 }
 .downloadBtn:hover{
     background-color: #2d67b4;

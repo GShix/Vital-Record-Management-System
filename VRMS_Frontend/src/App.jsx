@@ -10,10 +10,13 @@ import AdminHome from './pages/admin/adminHome/AdminHome'
 import ApplicationStatus from './pages/Application Status/ApplicationStatus'
 import Contact from './pages/Contact/Contact'
 import Introduction from './pages/Introduction/Introduction'
+import { Provider } from 'react-redux'
+import store from './store/store'
 
 function App() {
   return (
     <>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route path='/' element ={<Home/>} />
@@ -27,6 +30,7 @@ function App() {
           <Route path='/adminHome' element ={<AdminHome/>} />
         </Routes>
       </BrowserRouter>
+      </Provider>
     </>
   )
 }
