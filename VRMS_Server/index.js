@@ -17,8 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 //cors
 const cors = require("cors")
 app.use(cors({
-    origin:"https://vrms-babaimuni.vercel.app/",
-    // origin:"*",
+    // origin:"https://vrms-babaimuni.vercel.app",
+    origin:"*",
     methods:['GET', 'PUT', 'POST']
 }))
 
@@ -222,7 +222,8 @@ app.post("/api/deathRegistration",async(req, res) => {
     await sendMail({
         email :userEmail,
         subject : "Your Application for Death Registration",
-        message : "Thank You, we have successfully received your application for Death Registration. Please visit our office within 7 days"
+        message : `Thank You, we have successfully received your application for Death Registration. Here is your Application ID ${userApplicationId}. You can download your certificate once your application is verified.
+        Please be patience till your application is approved. `
     })
     res.status(201).json({
         message:"Death Registered"
@@ -277,8 +278,7 @@ app.post("/api/birthRegistration",async(req, res) => {
         await sendMail({
             email :userEmail,
             subject : "Your Application for Birth Registration",
-            message : `Thank You, we have successfully received your application for Birth Registration. 
-            Here is your Application ID: ${userApplicationId}
+            message : `Thank You, we have successfully received your application for Birth Registration. Here is your Application ID ${userApplicationId}. You can download your certificate once your application is verified.
             Please be patience till your application is approved. `
         })
         res.status(201).json({
