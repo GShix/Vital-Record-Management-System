@@ -15,7 +15,6 @@ const ApplicationStatus = () => {
         clickDeathButton(false);
         clickBirthButton(true);
         try {
-            // const response = await axios.get(`https://vrms-server-seven.vercel.app/api/birthApplication/${userApplicationId}`);
             const response = await API.get(`/birthApplication/${userApplicationId}`);
 
             if (response.status === 200) {

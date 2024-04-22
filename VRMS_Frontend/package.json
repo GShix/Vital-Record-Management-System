@@ -1,8 +1,9 @@
 {
   "name": "vrms-frontend",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.1.1",
   "homepage": "https://vrms-babaimuni.vercel.app/",
+  "proxy":"https://vrms-server.vercel.app/api",
   "allowedHosts": "all",
   "type": "module",
   "scripts": {

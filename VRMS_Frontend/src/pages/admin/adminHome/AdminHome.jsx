@@ -10,6 +10,27 @@ import { fetchSingleDeath } from '../../../store/deathSlice';
 import { fetchSingleBirth } from '../../../store/birthSlice';
 
 const AdminHome = () => {
+  const Navigate = useNavigate();
+  // auth authentication
+  const isAuthenticated = !!Cookies.get('auth');
+    useEffect(()=>{
+      if(!isAuthenticated){
+        Navigate('/vrms-admin');
+      }
+      setLoading(true);
+      setTimeout(()=>{
+        setLoading(false)
+      },2000)
+    },[])
+
+    var handleLogout =()=>{
+      Cookies.remove('auth');
+      Navigate('/vrms-admin');
+    }
+    if(!isAuthenticated){
+      return null;
+    }
+    
   const [loading, setLoading]=useState(false);
   const [showBirth, setShowBirth] = useState(false);
   const [showDeath, setShowDeath] = useState(false);
@@ -24,7 +45,6 @@ const AdminHome = () => {
   const {birth,death} =useSelector((state)=>state.dashboard);
   const {singleDeath} =useSelector((state)=>state.deathApplication)
   const {singleBirth} =useSelector((state)=>state.birthApplication)
-  // console.log(singleDeath)
   useEffect(()=>{
     dispatch(fetchTotalApplication());
     setShowDashboard(true);
@@ -146,8 +166,8 @@ const AdminHome = () => {
       const response = await API.post(`/admin/deathRejection/${id}`);
       if(response.status ==200){
         alert(`Application with id: ${userApplicationId} is rejected successfully`)
-        setShowDeath(true);
         Navigate("/AdminHome")
+        setShowDeath(true);
       }
     } catch (error) {
       alert("Error",error);
@@ -162,35 +182,13 @@ const AdminHome = () => {
       const response = await API.post(`/admin/birthRejection/${id}`);
       if(response.status ==200){
         alert(`Application with id: ${userApplicationId} is rejected successfully`)
-        setShowBirth(true);
         Navigate("/AdminHome")
+        setShowBirth(true);
       }
     } catch (error) {
       alert("Error",error);
     }
   }
-
-    
-  // auth authentication
-  // const isAuthenticated = !!Cookies.get('auth');
-  //   const Navigate = useNavigate();
-  //   useEffect(()=>{
-  //     if(!isAuthenticated){
-  //       Navigate('/vrms-admin');
-  //     }
-  //     setLoading(true);
-  //     setTimeout(()=>{
-  //       setLoading(false)
-  //     },2000)
-  //   },[])
-
-    var handleLogout =()=>{
-      Cookies.remove('auth');
-      Navigate('/vrms-admin');
-    }
-    // if(!isAuthenticated){
-    //   return null;
-    // }
       
   return (
     <div className="sweet-loading">
