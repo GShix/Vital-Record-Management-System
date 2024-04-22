@@ -22,10 +22,11 @@ const Admin = () => {
           const expirationTime = new Date(new Date().getTime() + 60000);
           Cookies.set('auth',JSON.stringify(authData),{expires:expirationTime});
           Navigate("/adminHome")
+        }else{
+          alert(response.data.message)
         }
       } catch (error) {
-
-        alert("Error",response.message);
+        alert("Something Went Wrong",error);
       }
     }
     const toggleShowPassword =()=>{

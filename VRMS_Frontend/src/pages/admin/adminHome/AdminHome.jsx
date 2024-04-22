@@ -12,24 +12,24 @@ import { fetchSingleBirth } from '../../../store/birthSlice';
 const AdminHome = () => {
   const Navigate = useNavigate();
   // auth authentication
-  // const isAuthenticated = !!Cookies.get('auth');
-  //   useEffect(()=>{
-  //     if(!isAuthenticated){
-  //       Navigate('/vrms-admin');
-  //     }
-  //     setLoading(true);
-  //     setTimeout(()=>{
-  //       setLoading(false)
-  //     },2000)
-  //   },[])
+  const isAuthenticated = !!Cookies.get('auth');
+    useEffect(()=>{
+      if(!isAuthenticated){
+        Navigate('/vrms-admin');
+      }
+      setLoading(true);
+      setTimeout(()=>{
+        setLoading(false)
+      },2000)
+    },[])
 
     var handleLogout =()=>{
       Cookies.remove('auth');
       Navigate('/vrms-admin');
     }
-    // if(!isAuthenticated){
-    //   return null;
-    // }
+    if(!isAuthenticated){
+      return null;
+    }
     
   const [loading, setLoading]=useState(false);
   const [showBirth, setShowBirth] = useState(false);
@@ -58,7 +58,7 @@ const AdminHome = () => {
     setSingleBirth(false);
     setSingleDeath(false);
   } catch (error) {
-      console.log(error)
+    alert("Something Went Wrong",error);
   }
   }
   const handleBirthClick =async()=>{
@@ -70,7 +70,7 @@ const AdminHome = () => {
     try {
       setBirthApplications(birth); 
     } catch (error) {
-      console.error("Error fetching death applications:", error);
+      alert("Something Went Wrong",error);
     }
   }
   const handleDeathClick =async()=>{
@@ -82,7 +82,7 @@ const AdminHome = () => {
     try {
       setDeathApplications(death);
     } catch (error) {
-      console.error("Error fetching death applications:", error);
+      alert("Something Went Wrong",error);
     }
   }
   //application verification
@@ -102,7 +102,7 @@ const AdminHome = () => {
       }
     
     } catch (error) {
-      console.log(error)
+      alert("Something Went Wrong",error);
     }
   }
   const handleDeathVerification =async(applicationId,appStatus,uid)=>{
@@ -125,7 +125,7 @@ const AdminHome = () => {
       }
     
     } catch (error) {
-      console.log(error)
+      alert("Something Went Wrong",error);
     }
   }
 
@@ -140,7 +140,7 @@ const AdminHome = () => {
     try {
       dispatch(fetchSingleDeath(userAppId));
     } catch (error) {
-      alert("Error",error);
+      alert("Something Went Wrong",error);
     }
   }
   const handleSingleBirth = async(uid)=>{
@@ -153,7 +153,7 @@ const AdminHome = () => {
     try {
       dispatch(fetchSingleBirth(userAppId))
     } catch (error) {
-      alert("Error",error);
+      alert("Something Went Wrong",error);
       console.log(error);
     }
   }
@@ -170,7 +170,7 @@ const AdminHome = () => {
         setShowDeath(true);
       }
     } catch (error) {
-      alert("Error",error);
+      alert("Something Went Wrong",error);
     }
   }
   //birthRejection
@@ -186,7 +186,7 @@ const AdminHome = () => {
         setShowBirth(true);
       }
     } catch (error) {
-      alert("Error",error);
+      alert("Something Went Wrong",error);
     }
   }
       
