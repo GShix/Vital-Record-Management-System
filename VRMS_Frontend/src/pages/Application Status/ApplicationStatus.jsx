@@ -5,27 +5,21 @@ import './ApplicationStatus.css'
 import API from '../http'
 const ApplicationStatus = () => {
     const [userApplicationId,setId]= useState(0);
-    const [error, setError] = useState(null);
+    const [error,setError] = useState();
     const [deathApplication,setDeathApplication] = useState(0);
     const [birthApplication,setBirthApplication] = useState(0);
     const [isbirthButton,clickBirthButton] = useState(false);
     const [isdeathButton,clickDeathButton] = useState(false);
     const searchBirthApplication =async(e)=>{
         e.preventDefault();
-        clickDeathButton(false);
         clickBirthButton(true);
+        clickDeathButton(false);
         try {
             const response = await API.get(`/birthApplication/${userApplicationId}`);
-
             if (response.status === 200) {
-                setBirthApplication(response.data.brithApplication[0]);
-                setError(null);
-            } else {
-                setBirthApplication(null);
-                setError(response.data.message);
-            }
+                setBirthApplication(response.data.birthApplication[0]);
+            } 
         } catch (error) {
-            setBirthApplication(null);
             setError("An error occurred while fetching the application. Please try again later.");
         }
     }
@@ -40,14 +34,8 @@ const ApplicationStatus = () => {
             
             if (response.status === 200) {
                 setDeathApplication(response.data.deathApplication[0]);
-                setError(null);
-            } else {
-                setDeathApplication(null);
-                setError(response.data.message);
-                Navigate("/applicationStatus")
-            }
+            } 
         } catch (error) {
-            setDeathApplication(null);
             setError("An error occurred while fetching the application. Please try again later.");
         }
     }
@@ -69,7 +57,8 @@ const ApplicationStatus = () => {
                     <div className="statusOfApplication">
                         {isbirthButton && (
                             <div className="birthAppStatus">
-                            {birthApplication?(<h6>Your Birth Application Status is <span id='statusStyle'>{birthApplication.applicationStatus}</span></h6>):<h6 style={{color:"red"}}>No Birth Application found with id: {userApplicationId}</h6>}
+                            {birthApplication?(<div className="success"><h6>Your Birth Application Status is <span id='statusStyle'>{birthApplication.applicationStatus}</span></h6>
+                            {(birthApplication.applicationStatus=='verified')?<button className='downloadBtn'>Download Your Certificate</button>:""}</div>): <h6 style={{color:"red"}}>No Birth Application found with id: {userApplicationId}</h6>}
                         </div>
                         )}
                         {/*  */}
