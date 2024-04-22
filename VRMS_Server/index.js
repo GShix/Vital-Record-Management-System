@@ -174,7 +174,7 @@ app.post("/api/admin/birthRejection/:id",async(req,res)=>{
     }
     const rejectApplication = await Birth.findByIdAndDelete(id);
     res.status(200).json({
-        message:`The Birth Application with id: ${id} is rejected successfully`
+        message:`The Birth Application with id: ${id} is rejected successfully`,
     })
 })
 
@@ -302,7 +302,7 @@ app.get("/api/birthApplication/:userApplicationId",async(req,res)=>{
         if(applicationIdFound.length!==0){
             return res.status(200).json({
                 message:"Birth Application fetched successfully",
-                brithApplication: applicationIdFound
+                birthApplication: applicationIdFound
             })
         }
         if(applicationIdFound.length==0){
