@@ -24,7 +24,8 @@ const Admin = () => {
           Navigate("/adminHome")
         }
       } catch (error) {
-        alert("Error",error);
+
+        alert("Error",response.message);
       }
     }
     const toggleShowPassword =()=>{
