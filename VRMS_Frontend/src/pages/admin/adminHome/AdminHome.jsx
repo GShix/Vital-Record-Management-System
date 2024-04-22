@@ -96,7 +96,7 @@ const AdminHome = () => {
       if(applicationStatus =="verified"){
         alert(`Application with uid: ${userApplicationId} is already verified`)
       }else{
-        const response = await API.post(`/admin/deathVerification/${id}`)
+        const response = await API.post(`/admin/birthVerification/${id}`)
         alert(`Application with uid: ${userApplicationId} is verified successfully`)
       
       }
