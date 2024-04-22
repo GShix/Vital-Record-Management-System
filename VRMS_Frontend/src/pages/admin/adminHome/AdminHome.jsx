@@ -12,24 +12,24 @@ import { fetchSingleBirth } from '../../../store/birthSlice';
 const AdminHome = () => {
   const Navigate = useNavigate();
   // auth authentication
-  const isAuthenticated = !!Cookies.get('auth');
-    useEffect(()=>{
-      if(!isAuthenticated){
-        Navigate('/vrms-admin');
-      }
-      setLoading(true);
-      setTimeout(()=>{
-        setLoading(false)
-      },2000)
-    },[])
+  // const isAuthenticated = !!Cookies.get('auth');
+  //   useEffect(()=>{
+  //     if(!isAuthenticated){
+  //       Navigate('/vrms-admin');
+  //     }
+  //     setLoading(true);
+  //     setTimeout(()=>{
+  //       setLoading(false)
+  //     },2000)
+  //   },[])
 
     var handleLogout =()=>{
       Cookies.remove('auth');
       Navigate('/vrms-admin');
     }
-    if(!isAuthenticated){
-      return null;
-    }
+    // if(!isAuthenticated){
+    //   return null;
+    // }
     
   const [loading, setLoading]=useState(false);
   const [showBirth, setShowBirth] = useState(false);

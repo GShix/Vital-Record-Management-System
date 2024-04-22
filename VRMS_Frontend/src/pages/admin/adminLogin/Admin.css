@@ -16,6 +16,9 @@
     text-align: center;
     color: white;
 }
+.adminLogo img{
+    width: 120px;
+}
 .adminLogo h2{
     font-size: 30px;
     margin-top: 3px;

@@ -12,15 +12,19 @@ const Admin = () => {
 
     const loginAdmin =async(e)=>{
       e.preventDefault();
-      const authData ={
-        adminName,
-        adminPassword
-      }
-      const response = await API.post("/vrms/admin/login",authData)
-      if(response.status==200){
-        const expirationTime = new Date(new Date().getTime() + 60000);
-        Cookies.set('auth',JSON.stringify(authData),{expires:expirationTime});
-        Navigate("/adminHome")
+      try {
+        const authData ={
+          adminName,
+          adminPassword
+        }
+        const response = await API.post("/vrms/admin/login",authData)
+        if(response.status==200){
+          const expirationTime = new Date(new Date().getTime() + 60000);
+          Cookies.set('auth',JSON.stringify(authData),{expires:expirationTime});
+          Navigate("/adminHome")
+        }
+      } catch (error) {
+        alert("Error",error);
       }
     }
     const toggleShowPassword =()=>{
