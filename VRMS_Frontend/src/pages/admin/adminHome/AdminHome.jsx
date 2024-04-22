@@ -172,25 +172,25 @@ const AdminHome = () => {
 
     
   // auth authentication
-  const isAuthenticated = !!Cookies.get('auth');
-    const Navigate = useNavigate();
-    useEffect(()=>{
-      if(!isAuthenticated){
-        Navigate('/vrms-admin');
-      }
-      setLoading(true);
-      setTimeout(()=>{
-        setLoading(false)
-      },2000)
-    },[])
+  // const isAuthenticated = !!Cookies.get('auth');
+  //   const Navigate = useNavigate();
+  //   useEffect(()=>{
+  //     if(!isAuthenticated){
+  //       Navigate('/vrms-admin');
+  //     }
+  //     setLoading(true);
+  //     setTimeout(()=>{
+  //       setLoading(false)
+  //     },2000)
+  //   },[])
 
     var handleLogout =()=>{
       Cookies.remove('auth');
       Navigate('/vrms-admin');
     }
-    if(!isAuthenticated){
-      return null;
-    }
+    // if(!isAuthenticated){
+    //   return null;
+    // }
       
   return (
     <div className="sweet-loading">
@@ -409,51 +409,51 @@ const AdminHome = () => {
                   {isSingleBirth && (
                       <div className="singleBirth">
                         <div className="allBirthApplications">
-                          <h3>ID:<i>{singleBirth.userApplicationId}</i> Birth Applications</h3>
+                          <h3>ID: <i>{singleBirth.userApplicationId}</i> Birth Applications</h3>
                         <div className="birthData">
                             <div className="birthApplication">
                                 <div className="birth-details">
                                 <span>Newborn Baby's Details</span>
                                 <div className="baby-name  margin-top">
-                                  <label  htmlFor="firstName">First Name: <span id='singleSmallSpan'>{singleBirth.firstName}</span>
+                                  <label  htmlFor="firstName">First Name: <span id='sspan'>{singleBirth.firstName}</span>
                                   </label>
-                                  <label className="margin-left"  htmlFor="middleName">Middle Name: {singleBirth.middleName}
+                                  <label className="margin-left"  htmlFor="middleName">Middle Name: <span id='sspan'>{singleBirth.middleName}</span>
                                   </label>
-                                  <label className="margin-left"  htmlFor="lastName">Last Name: {singleBirth.lastName}
+                                  <label className="margin-left"  htmlFor="lastName">Last Name: <span id='sspan'>{singleBirth.lastName}</span>
                                   </label>
                                 </div>
                                 <div className="birth-time margin-top2">
-                                  <label  htmlFor="birthDate">Date: {singleBirth.birthDate}
+                                  <label  htmlFor="birthDate">Date: <span id='sspan'>{singleBirth.birthDate}</span>
                                   </label>
-                                  <label className="margin-left"  htmlFor="birthTime">Time: {singleBirth.birthTime}
+                                  <label className="margin-left"  htmlFor="birthTime">Time: <span id='sspan'>{singleBirth.birthTime}</span>
                                   </label>
                                 </div>
                                 <div className="birth-place margin-top2">
-                                  <label htmlFor="birthPlace">Birth Place: {singleBirth.birthPlace}</label>
+                                  <label htmlFor="birthPlace">Birth Place: <span id='sspan'>{singleBirth.birthPlace}</span></label>
                               </div>
                               <div className="baby-gender margin-top2">
-                                <label  htmlFor="Gender">Gender: {singleBirth.babyGender}</label>
+                                <label  htmlFor="Gender">Gender: <span id='sspan'>{singleBirth.babyGender}</span></label>
                               </div>
                               <div className="type-of-birth margin-top2">
-                                <label  htmlFor="type-of-birth">Type of Birth: {singleBirth.birthType}</label>
+                                <label  htmlFor="type-of-birth">Type of Birth: <span id='sspan'>{singleBirth.birthType}</span></label>
                               </div>
                               <div className="baby-weight margin-top2">
-                                <label  htmlFor="baby-weight" >Baby's Weight in GM(At birth): {singleBirth.babyWeight}</label>
+                                <label  htmlFor="baby-weight" >Baby's Weight in GM(At birth): <span id='sspan'>{singleBirth.babyWeight}</span></label>
                               </div>
                               <div className="birth-address margin-top2">
                                 <span>Birth Address(National)</span>
                                 <div className="birth-address-details">
-                                  <label htmlFor="birth-district" id="two">District: {singleBirth.birthDistrict}</label>
-                                  <label className="margin-left" htmlFor="birth-municipality" id="two">Municipality: {singleBirth.birthMunicipality}</label>
-                                  <label className="margin-left" htmlFor="birth-wardno" id="two">Ward No.: {singleBirth.birthWardno}</label><br></br>
-                                  <label className="margin-top" htmlFor="birth-village" id="two">Village: {singleBirth.birthVillage}</label>
+                                  <label htmlFor="birth-district" id="two">District: <span id='sspan'>{singleBirth.birthDistrict}</span></label>
+                                  <label className="margin-left" htmlFor="birth-municipality" id="two">Municipality: <span id='sspan'>{singleBirth.birthMunicipality}</span></label>
+                                  <label className="margin-left" htmlFor="birth-wardno" id="two">Ward No.: <span id='sspan'>{singleBirth.birthWardno}</span></label><br></br>
+                                  <label className="margin-top" htmlFor="birth-village" id="two">Village: <span id='sspan'>{singleBirth.birthVillage}</span></label>
                                 </div>
                                 
                               </div>
                               <div className="grand-details margin-top2">
                                 <span>Grand Parent Details</span>
                                 <div className="grand-father margin-top">
-                                  <label  htmlFor="grand-father">Grand Father's Name: {singleBirth.grandFather}</label>
+                                  <label  htmlFor="grand-father">Grand Father's Name: <span id='sspan'>{singleBirth.grandFather}</span></label>
                                 </div>
                               </div>
                               <div className="baby-parent margin-top2">
@@ -461,19 +461,19 @@ const AdminHome = () => {
                                 <div className="baby-parent-details margin-top">
                                   <label  htmlFor="baby-parent">
                                   <div className="babyFather">
-                                    <label  htmlFor="babyFather">Father's First Name: {singleBirth.babyFatherFirstName}
+                                    <label  htmlFor="babyFather">Father's First Name: <span id='sspan'>{singleBirth.babyFatherFirstName}</span>
                                     </label>
-                                    <label  htmlFor="babyFather" className='margin-left'>Middle Name: {singleBirth.babyFatherMiddleName}
+                                    <label  htmlFor="babyFather" className='margin-left'>Middle Name: <span id='sspan'>{singleBirth.babyFatherMiddleName}</span>
                                     </label>
-                                    <label  htmlFor="babyFather" className='margin-left'>Last Name: {singleBirth.babyFatherLastName}
+                                    <label  htmlFor="babyFather" className='margin-left'>Last Name: <span id='sspan'>{singleBirth.babyFatherLastName}</span>
                                     </label>
                                   </div>
                                   <div className="babyMother margin-top">
-                                    <label  htmlFor="babyMother">Mother's First Name: {singleBirth.babyMotherFirstName}
+                                    <label  htmlFor="babyMother">Mother's First Name: <span id='sspan'>{singleBirth.babyMotherFirstName}</span>
                                     </label>
-                                    <label  htmlFor="babyMother" className='margin-left'>Middle Name: {singleBirth.babyMotherMiddleName}
+                                    <label  htmlFor="babyMother" className='margin-left'>Middle Name: <span id='sspan'>{singleBirth.babyMotherMiddleName}</span>
                                     </label>
-                                    <label  htmlFor="babyMother" className='margin-left'>Last Name: {singleBirth.babyMotherLastName}
+                                    <label  htmlFor="babyMother" className='margin-left'>Last Name: <span id='sspan'>{singleBirth.babyMotherLastName}</span>
                                     </label>
                                   </div>
                                   </label>
@@ -482,48 +482,48 @@ const AdminHome = () => {
                               <div className="parentAddress margin-top2">
                                   <span>Parent's Permanent Address</span>
                                   <div className="parentAddressDetails">
-                                    <label  htmlFor="parentDistrict">District: {singleBirth.parentDistrict}</label>
-                                    <label className="margin-left" htmlFor="parentMunicipality">Municipality: {singleBirth.parentMunicipality}</label>
-                                    <label  className="margin-left" htmlFor="parentWardno">Wardno: {singleBirth.parentWardno}</label><br></br>
-                                    <label  htmlFor="parentVillage">Village: {singleBirth.parentVillage}</label>
-                                    <label  className="margin-left" htmlFor="parentHouseno">Houseno: {singleBirth.parentHouseno}</label>
+                                    <label  htmlFor="parentDistrict">District: <span id='sspan'>{singleBirth.parentDistrict}</span></label>
+                                    <label className="margin-left" htmlFor="parentMunicipality">Municipality: <span id='sspan'>{singleBirth.parentMunicipality}</span></label>
+                                    <label  className="margin-left" htmlFor="parentWardno">Wardno: <span id='sspan'>{singleBirth.parentWardno}</span></label><br></br>
+                                    <label  htmlFor="parentVillage">Village: <span id='sspan'>{singleBirth.parentVillage}</span></label>
+                                    <label  className="margin-left" htmlFor="parentHouseno">Houseno: <span id='sspan'>{singleBirth.parentHouseno}</span></label>
                                   </div>
                               </div>
                               <div className="parentAgeDetails margin-top2">
                                     <span>Parent's Age</span>
                                       <div className="parentAge">
-                                        <label  htmlFor="parentFatherAge">Father's Age: {singleBirth.parentFatherAge}</label>
-                                        <label  className="margin-left" htmlFor="parentMotherAge">Mother's Age: {singleBirth.parentMotherAge}</label>
+                                        <label  htmlFor="parentFatherAge">Father's Age: <span id='sspan'>{singleBirth.parentFatherAge}</span></label>
+                                        <label  className="margin-left" htmlFor="parentMotherAge">Mother's Age: <span id='sspan'>{singleBirth.parentMotherAge}</span></label>
                                       </div>
                               </div>
                               <div className="parentCitizenDetails margin-top2">
                                 <span>Citizenship Number:</span>
                                 <div className="parentCitizenship">
-                                  <label  htmlFor="parentFatherCitizenshipno">Father's Citizenship No: {singleBirth.parentFatherCitizenshipno}</label>
-                                  <label  className="margin-left" htmlFor="parentFatherCitizenshipDistrict">Issued District: {singleBirth.parentFatherCitizenshipDistrict}</label><br></br>
-                                  <label  htmlFor="parentFatherCitizenshipDate">Issued Date: {singleBirth.parentFatherCitizenshipDate}</label><br></br>
-                                  <label  htmlFor="parentMotherCitizenshipno">Mother's Citizenship No: {singleBirth.parentMotherCitizenshipno}</label>
-                                  <label  className="margin-left" htmlFor="parentMotherCitizenshipDistrict">Issued District: {singleBirth.parentMotherCitizenshipDistrict}</label><br></br>
-                                  <label  htmlFor="parentMotherCitizenshipDate">Issued Date: {singleBirth.parentMotherCitizenshipDate}</label>
+                                  <label  htmlFor="parentFatherCitizenshipno">Father's Citizenship No: <span id='sspan'>{singleBirth.parentFatherCitizenshipno}</span></label>
+                                  <label  className="margin-left" htmlFor="parentFatherCitizenshipDistrict">Issued District: <span id='sspan'>{singleBirth.parentFatherCitizenshipDistrict}</span></label><br></br>
+                                  <label  htmlFor="parentFatherCitizenshipDate">Issued Date: <span id='sspan'>{singleBirth.parentFatherCitizenshipDate}</span></label><br></br>
+                                  <label  htmlFor="parentMotherCitizenshipno">Mother's Citizenship No: <span id='sspan'>{singleBirth.parentMotherCitizenshipno}</span></label>
+                                  <label  className="margin-left" htmlFor="parentMotherCitizenshipDistrict">Issued District: <span id='sspan'>{singleBirth.parentMotherCitizenshipDistrict}</span></label><br></br>
+                                  <label  htmlFor="parentMotherCitizenshipDate">Issued Date: <span id='sspan'>{singleBirth.parentMotherCitizenshipDate}</span></label>
                                 </div>
                               </div>
                               <div className="parentOtherDetails margin-top2">
                                 <span>Others:</span>
                                 <div className="FatherDetail margin-top">
-                                  <label  htmlFor="fatherEducation">Father's Education: {singleBirth.fatherEducation}</label>
-                                  <label  className="margin-left" htmlFor="fatherOccupation">Occupation: {singleBirth.fatherOccupation}</label>
-                                  <label  className="margin-left" htmlFor="fatherReligion">Religion: {singleBirth.fatherReligion}</label><br></br>
-                                  <label  htmlFor="fatherMotherTongue">Mother Tongue: {singleBirth.fatherMotherTongue}</label>
+                                  <label  htmlFor="fatherEducation">Father's Education: <span id='sspan'>{singleBirth.fatherEducation}</span></label>
+                                  <label  className="margin-left" htmlFor="fatherOccupation">Occupation: <span id='sspan'>{singleBirth.fatherOccupation}</span></label>
+                                  <label  className="margin-left" htmlFor="fatherReligion">Religion: <span id='sspan'>{singleBirth.fatherReligion}</span></label><br></br>
+                                  <label  htmlFor="fatherMotherTongue">Mother Tongue: <span id='sspan'>{singleBirth.fatherMotherTongue}</span></label>
                                 </div>
                                 <div className="motherDetail margin-top2">
-                                  <label  htmlFor="motherEducation">Mother's Education: {singleBirth.motherEducation}</label>
-                                  <label  className="margin-left" htmlFor="motherOccupation">Occupation: {singleBirth.motherOccupation}</label>
-                                  <label  className="margin-left" htmlFor="motherReligion">Religion: {singleBirth.motherReligion}</label><br></br>
-                                  <label  htmlFor="motherMotherTongue">Mother Tongue: {singleBirth.motherMotherTongue}</label>
+                                  <label  htmlFor="motherEducation">Mother's Education: <span id='sspan'>{singleBirth.motherEducation}</span></label>
+                                  <label  className="margin-left" htmlFor="motherOccupation">Occupation: <span id='sspan'>{singleBirth.motherOccupation}</span></label>
+                                  <label  className="margin-left" htmlFor="motherReligion">Religion: <span id='sspan'>{singleBirth.motherReligion}</span></label><br></br>
+                                  <label  htmlFor="motherMotherTongue">Mother Tongue: <span id='sspan'>{singleBirth.motherMotherTongue}</span></label>
                                 </div>
                               </div>
                               <div className="userEmail margin-top2">
-                                <label id='one' htmlFor='userEmail'>Reciepient Gmail: <span id="singleSmallSpan">{singleBirth.userEmail}</span></label>
+                                <label id='one' htmlFor='userEmail'>Reciepient Gmail: <span id="sspan">{singleBirth.userEmail}</span></label>
                               </div>
                               </div>
                             </div>

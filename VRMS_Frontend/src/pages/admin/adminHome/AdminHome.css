@@ -4,7 +4,10 @@
 .statusVerified{
     color: green;
 }
-
+.singleBirth,.singleDeath{
+    display: flex;
+    justify-content: center;
+}
 .adminHome{
     margin-top: 0;
     display: flex;
@@ -140,7 +143,7 @@
     font-weight: lighter;
     font-size: 12px;
 }
-#singleSmallSpan{
+#singleSmallSpan, #sspan{
     color:red;
     font-size: 12px;
     border: none;
