@@ -18,9 +18,11 @@ const Admin = () => {
           adminPassword
         }
         const response = await API.post("/vrms/admin/login",authData)
+        localStorage.setItem("token",response.data.token)
         if(response.status==200){
-          const expirationTime = new Date(new Date().getTime() + 60000);
+          const expirationTime = new Date(new Date().getTime() + 120000);
           Cookies.set('auth',JSON.stringify(authData),{expires:expirationTime});
+          console.log(Cookies)
           Navigate("/adminHome")
         }else{
           alert(response.data.message)

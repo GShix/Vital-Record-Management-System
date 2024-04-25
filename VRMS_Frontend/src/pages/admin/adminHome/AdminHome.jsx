@@ -11,27 +11,10 @@ import { fetchSingleBirth } from '../../../store/birthSlice';
 
 const AdminHome = () => {
   const Navigate = useNavigate();
-  // auth authentication
-  const isAuthenticated = !!Cookies.get('auth');
-    useEffect(()=>{
-      if(!isAuthenticated){
-        Navigate('/vrms-admin');
-      }
-      setLoading(true);
-      setTimeout(()=>{
-        setLoading(false)
-      },2000)
-    },[])
 
-    var handleLogout =()=>{
-      Cookies.remove('auth');
-      Navigate('/vrms-admin');
-    }
-    if(!isAuthenticated){
-      return null;
-    }
-    
   const [loading, setLoading]=useState(false);
+  const [refresh, setRefresh] =useState(false);
+
   const [showBirth, setShowBirth] = useState(false);
   const [showDeath, setShowDeath] = useState(false);
   const [showDashboard,setShowDashboard] = useState(false);
@@ -47,6 +30,31 @@ const AdminHome = () => {
     dispatch(fetchTotalApplication());
     setShowDashboard(true);
   },[])
+
+  // auth authentication
+  const isAuthenticated = !!Cookies.get('auth');
+  const token = localStorage.getItem("token")
+    useEffect(()=>{
+      if(!isAuthenticated){
+        Navigate('/vrms-admin');
+      }
+      setLoading(true);
+      setTimeout(()=>{
+        setLoading(false)
+      },2000)
+    },[])
+
+    var handleLogout =()=>{
+      Cookies.remove('auth');
+      localStorage.removeItem("token")
+      Navigate('/vrms-admin');
+    }
+    if(!isAuthenticated){
+      return null;
+    }
+  const handleRefresh =()=>{
+    setRefresh(!refresh);
+  }
 
   const handleDashboardClick =async()=>{
     try {
@@ -85,8 +93,7 @@ const AdminHome = () => {
         alert(`Application with uid: ${userApplicationId} is already verified`)
       }else{
         const response = await API.post(`/admin/birthVerification/${id}`)
-        alert(`Application with uid: ${userApplicationId} is verified successfully`)
-      
+        alert(`Application with uid: ${userApplicationId} is verified successfully`);
       }
     
     } catch (error) {
@@ -108,8 +115,7 @@ const AdminHome = () => {
         alert(`Application with uid: ${userApplicationId} is already verified`)
       }else{
         const response = await API.post(`/admin/deathVerification/${id}`)
-        alert(`Application with uid: ${userApplicationId} is verified successfully`)
-      
+        alert(`Application with uid: ${userApplicationId} is verified successfully`);
       }
     
     } catch (error) {
