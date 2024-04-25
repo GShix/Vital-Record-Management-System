@@ -1,10 +1,15 @@
 # Solo Project
 
-Project Name: Vital Record Management System to Local Municipality
+## Project Name: 
+Vital Record Management System to Local Municipality
 
-Descritption: Vital Record Management System for Local Municipality(Babai Rural Municipality) revolutionizes record-keeping in Babai Municipality by digitizing essential documents such as Birth/Death certificates and other records. By reducing paperwork and streamlining processes, it enhances efficiency and transparency in public administration, ultimately serving the citizens of Local Municipality more effectively.
+## Descritption:
+ Vital Record Management System for Local Municipality(Babai Rural Municipality) revolutionizes record-keeping in Babai Municipality by digitizing essential documents such as Birth/Death certificates and other records. By reducing paperwork and streamlining processes, it enhances efficiency and transparency in public administration, ultimately serving the citizens of Local Municipality more effectively.
 
-** Features:
+
+---
+**Features:
+```
 - E-gov services:
   -Online Birth and Death Registration
   -Download Birth and Death Certificate(Once Admin verified the Application)
@@ -16,8 +21,12 @@ Descritption: Vital Record Management System for Local Municipality(Babai Rural 
   -Admin can view, verify and reject the Single Application
 - 'Redux/toolkit' and 'react-redux' for better state management
 - Secured user(Admin) data(password) using 'bcryptjs'
+```
 
-** Upcoming Features:
+---
+**Upcoming Features:
+```
 - Likey Certificate as provided by the government
 - More authenticity for the certificate
 - Other vital records(like:Migration & Marriage Registration)
+```
