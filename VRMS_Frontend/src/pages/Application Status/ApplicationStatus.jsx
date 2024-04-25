@@ -3,40 +3,37 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import './ApplicationStatus.css'
 import API from '../http'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchSingleBirth } from '../../store/birthSlice'
+import { fetchSingleDeath } from '../../store/deathSlice'
+import { isDraft } from '@reduxjs/toolkit'
 const ApplicationStatus = () => {
     const [userApplicationId,setId]= useState(0);
-    const [error,setError] = useState();
-    const [deathApplication,setDeathApplication] = useState(0);
-    const [birthApplication,setBirthApplication] = useState(0);
     const [isbirthButton,clickBirthButton] = useState(false);
     const [isdeathButton,clickDeathButton] = useState(false);
+
+    const {singleDeath} =useSelector((state)=>state.deathApplication)
+    const {singleBirth} =useSelector((state)=>state.birthApplication)
+    const dispatch = useDispatch();
     const searchBirthApplication =async(e)=>{
         e.preventDefault();
         clickBirthButton(true);
         clickDeathButton(false);
         try {
-            const response = await API.get(`/birthApplication/${userApplicationId}`);
-            if (response.status === 200) {
-                setBirthApplication(response.data.birthApplication[0]);
-            } 
-        } catch (error) {
-            setError("An error occurred while fetching the application. Please try again later.");
+            dispatch(fetchSingleBirth(userApplicationId));
+        }catch (error) {
+            alert("Something went wrong",error);
         }
     }
-
 
     const searchDeathApplication = async (e) => {
         e.preventDefault();
         clickDeathButton(true);
         clickBirthButton(false);
         try {
-            const response = await API.get(`/deathApplication/${userApplicationId}`);
-            
-            if (response.status === 200) {
-                setDeathApplication(response.data.deathApplication[0]);
-            } 
+            dispatch(fetchSingleDeath(userApplicationId))
         } catch (error) {
-            setError("An error occurred while fetching the application. Please try again later.");
+            alert("Something went wrong",error);
         }
     }
 
@@ -57,14 +54,14 @@ const ApplicationStatus = () => {
                     <div className="statusOfApplication">
                         {isbirthButton && (
                             <div className="birthAppStatus">
-                            {birthApplication?(<div className="success"><h6>Your Birth Application Status is <span id='statusStyle'>{birthApplication.applicationStatus}</span></h6>
-                            {(birthApplication.applicationStatus=='verified')?<button className='downloadBtn'>Download Your Certificate</button>:""}</div>): <h6 style={{color:"red"}}>No Birth Application found with id: {userApplicationId}</h6>}
+                            {singleBirth && (singleBirth!=="" || singleBirth!==null || singleBirth!==undefined)?( <h6 style={{color:"red"}}>No Birth Application found with id: {userApplicationId}</h6>):(<div className="success"><h6>Your Birth Application Status is <span id='statusStyle'>{singleBirth.applicationStatus}</span></h6>
+                            {(singleBirth.applicationStatus=='verified')?<button className='downloadBtn'>Download Your Certificate</button>:""}</div>)}
                         </div>
                         )}
                         {/*  */}
                         {isdeathButton && (
                         <div className="deathAppStatus">
-                            {deathApplication?(<div className="success"><h6>Your Death Application Status is <span id='statusStyle'>{deathApplication.applicationStatus}</span></h6>{(deathApplication.applicationStatus=="verified")?<button className='downloadBtn'>Download Your Certificate</button>:""}</div>):<h6 style={{color:"red"}}>No Death Application found with id: {userApplicationId}</h6>}
+                            {singleDeath && (singleDeath!=="" || singleDeath!==null || singleDeath!==undefined)?(<div className="success"><h6>Your Death Application Status is <span id='statusStyle'>{singleDeath.applicationStatus}</span></h6>{(singleDeath.applicationStatus=="verified")?<button className='downloadBtn'>Download Your Certificate</button>:""}</div>):<h6 style={{color:"red"}}>No Death Application found with id: {userApplicationId}</h6>}
                         </div>
                         )}
                     </div>
