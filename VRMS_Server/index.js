@@ -17,8 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 //cors
 const cors = require("cors")
 app.use(cors({
-    origin:"https://vrms-babaimuni.vercel.app",
-    // origin:"*",
+    // origin:"https://vrms-babaimuni.vercel.app",
+    origin:"*",
     methods:['GET', 'PUT', 'POST']
 }))
 
@@ -32,13 +32,15 @@ app.get('/', (req, res) => {
 //api router
 const Death = require('./model/deathModel');
 const Birth = require('./model/birthModel');
+const Admin = require('./model/adminModel');
+const sendMail = require('./services/SendMail');
 
 const deathRegistrationRoute =require('./routes/user/userDeathRoutes');
 const birthRegistrationRoute = require('./routes/user/userBirthRoutes')
 const adminLoginRoute = require("./routes/admin/authRoutes")
 const adminApplicationRoute =require('./routes/admin/adminApplicationsRoutes');
-const Admin = require('./model/adminModel');
-const sendMail = require('./services/SendMail');
+
+app.post("/api/deathApplication",deathRegistrationRoute)
 
 //api for admin login
 // app.post('/vrms/admin/login',adminLoginRoute)
@@ -61,7 +63,7 @@ app.post("/api/vrms/admin/login", async(req,res)=>{
     const matchPassword = bcrypt.compareSync(adminPassword,adminFound[0].adminPassword);
     if(matchPassword){
         //generate token
-        const token = jwt.sign({id:adminFound[0]._id},process.env.SECRET_KEY,{expiresIn:'1d'})
+        const token = jwt.sign({id:adminFound[0]._id},process.env.SECRET_KEY,{expiresIn:'5m'})
         res.status(200).json({
             message:"admin logined successfully.",
             data:adminFound,
