@@ -6,6 +6,9 @@ Vital Record Management System to Local Municipality
 ## Descritption:
  Vital Record Management System for Local Municipality(Babai Rural Municipality) revolutionizes record-keeping in Babai Municipality by digitizing essential documents such as Birth/Death certificates and other records. By reducing paperwork and streamlining processes, it enhances efficiency and transparency in public administration, ultimately serving the citizens of Local Municipality more effectively.
 
+### Go Live:
+[VRMS Babai](https://vrms-babaimuni.vercel.app/)
+
 
 ---
 **Features:
