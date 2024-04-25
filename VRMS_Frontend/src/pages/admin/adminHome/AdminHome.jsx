@@ -35,8 +35,6 @@ const AdminHome = () => {
   const [showBirth, setShowBirth] = useState(false);
   const [showDeath, setShowDeath] = useState(false);
   const [showDashboard,setShowDashboard] = useState(false);
-  const [deathApplications, setDeathApplications] = useState([]);
-  const [birthApplications, setBirthApplications] = useState([]);
   
   const [isSingleBirth, setSingleBirth] = useState(false);
   const [isSingleDeath, setSingleDeath] = useState(false);
@@ -67,11 +65,6 @@ const AdminHome = () => {
     setShowDashboard(false);
     setSingleBirth(false);
     setSingleDeath(false);
-    try {
-      setBirthApplications(birth); 
-    } catch (error) {
-      alert("Something Went Wrong",error);
-    }
   }
   const handleDeathClick =async()=>{
     setShowBirth(false);
@@ -79,11 +72,6 @@ const AdminHome = () => {
     setShowDashboard(false);
     setSingleBirth(false);
     setSingleDeath(false);
-    try {
-      setDeathApplications(death);
-    } catch (error) {
-      alert("Something Went Wrong",error);
-    }
   }
   //application verification
   const handleBirthVerification =async(applicationId,appStatus,uid)=>{
@@ -236,7 +224,7 @@ const AdminHome = () => {
                       <div className="allBirthApplications">
                         <h3>All Birth Applications: <i style={{color:"red"}}> {birth.length}</i></h3>
                         {
-                          birthApplications.map((birth)=>{
+                          birth.map((birth)=>{
                             return (
                               <div key={birth._id} className="allBirthAppDetails">
                           <span style={{border:"none"}} className="applicationId">
@@ -273,7 +261,7 @@ const AdminHome = () => {
                       <div className="allDeathApplications">
                         <h3>All Death Applications:<i style={{color:"red"}}> {death.length}</i></h3>
                         {
-                          deathApplications.map((death)=>{ //data not showing
+                          death.map((death)=>{ //data not showing
                             return (
                               <div key={death._id} className="allDeathAppDetails">
                           <span style={{border:"none"}} className="applicationId">
