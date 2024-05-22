@@ -18,7 +18,7 @@ export default birthSlice.reducer
 export function fetchSingleBirth(userAppId){
     return async function fetchSingleBirthThunk(dispatch){
         try {
-            const response = await API.get(`/birthApplication/${userAppId}`)
+            const response = await API.get(`/user/birth/birthApplication/${userAppId}`)
             // console.log(response)
             // if(response1.status==200){
                 dispatch(setSingleBirth(response.data.birthApplication[0]));

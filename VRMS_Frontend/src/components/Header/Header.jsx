@@ -3,7 +3,8 @@ import './Header.css'
 import {useNavigate} from 'react-router-dom'
 const Header = () => {
     const Navigate = useNavigate();
-    const [menu,setMenu] = useState(false);
+    const [clickMenu,setClickMenu] = useState(false);
+    console.log(clickMenu)
   return (
     <div>
         <header>
@@ -38,7 +39,7 @@ const Header = () => {
                     <marquee><a href='/'>दोस्रो बोलपत्रको सूचना (Invitation for Bids) !!&nbsp;</a> <a href='/'>&nbsp;बोलपत्रको सूचना(Invitation for Online Bids) !!&nbsp;</a> <a href='/'>&nbsp;बोलपत्र आशयको मुल्याङ्कन सूचना !!&nbsp;</a> <a href='/'>&nbsp;गोल्ड कप फुटवल प्रतियोगितामा फुटबल टिम सहभागीता सम्बन्धी सम्बन्धी सूचना !!&nbsp;</a><a href='/'>&nbsp;बबई गाउँपालिका स्थित सबै सामुदायिक विद्यालयहरु प्रस्ताव पेश गर्ने सम्बन्धमा !!&nbsp;</a><a href='/'>&nbsp;नदिजन्य पदार्थको बिक्री शुल्क उठाउने सम्बन्धी बोलपत्र ठेक्का को मुल्याङ्कन बोलपत्र आशयको सूचना !!!</a></marquee>
                 </div>
             <div className="nav-list flex">
-                <ul className={setMenu?" nav-list-items mobileNavList":"nav-list-items"}>
+                <ul className="nav-list-items">
                     <li onClick={()=>Navigate('/')}>Home</li>
                     <li onClick={()=>Navigate('/introduction')}>Introduction</li>
                     <li onClick={()=>Navigate('/eservices')}>E-Gov Services</li>
@@ -55,9 +56,28 @@ const Header = () => {
                 <button className='successHomeBtn' onClick={()=>Navigate('/applicationStatus')}>Application Status</button>
                 <button id='employee-login-btn' type='' onClick={()=>Navigate('/vrms-admin')}>Admin Login</button>
                 <div className="list-menu">
-                    <img src='.././menu.png' onClick={()=>setMenu(!menu)}/>
+                    <img src={clickMenu ?".././public/menu-cancel.png":'.././menu.png'} onClick={()=>setClickMenu(!clickMenu)}/>
                 </div>
             </div>
+
+            {clickMenu ?
+            (
+                <div className="md-nav">
+                <h5 onClick={()=>Navigate('/')}>Home</h5>
+                <h5 onClick={()=>Navigate('/introduction')}>Introduction</h5>
+                <h5 onClick={()=>Navigate('/eservices')}>E-Gov Services</h5>
+                <h5 onClick={()=>Navigate('/')}>
+                    <select style={{border:'none',background:"none",fontFamily:"arial",fontWeight:"600",fontSize:"15px",textDecoration:"none",color:"white"}} className="dropdown">
+                        <option id='#'>Download</option>
+                        <option id=''>Birth Certificate</option>
+                        <option id=''>Death Certificate</option>
+                    </select>
+                </h5>
+                <a style={{textDecoration:"none",color:"white"}} href='.././VRMS_Guide.pdf'><h5>How to use VRMS?</h5></a>    
+                <h5 onClick={()=>Navigate('/contact')}>Contact</h5>
+        </div>
+            )
+            :""}
             </div>
         </header>
     </div>

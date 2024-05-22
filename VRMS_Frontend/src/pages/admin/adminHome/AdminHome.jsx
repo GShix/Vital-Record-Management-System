@@ -13,7 +13,6 @@ const AdminHome = () => {
   const Navigate = useNavigate();
 
   const [loading, setLoading]=useState(false);
-  const [refresh, setRefresh] =useState(false);
 
   const [showBirth, setShowBirth] = useState(false);
   const [showDeath, setShowDeath] = useState(false);
@@ -33,7 +32,7 @@ const AdminHome = () => {
 
   // auth authentication
   const isAuthenticated = !!Cookies.get('auth');
-  const token = localStorage.getItem("token")
+  // const token = localStorage.getItem("token")
     useEffect(()=>{
       if(!isAuthenticated){
         Navigate('/vrms-admin');
@@ -46,16 +45,12 @@ const AdminHome = () => {
 
     var handleLogout =()=>{
       Cookies.remove('auth');
-      localStorage.removeItem("token")
+      // localStorage.removeItem("token")
       Navigate('/vrms-admin');
     }
     if(!isAuthenticated){
       return null;
     }
-  const handleRefresh =()=>{
-    setRefresh(!refresh);
-  }
-
   const handleDashboardClick =async()=>{
     try {
       setShowDashboard(true);
@@ -92,7 +87,7 @@ const AdminHome = () => {
       if(applicationStatus =="verified"){
         alert(`Application with uid: ${userApplicationId} is already verified`)
       }else{
-        const response = await API.post(`/admin/birthVerification/${id}`)
+        const response = await API.post(`/admin/applications/birth/birthVerification/${id}`)
         alert(`Application with uid: ${userApplicationId} is verified successfully`);
       }
     
@@ -114,7 +109,7 @@ const AdminHome = () => {
       if(applicationStatus =="verified"){
         alert(`Application with uid: ${userApplicationId} is already verified`)
       }else{
-        const response = await API.post(`/admin/deathVerification/${id}`)
+        const response = await API.post(`/admin/applications/death/deathVerification/${id}`)
         alert(`Application with uid: ${userApplicationId} is verified successfully`);
       }
     
@@ -148,7 +143,6 @@ const AdminHome = () => {
       dispatch(fetchSingleBirth(userAppId))
     } catch (error) {
       alert("Something Went Wrong",error);
-      console.log(error);
     }
   }
   //deathRejection
@@ -157,7 +151,7 @@ const AdminHome = () => {
     const id = applicationId;
     const userApplicationId =uid
     try {
-      const response = await API.post(`/admin/deathRejection/${id}`);
+      const response = await API.post(`/admin/applications/death/deathRejection/${id}`);
       if(response.status ==200){
         alert(`Application with id: ${userApplicationId} is rejected successfully`)
         Navigate("/AdminHome")
@@ -173,7 +167,7 @@ const AdminHome = () => {
     const id = applicationId;
     const userApplicationId =uid
     try {
-      const response = await API.post(`/admin/birthRejection/${id}`);
+      const response = await API.post(`/admin/applications/birth/birthRejection/${id}`);
       if(response.status ==200){
         alert(`Application with id: ${userApplicationId} is rejected successfully`)
         Navigate("/AdminHome")

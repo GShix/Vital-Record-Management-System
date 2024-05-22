@@ -18,7 +18,7 @@ export default deathSlice.reducer
 export function fetchSingleDeath(userAppId){
     return async function fetchSingleDeathThunk(dispatch){
         try {
-            const response = await API.get(`/deathApplication/${userAppId}`)
+            const response = await API.get(`/user/death/deathApplication/${userAppId}`)
             // console.log(response)
             // if(response1.status==200){
                 dispatch(setSinlgeDeath(response.data.deathApplication[0]));

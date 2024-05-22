@@ -8,6 +8,26 @@ input::-webkit-inner-spin-button {
 input[type='number']{
     -moz-appearance: textfield;
 }
+.menu-icon{
+    display: none;
+}
+.md-nav{
+    padding: 10px;
+    text-align:left;
+    font-family: arial;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.md-nav h5{
+    cursor: pointer;
+    padding: 8px 0;
+    transition: 0.3s ease ;
+}
+.md-nav h5:hover{
+    background-color: #2a5690;
+    color:white;
+}
 .flex{
     display: flex;
 }
@@ -159,6 +179,9 @@ marquee a{
         margin-bottom: 5px;
         padding: 8px 5px;
     }
+    .menu-icon{
+        display: block;
+    }
     .nav-logo{
         /* display: inline; */
         flex-wrap: wrap;
@@ -224,5 +247,12 @@ marquee a{
     }
     .mobileNavList li a{
         display: block;
+    }
+}
+
+/*md*/
+@media only screen and(min-width:900px) {
+    .nav-list ul{
+        display: none;
     }
 }
