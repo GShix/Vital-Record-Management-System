@@ -58,6 +58,11 @@ const Birth = () => {
             <div className="birth-application">
                 <div className="birth-details">
                 <span>Newborn Baby's Details</span>
+                <div>
+                  <label id="one" htmlFor="babyPhoto">Baby's Photo:
+                      <input required className="margin-top margin-left" type="file" id="babyPhoto" name="babyPhoto" placeholder="Upload baby's photo"/>
+                  </label>
+                </div>
                 <div className="baby-name  margin-top">
                   <label id="one" htmlFor="firstName">First Name:
                     <input required className="margin-top margin-left" type="text" id="firstName" name="firstName" placeholder="Enter Baby's First Name"/>
