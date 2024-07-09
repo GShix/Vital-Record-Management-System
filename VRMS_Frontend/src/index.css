@@ -3,7 +3,8 @@
     margin: 0;
     padding: 0;
 }
-body{font-family: "Tauri", sans-serif;;
+body{
+    font-family: "Tauri", sans-serif;;
     padding: 2px 70px;
     background-color: #355d90;
     /* display: flex */

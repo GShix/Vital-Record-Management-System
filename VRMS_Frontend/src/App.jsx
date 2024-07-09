@@ -12,6 +12,7 @@ import Contact from './pages/Contact/Contact'
 import Introduction from './pages/Introduction/Introduction'
 import { Provider } from 'react-redux'
 import store from './store/store'
+import Error from './components/Error'
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
           <Route path='/introduction' element ={<Introduction/>} /> 
           <Route path='/vrms-admin' element ={<Admin/>} />
           <Route path='/adminHome' element ={<AdminHome/>} />
+
+          <Route path='*' element ={<Error/>} />
         </Routes>
       </BrowserRouter>
       </Provider>

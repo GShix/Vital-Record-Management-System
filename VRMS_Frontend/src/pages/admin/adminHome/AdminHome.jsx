@@ -125,7 +125,7 @@ const AdminHome = () => {
     setShowDeath(false);
     setShowDashboard(false);
     setSingleDeath(true);
-    const userAppId = uid
+    const userAppId = uid ``````` `
     try {
       dispatch(fetchSingleDeath(userAppId));
     } catch (error) {
