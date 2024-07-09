@@ -44,7 +44,7 @@ const Header = () => {
                     <li onClick={()=>Navigate('/introduction')}>Introduction</li>
                     <li onClick={()=>Navigate('/eservices')}>E-Gov Services</li>
                     <li onClick={()=>Navigate('/')}>
-                        <select style={{border:'none',fontSize:"16px",textDecoration:"none"}} className="dropdown">
+                        <select style={{border:'none',fontSize:"1.2vw",textDecoration:"none"}} className="dropdown">
                             <option id='#'>Download</option>
                             <option id=''>Birth Certificate</option>
                             <option id=''>Death Certificate</option>

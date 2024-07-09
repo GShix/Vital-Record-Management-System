@@ -48,14 +48,31 @@
     cursor: pointer;
     font-weight: normal;
 }
-#adminLoginBtn{
-    padding: 5px 7px 6px 7px;
+.admin-login-btn{
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.admin-login-btn button{
     cursor: pointer;
     border: none;color: white;
     border-radius: 5px;
     background-color: #2d67b4
 }
-#adminLoginBtn:hover{
+.admin-login-btn1{
+    padding: 6px 12px;
+}
+.admin-login-btn2{
+    padding: 6px 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.admin-login-btn2 i{
+    margin-right: 2px;
+}
+.admin-login-btn button:hover{
     background-color: #2a5690;
     color:white
 }

@@ -109,8 +109,9 @@ marquee a{
 .nav-list{
     background-color:white;
     padding:0 20px 0px 10px;
-    font-size: 16px;
+    font-size: 1.2vw;
     align-items: center;
+    font-family: poppins;
     justify-content: space-between;
     border-bottom: 3px solid whitesmoke;
 }

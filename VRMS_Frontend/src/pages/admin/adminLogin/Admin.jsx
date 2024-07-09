@@ -51,7 +51,10 @@ const Admin = () => {
                     <label htmlFor='adminPassword'>Password:</label>
                     <br></br>
                     <input required type={showPassword?"text":'password'} id='adminPassword' name='adminPassword' placeholder='Password' value={adminPassword} onChange={(e)=>setAdminPassword(e.target.value)}/><h5 onClick={toggleShowPassword}>{showPassword?"Hide":"Show"}</h5><br></br><br></br>
-                    <button id='adminLoginBtn' type='submit'>Login</button>
+                    <div className='flex admin-login-btn'>
+                      <button className='admin-login-btn1' type='submit'>Login</button>
+                      <button className='admin-login-btn2' onClick={()=>Navigate('/')}><i class="ri-arrow-go-back-fill"></i>Home</button>
+                    </div>
                   </div>
               </form>
             </div>
