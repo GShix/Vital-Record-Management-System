@@ -54,7 +54,7 @@ const Header = () => {
                 </ul>
                 <button className='successHomeBtn' onClick={()=>Navigate('/applicationStatus')}>Application Status</button>
                 <button id='employee-login-btn' type='' onClick={()=>Navigate('/vrms-admin')}>Admin Login</button>
-                <div className="list-menu"><button className='mobile-menu' onClick={()=>setClickMenu(!clickMenu)}>{clickMenu ?<i class="ri-menu-line"></i>:<i class="ri-close-line" style={{fontSize:'15px'}}></i>} 
+                <div className="list-menu"><button className='mobile-menu' onClick={()=>setClickMenu(!clickMenu)}>{clickMenu ?<i class="ri-close-line" style={{fontSize:'15px'}}></i>:<i class="ri-menu-line"></i>} 
                 </button>
                 </div>
             </div>
