@@ -14,8 +14,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-    // origin:"https://vrms-babaimuni.vercel.app",
-    origin:"*",
+    origin:"https://vrms-babaimuni.vercel.app",
+    // origin:"*",
     methods:['GET', 'PUT', 'POST']
 }))
 
