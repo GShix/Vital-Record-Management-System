@@ -108,7 +108,7 @@ marquee a{
 }
 .nav-list{
     background-color:white;
-    padding:0 20px 0px 10px;
+    padding:1px 10px;
     font-size: 1.2vw;
     align-items: center;
     font-family: poppins;
@@ -116,14 +116,10 @@ marquee a{
     border-bottom: 3px solid whitesmoke;
 }
 .list-menu{
-    height: 25px;
     justify-content: end;
     width: 100%;
     color: red;
     display: none;
-}
-.list-menu img{
-    cursor: pointer;
 }
 .nav-list ul{
     text-decoration: none;
@@ -174,7 +170,6 @@ marquee a{
 .nav-list button:hover{
     background-color: #2a5690;
 }
-
 @media only screen and (max-width:600px){
     .mini-nav{
         margin-bottom: 5px;
@@ -210,6 +205,7 @@ marquee a{
         margin-left: 4px;
     }
     .nav-list{
+        padding-top: 3.5px;
         height:35px;
     }
     .nav-list .successHomeBtn{
@@ -235,9 +231,6 @@ marquee a{
     }
     .list-menu{
         display: flex;
-    }
-    .list-menu img{
-        margin-right: -10px;
     }
     .mini-nav img{
         width: 15px;

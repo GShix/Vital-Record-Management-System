@@ -54,8 +54,8 @@ const Header = () => {
                 </ul>
                 <button className='successHomeBtn' onClick={()=>Navigate('/applicationStatus')}>Application Status</button>
                 <button id='employee-login-btn' type='' onClick={()=>Navigate('/vrms-admin')}>Admin Login</button>
-                <div className="list-menu">
-                    <img src={clickMenu ?".././public/menu-cancel.png":'.././menu.png'} onClick={()=>setClickMenu(!clickMenu)}/>
+                <div className="list-menu"><button className='mobile-menu' onClick={()=>setClickMenu(!clickMenu)}>{clickMenu ?<i class="ri-menu-line"></i>:<i class="ri-close-line" style={{fontSize:'15px'}}></i>} 
+                </button>
                 </div>
             </div>
 
