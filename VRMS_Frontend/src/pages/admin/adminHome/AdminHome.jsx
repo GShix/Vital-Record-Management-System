@@ -198,7 +198,7 @@ const AdminHome = () => {
                     <h4 onClick={()=>handleDashboardClick()}>Dashboard</h4>
                     <h4 onClick={()=>handleBirthClick()}>Birth Application</h4>
                     <h4 onClick={()=>handleDeathClick()}>Death Application</h4>
-                    <button id='adminLogOutBtn' onClick={handleLogout}>Log Out</button>
+                    <button id='adminLogOutBtn' onClick={handleLogout}><i class="ri-logout-box-line"></i></button>
                 </div>
             </div>
             <div className='adminMain'>

@@ -6,7 +6,6 @@
 .adminLogin{
     height: 100%;
     width: 100%;
-    /* background-color: white; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,13 +33,19 @@
     width: 40%;
     margin-top: 25px;
     border-radius: 8px;
-    padding: 20px;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16.5px;
 
+}
+input{
+    font-size: 13px;
 }
 
 .adminAuth{
-    padding: 45px;
-    padding-left: 20%;
+    padding: 45px 0;
 }
 .adminAuth h5{
     display: inline;
@@ -61,11 +66,13 @@
     background-color: #2d67b4
 }
 .admin-login-btn1{
-    padding: 6px 12px;
+    padding: 5px 10px;
 }
 .admin-login-btn2{
-    padding: 6px 8%;
-    display: flex;
+    padding: 3px 3px 3.5px 5px ;
+    display: flex; 
+    margin-right: 20px;
+    font-size: 16px;
     justify-content: center;
     align-items: center;
 }

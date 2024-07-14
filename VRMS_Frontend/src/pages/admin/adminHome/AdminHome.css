@@ -39,9 +39,10 @@
     color: white;
 }
 .adminSide button {
-    margin-top: 15px;
-    padding: 4px 6px;
+    margin-top: 20px;
+    padding: 5px 5px;
     cursor: pointer;
+    font-size: 20px;
     background-color: #2d67b4;
     border: none;
     color: white;

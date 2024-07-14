@@ -52,10 +52,11 @@ const Admin = () => {
                     <input required type='text' id='username' name='adminName' placeholder='Username' value={adminName} onChange={(e)=>setAdminName(e.target.value)}/> <br></br><br></br>
                     <label htmlFor='adminPassword'>Password:</label>
                     <br></br>
-                    <input required type={showPassword?"text":'password'} id='adminPassword' name='adminPassword' placeholder='Password' value={adminPassword} onChange={(e)=>setAdminPassword(e.target.value)}/><h5 onClick={toggleShowPassword}>{showPassword?"Hide":"Show"}</h5><br></br><br></br>
+                    <input required type={showPassword?"text":'password'} id='adminPassword' name='adminPassword' placeholder='Password' value={adminPassword} onChange={(e)=>setAdminPassword(e.target.value)}/><h5 onClick={toggleShowPassword}>{showPassword?<i class="ri-eye-fill"></i>:<i class="ri-eye-off-fill"></i>}</h5><br></br><br></br>
                     <div className='flex admin-login-btn'>
-                      <button className='admin-login-btn1' type='submit'>Login</button>
-                      <button className='admin-login-btn2' onClick={()=>Navigate('/')}><i class="ri-arrow-go-back-fill"></i>Home</button>
+                      <button className='admin-login-btn2' onClick={()=>Navigate('/')}><i class="ri-home-office-fill"></i>
+                      </button>
+                      <button className='admin-login-btn1' type='submit'><i class="ri-login-box-fill"></i></button>
                     </div>
                   </div>
               </form>
