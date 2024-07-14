@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const adminSchema =new Schema({
@@ -8,4 +8,4 @@ const adminSchema =new Schema({
     confirmPassword:{type:String,require:true},
 })
 const Admin = mongoose.model("Admin",adminSchema)
-module.exports = Admin
+export default Admin

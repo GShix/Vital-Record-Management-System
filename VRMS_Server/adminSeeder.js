@@ -1,7 +1,6 @@
-const bcrypt = require("bcryptjs")
-const Admin = require("./model/adminModel")
-
-exports.adminSeeder= async()=>{
+import bcrypt from 'bcryptjs'
+import Admin from './model/adminModel.js'
+const adminSeeder= async()=>{
     const adminFound = await Admin.findOne({adminEmail:"admin.babaimuni@gmail.com"})
     if(!adminFound){
         await Admin.create({
@@ -14,3 +13,4 @@ exports.adminSeeder= async()=>{
         console.log("Admin already exist")
     }
 }
+export default adminSeeder;

@@ -1,7 +1,7 @@
 const Birth = require("../../model/birthModel")
 const Death = require("../../model/deathModel")
 
-exports.getDeathCertificate =async(req,res)=>{
+export const getDeathCertificate =async(req,res)=>{
     const userOtp = req.params.otp
     if(!userOtp){
         return res.status(404).json({
@@ -16,7 +16,7 @@ exports.getDeathCertificate =async(req,res)=>{
     }
 }
 
-exports.getBirthCertificate =async(req,res)=>{
+export const getBirthCertificate =async(req,res)=>{
     const userOtp = req.params.otp
     if(!userOtp){
         return res.status(404).json({

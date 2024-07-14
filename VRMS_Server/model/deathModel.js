@@ -1,5 +1,6 @@
-const mongoose = require("mongoose")
+import mongoose from 'mongoose'
 const Schema = mongoose.Schema
+
 const deathSchema = new Schema({
     birthCertNo: { type: Number,
         required:true },
@@ -60,4 +61,4 @@ const deathSchema = new Schema({
     },
 })
 const Death = mongoose.model("Death", deathSchema)
-module.exports = Death
+export default Death;
