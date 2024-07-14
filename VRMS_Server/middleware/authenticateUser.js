@@ -1,7 +1,7 @@
-const Death = require("../model/deathModel");
-const sendMail = require("../services/SendMail");
+import Death from "../model/deathModel.js";
+import sendMail from "../services/SendMail.js";
 
-exports.authenticateUser = async(req,res,next) =>{
+const authenticateUser = async(req,res,next) =>{
     const id = req.body.userApplicationId
     try {
         const response = await Death.findById({id:userApplicationId})
@@ -26,3 +26,4 @@ exports.authenticateUser = async(req,res,next) =>{
         })
     }
 }
+export default authenticateUser;

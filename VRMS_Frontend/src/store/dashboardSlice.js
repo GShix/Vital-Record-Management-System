@@ -22,11 +22,11 @@ export default dashboardSlice.reducer
 export function fetchTotalApplication(){
     return async function fetchTotalApplicationThunk(dispatch){
         try {
-            const response1 = await API.get("/admin/death");
+            const response1 = await API.get("/admin/applications/death");
             if(response1.status==200){
                 dispatch(setDeath(response1.data.data));
             }
-            const response2 = await API.get("/admin/birth");
+            const response2 = await API.get("/admin/applications/birth");
             if(response2.status==200){
                 dispatch(setBirth(response2.data.data));
             }

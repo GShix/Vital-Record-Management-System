@@ -1,3 +1,3 @@
-exports.authenticateAdmin = (req,res,next)=>{
+const authenticateAdmin = (req,res,next)=>{
     
 }

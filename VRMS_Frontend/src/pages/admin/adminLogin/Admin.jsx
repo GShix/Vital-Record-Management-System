@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './Admin.css'
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'
@@ -9,7 +9,7 @@ const Admin = () => {
   const [adminName, setAdminName] = useState('');
   const [adminPassword, setAdminPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-
+  const formRef = useRef(null);
     const loginAdmin =async(e)=>{
       e.preventDefault();
       try {
@@ -17,18 +17,20 @@ const Admin = () => {
           adminName,
           adminPassword
         }
-        const response = await API.post("/vrms/admin/login",authData)
+        const response = await API.post("/admin/login",authData)
         localStorage.setItem("token",response.data.token)
-        if(response.status==200){
+        if(response.status===200){
           const expirationTime = new Date(new Date().getTime() + 120000);
           Cookies.set('auth',JSON.stringify(authData),{expires:expirationTime});
           console.log(Cookies)
           Navigate("/adminHome")
-        }else{
-          alert(response.data.message)
-        }
+        }else if (response.status === 401) {
+          alert("Invalid credentials");
+        } 
       } catch (error) {
-        alert("Something Went Wrong",error);
+        alert("Error",error);
+        setAdminName('')
+        setAdminPassword('')
       }
     }
     const toggleShowPassword =()=>{
@@ -44,7 +46,7 @@ const Admin = () => {
           </div>
           <div className="adminLogin">
             <div className="loginForm">
-              <form onSubmit={loginAdmin}>
+              <form ref={formRef} onSubmit={loginAdmin}>
                   <div className="adminAuth">
                     <label htmlFor='username'>Username:</label><br></br>
                     <input required type='text' id='username' name='adminName' placeholder='Username' value={adminName} onChange={(e)=>setAdminName(e.target.value)}/> <br></br><br></br>

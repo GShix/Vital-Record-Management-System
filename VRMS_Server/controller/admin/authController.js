@@ -29,12 +29,15 @@ const adminLogin = async(req,res)=>{
             })
         }
         else{
-            res.status(400).json({
+            res.status(401).json({
                 message:"Invalid Email or Password"
             })
         }
     } catch (error) {
         console.log(error);
+        res.status(500).send({
+            error:"Internal server error"
+        })
     }
 }
 export default adminLogin;

@@ -2,13 +2,13 @@ import { getMyBirthApplication, submitBirthApplication, submitDeathApplication, 
 import { Router } from 'express'
 
 const router = Router()
-router.route('/')
-.post(submitBirthApplication)
-.get(getMyBirthApplication)
+//birth
+router.route('/register/birth-form')
+router.route("/status/birthApplication/:userApplicationId").get(getMyBirthApplication)
 
 //death
-router.route('/death/deathRegistration').post(submitDeathApplication)
+router.route('/register/death-form').post(submitDeathApplication)
 
-router.route("/deathApplication/:userApplicationId").get(getMyDeathApplication)
+router.route("/status/deathApplication/:userApplicationId").get(getMyDeathApplication)
 
 export default router;

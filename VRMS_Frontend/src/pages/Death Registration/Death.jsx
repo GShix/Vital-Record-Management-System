@@ -13,7 +13,7 @@ const Death = () => {
       const formData = new FormData(e.currentTarget);
       const data = Object.fromEntries(formData)
       try{
-        const response = await API.post("/user/death/deathRegistration",data);
+        const response = await API.post("/user/register/death-form",data);
         if(response.status==201){
           alert("You Application is Successfully Submitted")
           Navigate('/eservices')

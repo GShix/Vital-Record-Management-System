@@ -4,7 +4,6 @@ import {useNavigate} from 'react-router-dom'
 const Header = () => {
     const Navigate = useNavigate();
     const [clickMenu,setClickMenu] = useState(false);
-    console.log(clickMenu)
   return (
     <div>
         <header>

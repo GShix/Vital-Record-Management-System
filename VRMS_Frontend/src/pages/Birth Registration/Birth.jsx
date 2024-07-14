@@ -15,7 +15,7 @@ const Birth = () => {
     const data = Object.fromEntries(formData)
 
     try{
-        const response = await API.post("/birthRegistration",data);
+        const response = await API.post("/user/register/birth-form",data);
         if(response.status==201){
           alert("You Application is Successfully Submitted")
           Navigate('/eservices')
