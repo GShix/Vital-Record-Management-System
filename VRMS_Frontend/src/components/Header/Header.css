@@ -240,7 +240,7 @@ marquee a{
 }
 
 /*md*/
-@media screen and (max-width:1024px) {
+@media screen and (min-width:600px) and (max-width:1248px) {
     .nav-list ul{
         display: none;
     }
@@ -249,18 +249,23 @@ marquee a{
     }
     .nav-list{
         display: flex;
+        padding-top: 5px;
         justify-content: space-between;
         align-items: center;
     }
     .successHomeBtn{
         margin-right: 20px;
+        width: 20vw;
         font-size: 1.3vw;
     }
     #employee-login-btn{
         font-size: 1.3vw;
+        width: 15vw;
     }
     .mobile-menu{
         display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .list-menu{
         display: flex;
