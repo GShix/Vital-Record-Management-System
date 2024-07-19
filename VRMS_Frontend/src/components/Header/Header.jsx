@@ -34,7 +34,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="nav-news flex">
-                    <h2>News</h2>
+                    <h2 style={{paddingTop:"1px"}}>News</h2>
                     <marquee><a href='/'>दोस्रो बोलपत्रको सूचना (Invitation for Bids) !!&nbsp;</a> <a href='/'>&nbsp;बोलपत्रको सूचना(Invitation for Online Bids) !!&nbsp;</a> <a href='/'>&nbsp;बोलपत्र आशयको मुल्याङ्कन सूचना !!&nbsp;</a> <a href='/'>&nbsp;गोल्ड कप फुटवल प्रतियोगितामा फुटबल टिम सहभागीता सम्बन्धी सम्बन्धी सूचना !!&nbsp;</a><a href='/'>&nbsp;बबई गाउँपालिका स्थित सबै सामुदायिक विद्यालयहरु प्रस्ताव पेश गर्ने सम्बन्धमा !!&nbsp;</a><a href='/'>&nbsp;नदिजन्य पदार्थको बिक्री शुल्क उठाउने सम्बन्धी बोलपत्र ठेक्का को मुल्याङ्कन बोलपत्र आशयको सूचना !!!</a></marquee>
                 </div>
             <div className="nav-list flex">
@@ -54,7 +54,7 @@ const Header = () => {
                 </ul>
                 <button className='successHomeBtn' onClick={()=>Navigate('/applicationStatus')}>Application Status</button>
                 <button id='employee-login-btn' type='' onClick={()=>Navigate('/vrms-admin')}>Admin Login</button>
-                <div className="list-menu"><button className='mobile-menu' onClick={()=>setClickMenu(!clickMenu)}>{clickMenu ?<i class="ri-close-line" style={{fontSize:'15px'}}></i>:<i class="ri-menu-line"></i>} 
+                <div className="list-menu"><button className='mobile-menu' onClick={()=>setClickMenu(!clickMenu)}>{clickMenu ?<i className="ri-close-line" style={{fontSize:'15px'}}></i>:<i className="ri-menu-line"></i>} 
                 </button>
                 </div>
             </div>

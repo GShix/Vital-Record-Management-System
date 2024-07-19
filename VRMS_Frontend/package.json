@@ -3,7 +3,7 @@
   "private": true,
   "version": "2.1.3",
   "homepage": "https://vrms-babaimuni.vercel.app",
-  "proxy":"https://v2.vrms.vercel.app/api",
+  "proxy": "https://v2.vrms.vercel.app/api",
   "allowedHosts": "all",
   "type": "module",
   "scripts": {

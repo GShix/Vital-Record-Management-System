@@ -170,13 +170,11 @@ marquee a{
 .nav-list button:hover{
     background-color: #2a5690;
 }
-@media only screen and (max-width:600px){
+
+@media screen and (max-width:600px){
     .mini-nav{
         margin-bottom: 5px;
         padding: 8px 5px;
-    }
-    .menu-icon{
-        display: block;
     }
     .nav-logo{
         /* display: inline; */
@@ -239,14 +237,32 @@ marquee a{
     .nav-list-items{
         display: none;
     }
-    .mobileNavList li a{
-        display: block;
-    }
 }
 
 /*md*/
-@media only screen and(min-width:900px) {
+@media screen and (max-width:1024px) {
     .nav-list ul{
         display: none;
+    }
+    .nav-list-items{
+        display: none;
+    }
+    .nav-list{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .successHomeBtn{
+        margin-right: 20px;
+        font-size: 1.3vw;
+    }
+    #employee-login-btn{
+        font-size: 1.3vw;
+    }
+    .mobile-menu{
+        display: flex;
+    }
+    .list-menu{
+        display: flex;
     }
 }
