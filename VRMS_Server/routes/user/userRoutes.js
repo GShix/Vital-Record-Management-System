@@ -3,7 +3,7 @@ import { Router } from 'express'
 
 const router = Router()
 //birth
-router.route('/register/birth-form')
+router.route('/register/birth-form').post(submitBirthApplication)
 router.route("/status/birthApplication/:userApplicationId").get(getMyBirthApplication)
 
 //death
